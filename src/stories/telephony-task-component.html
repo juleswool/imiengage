@@ -1,0 +1,64 @@
+<div class="ui-interaction-tile" [ngClass]="{ 'ui-interaction-tile-active' : active }">
+    <div class="ui-interaction-tile-content" (mouseover)="mouseHover=busy" (mouseout)="mouseOut($event);">
+
+        <div class="p-d-flex p-jc-between">
+            <div class="p-d-flex">
+                <div class="p-as-center ui-border ui-interaction-tile-channel-container">
+                    <span class="ui-interaction-tile-channel"><div [ngClass]="{ 'icon-Incoming' : direction==='inbound', 'icon-Outgoing' : direction!=='inbound' }"></div></span>
+                </div>
+                <div class="p-as-center ui-border">
+                    <span class="ui-interaction-tile-party">{{otherParty}}</span> 
+                </div>
+            </div>
+            <div class="p-d-flex">
+                <div class="p-as-center ui-border" style="text-align: right;">
+                    <span [ngClass]="{ 'ui-interaction-tile-status-ringing' : status==='ringing' }" class="ui-interaction-tile-status"><i [hidden]="status!=='ringing'" class="icon-Ringing"></i> {{statusMsg}}</span>
+                </div>
+
+                <div [hidden]="!delivered" class="p-as-center ui-border" style="text-align: center;" >
+                    <div (click)="onClick.emit({ 'id': 'toolAnswer'})" class="ui-interaction-tile-button-round ui-interaction-tile-button-success icon-Tick"></div>                    
+                </div>
+                <div class="p-as-center ui-border ui-interaction-tile-container-flag">
+                    <div [hidden]="priority===''" class="ui-interaction-tile-flag">{{priority}}</div>
+                </div> 
+            </div>
+    
+        </div>  
+
+        <div class="p-d-flex p-jc-between ui-interaction-tile-info ui-border">
+            
+            <div class="p-d-flex">
+                <div class="p-as-center ui-border">
+                    <span [hidden]="mouseHover" class="ui-interaction-tile-class-name" [hidden]="info===''">
+                        <span title="{{info}}">{{info}}</span>
+                    </span>
+                </div>
+                <div class="p-as-center ui-border">
+                        <div [hidden]="!mouseHover"> 
+                            <div class="ui-interaction-tile-toolbar p-d-flex">
+                                <p-menu (mouseleave)="menu.hide($event);" #menu [popup]="true" [model]="items"></p-menu>
+                                
+                                <div pTooltip="{{muteTooltip}}" tooltipPosition="top" (click)="onClick.emit({ 'id': 'toolMuted'})" class="p-as-center ui-border ui-interaction-tile-toolbar-button" [ngClass]="{'ui-interaction-tile-muted' : muted }" >
+                                    <span class="icon-Mute"></span>
+                                </div>
+                
+                                <div pTooltip="{{holdTooltip}}" tooltipPosition="top" (click)="onClick.emit({ 'id': 'toolHold'})" class="p-as-center ui-border ui-interaction-tile-toolbar-button" [ngClass]="{'ui-interaction-tile-onhold' : onHold }" >
+                                    <span class="icon-Hold"></span>
+                                </div>
+                                <div (mouseenter)="showMenu(menu, $event)" class="p-as-center ui-border ui-interaction-tile-toolbar-button">
+                                    <span class="icon-More"></span>
+                                </div> 
+                            </div>
+                        </div>  
+                </div>     
+            </div>
+
+            <div class="p-d-flex">
+                <div class="p-as-center ui-border" style="text-align: right;">
+                    <span class="ui-interaction-tile-duration">{{duration}}</span>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+</div>

@@ -1,0 +1,21 @@
+
+.icon-callback:before { content: '\e800'; } /* '' */
+.icon-transfer:before { content: '\e801'; } /* '' */
+.icon-clear-call:before { content: '\e802'; } /* '' */
+.icon-conference:before { content: '\e803'; } /* '' */
+.icon-dial-now:before { content: '\e804'; } /* '' */
+.icon-diary:before { content: '\e805'; } /* '' */
+.icon-do-not-call:before { content: '\e806'; } /* '' */
+.icon-dropcall:before { content: '\e807'; } /* '' */
+.icon-go-not-ready:before { content: '\e808'; } /* '' */
+.icon-go-ready:before { content: '\e809'; } /* '' */
+.icon-makecall:before { content: '\e80a'; } /* '' */
+.icon-make-call:before { content: '\e80b'; } /* '' */
+.icon-new-email:before { content: '\e80c'; } /* '' */
+.icon-pause-dialling:before { content: '\e80d'; } /* '' */
+.icon-phone:before { content: '\e80e'; } /* '' */
+.icon-requeue:before { content: '\e80f'; } /* '' */
+.icon-skip-call:before { content: '\e810'; } /* '' */
+.icon-record-call:before { content: '\e811'; } /* '' */
+.icon-requeue-chat:before { content: '\e812'; } /* '' */
+.icon-clear-chat:before { content: '\e813'; } /* '' */

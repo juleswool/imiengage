@@ -1,0 +1,208 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?degpc5');
+  src:  url('fonts/icomoon.eot?degpc5#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?degpc5') format('truetype'),
+    url('fonts/icomoon.woff?degpc5') format('woff'),
+    url('fonts/icomoon.svg?degpc5#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ABC:before {
+  content: "\e900";
+  color: #57ba63;
+}
+.icon-Add:before {
+  content: "\e901";
+}
+.icon-Admin:before {
+  content: "\e902";
+}
+.icon-API:before {
+  content: "\e903";
+  color: #ac6c6c;
+}
+.icon-Assets:before {
+  content: "\e904";
+}
+.icon-Attachement:before {
+  content: "\e905";
+}
+.icon-Block-disable:before {
+  content: "\e906";
+}
+.icon-CA-Reports-2:before {
+  content: "\e907";
+}
+.icon-CA-Reports:before {
+  content: "\e908";
+}
+.icon-Cancel:before {
+  content: "\e909";
+}
+.icon-Caret:before {
+  content: "\e90a";
+}
+.icon-Chat-console:before {
+  content: "\e90b";
+}
+.icon-Clock:before {
+  content: "\e90c";
+}
+.icon-conference:before {
+  content: "\e90d";
+  color: #959cad;
+}
+.icon-Copy:before {
+  content: "\e90e";
+}
+.icon-Dashboard:before {
+  content: "\e90f";
+}
+.icon-Default:before {
+  content: "\e910";
+  color: #227eb7;
+}
+.icon-Delete:before {
+  content: "\e911";
+}
+.icon-Drag:before {
+  content: "\e912";
+}
+.icon-Email:before {
+  content: "\e913";
+  color: #cb8fc8;
+}
+.icon-Emoji:before {
+  content: "\e914";
+}
+.icon-Facebook:before {
+  content: "\e915";
+  color: #1e1d34;
+}
+.icon-Group:before {
+  content: "\e916";
+}
+.icon-Hang-up:before {
+  content: "\e917";
+}
+.icon-hangup:before {
+  content: "\e918";
+  color: #ff5f66;
+}
+.icon-Help:before {
+  content: "\e919";
+}
+.icon-Hold:before {
+  content: "\e91a";
+}
+.icon-Incoming:before {
+  content: "\e91b";
+  color: #217eb7;
+}
+.icon-info:before {
+  content: "\e91c";
+  color: #949cad;
+}
+.icon-Intellignet-Routing:before {
+  content: "\e91d";
+}
+.icon-Like:before {
+  content: "\e91e";
+}
+.icon-LiveChat:before {
+  content: "\e91f";
+  color: #2db17d;
+}
+.icon-More:before {
+  content: "\e920";
+  color: #949cad;
+}
+.icon-Mute:before {
+  content: "\e921";
+}
+.icon-Outgoing:before {
+  content: "\e922";
+  color: #217eb7;
+}
+.icon-Play:before {
+  content: "\e923";
+  color: #949cad;
+}
+.icon-Proactive-messaging:before {
+  content: "\e924";
+}
+.icon-Profile:before {
+  content: "\e925";
+}
+.icon-Reply-all:before {
+  content: "\e926";
+}
+.icon-Reply:before {
+  content: "\e927";
+}
+.icon-Requeue:before {
+  content: "\e928";
+  color: #959cad;
+}
+.icon-Right:before {
+  content: "\e929";
+}
+.icon-Ringing:before {
+  content: "\e92a";
+  color: #217eb7;
+}
+.icon-Search-for-chats:before {
+  content: "\e92b";
+}
+.icon-Settings:before {
+  content: "\e92c";
+}
+.icon-SMS:before {
+  content: "\e92d";
+  color: #f29eb3;
+}
+.icon-Social-mentions:before {
+  content: "\e92e";
+}
+.icon-Tick:before {
+  content: "\e92f";
+}
+.icon-Transfer:before {
+  content: "\e930";
+  color: #959cad;
+}
+.icon-Trends:before {
+  content: "\e931";
+}
+.icon-Twitter:before {
+  content: "\e932";
+  color: #1da1f2;
+}
+.icon-Users:before {
+  content: "\e933";
+}
+.icon-Warning:before {
+  content: "\e934";
+}
+.icon-Whatsapp:before {
+  content: "\e935";
+  color: #55cd6c;
+}

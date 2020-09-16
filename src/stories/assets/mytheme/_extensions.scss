@@ -1,0 +1,44 @@
+/* Add your customizations of theme here */
+
+    
+body {
+
+	.ui-widget {
+		font-size: 12px;
+	}
+
+	.ui-menu .ui-menuitem-link {
+		padding: 0.514em 0.857em;
+		color: #949CAD;
+	}
+
+	.ui-menu .ui-menuitem-link:not(.ui-state-disabled):hover .ui-menuitem-icon {
+		color: #949CAD;
+	}
+
+	.ui-menu .ui-menuitem-link .ui-menuitem-icon {
+		color: #949CAD;
+	}
+
+	.ui-interaction-tile {
+		width:324px;
+		height:80px;
+		border-radius: 3px;
+		background: $interactionTileBgColor;
+		border:$interactionTileBorder;
+		padding-left: 16px;
+		padding-top: 8px;
+	}
+
+	.ui-interaction-tile-active {	
+		background: #E0EDF5;
+		border: 1px solid #DBDBDB;
+	}
+
+	.ui-interaction-tile:hover {
+		background: $interactionTileHoverBgColor;
+		border:$interactionTileHoverBorder;
+	}
+
+
+}

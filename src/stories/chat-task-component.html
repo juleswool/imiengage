@@ -1,0 +1,51 @@
+<div class="ui-interaction-tile" [ngClass]="{ 'ui-interaction-tile-active' : active }">
+  <div class="ui-interaction-tile-content">
+
+      <div class="p-d-flex p-jc-between">
+          <div class="p-d-flex">
+             <div class="p-as-center ui-border ui-interaction-tile-channel-container">
+                 <!--span class="ui-interaction-tile-channel"><i [ngClass]="{ 'icon-Incoming' : direction==='inbound', 'icon-Outgoing' : direction!=='inbound' }"></i></span-->
+                 <input type="checkbox" [(ngModel)]="selected" >
+             </div>
+
+              <div class="p-as-center ui-border ui-interaction-tile-channel-container">
+                  <span class="ui-interaction-tile-channel"><div [ngClass]="channelIcon"></div></span>
+              </div>
+              <div class="p-as-center ui-border">
+                  <span class="ui-interaction-tile-party">{{otherParty}}</span> 
+              </div>
+          </div>
+          <div class="p-d-flex">
+              <div class="p-as-center ui-border" style="text-align: right;">
+                  <span [ngClass]="{ 'ui-interaction-tile-status-ringing' : status==='ringing' }" class="ui-interaction-tile-status"><i [hidden]="status!=='ringing'" class="icon-Ringing"></i> {{statusMsg}}</span>
+              </div>
+
+              <div [hidden]="!delivered" class="p-as-center ui-border" style="text-align: center;" >
+                  <div (click)="onClick.emit({ 'id': 'toolAnswer'})" class="ui-interaction-tile-button-round ui-interaction-tile-button-success icon-Tick"></div>                    
+              </div>
+              <div class="p-as-center ui-border ui-interaction-tile-container-flag">
+                  <div [hidden]="priority===''" class="ui-interaction-tile-flag">{{priority}}</div>
+              </div> 
+          </div>
+  
+      </div>  
+
+      <div class="p-d-flex p-jc-between ui-interaction-tile-info ui-border">
+          
+          <div class="p-d-flex">
+              <div class="p-as-center ui-border">
+                  <span class="ui-interaction-tile-class-name" [hidden]="info===''">
+                      <span title="{{info}}">{{info}}</span>
+                  </span>
+              </div>
+          </div>
+
+          <div class="p-d-flex">
+              <div class="p-as-center ui-border" style="text-align: right;">
+                  <span class="ui-interaction-tile-duration">{{duration}}</span>
+              </div>
+          </div>
+
+      </div> 
+  </div>
+</div>
