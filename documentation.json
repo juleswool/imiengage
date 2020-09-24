@@ -78,7 +78,7 @@
         {
             "name": "ButtonComponent",
             "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
-            "file": "src/stories/button.component.ts",
+            "file": "bk/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -157,52 +157,58 @@
             }
         },
         {
-            "name": "ChatTaskComponent",
-            "id": "component-ChatTaskComponent-162eb49960ae0459ddb20c8acd292f29",
-            "file": "src/stories/chat-task-component.ts",
+            "name": "ChatMessageComponent",
+            "id": "component-ChatMessageComponent-661e275e066d61c582efae85a6a820e1",
+            "file": "src/stories/chat-message-component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-chat-task",
+            "selector": "app-chat-message",
             "styleUrls": [
-                "./chat-task-component.scss"
+                "./chat-message-component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./chat-task-component.html"
+                "./chat-message-component.html"
             ],
             "viewProviders": [],
             "inputsClass": [
                 {
                     "name": "active",
                     "defaultValue": "false",
-                    "line": 23,
-                    "type": "boolean"
-                },
-                {
-                    "name": "delivered",
-                    "defaultValue": "false",
-                    "line": 32,
+                    "line": 26,
                     "type": "boolean"
                 },
                 {
                     "name": "duration",
                     "defaultValue": "\"00:00:00\"",
+                    "line": 32,
+                    "type": "string"
+                },
+                {
+                    "name": "inactivity",
+                    "defaultValue": "false",
+                    "line": 38,
+                    "type": "boolean"
+                },
+                {
+                    "name": "message",
+                    "defaultValue": "\"\"",
                     "line": 29,
                     "type": "string"
                 },
                 {
-                    "name": "info",
-                    "defaultValue": "\"\"",
-                    "line": 26,
+                    "name": "messageCount",
+                    "defaultValue": "\"1\"",
+                    "line": 20,
                     "type": "string"
                 },
                 {
                     "name": "otherParty",
                     "defaultValue": "\"01483000007\"",
-                    "line": 20,
+                    "line": 23,
                     "type": "string"
                 },
                 {
@@ -213,44 +219,44 @@
                     "type": "string"
                 },
                 {
-                    "name": "status",
-                    "defaultValue": "'none'",
+                    "name": "state",
+                    "defaultValue": "'offered'",
                     "line": 35,
-                    "type": "\"none\" | \"dialling\" | \"ringing\""
+                    "type": "\"offered\" | \"accepted\""
                 }
             ],
             "outputsClass": [
                 {
                     "name": "onClick",
                     "defaultValue": "new EventEmitter<any>()",
-                    "line": 38,
+                    "line": 41,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [
-                {
-                    "name": "busy",
-                    "defaultValue": "true",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 44
-                },
                 {
                     "name": "channelIcon",
                     "defaultValue": "\"\"",
                     "type": "string",
                     "optional": false,
                     "description": "",
+                    "line": 46
+                },
+                {
+                    "name": "onSelect",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
                     "line": 42
                 },
                 {
                     "name": "selected",
-                    "defaultValue": "true",
+                    "defaultValue": "false",
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 45
                 },
                 {
                     "name": "statusMsg",
@@ -258,7 +264,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 44
                 }
             ],
             "methodsClass": [
@@ -277,7 +283,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 97,
+                    "line": 116,
                     "jsdoctags": [
                         {
                             "name": "arr",
@@ -306,7 +312,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 70,
                     "jsdoctags": [
                         {
                             "name": "changes",
@@ -323,7 +329,15 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 85
+                    "line": 104
+                },
+                {
+                    "name": "selectChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58
                 }
             ],
             "hostBindings": [],
@@ -331,12 +345,12 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';\nimport { ButtonModule } from 'primeng/button/';\nimport { CardModule } from 'primeng/card';\nimport { MenuItem } from 'primeng/api';\n\n@Component({\n    selector: 'app-chat-task',\n    templateUrl: './chat-task-component.html',\n    styleUrls: ['./chat-task-component.scss']\n  })\n\nexport class ChatTaskComponent implements OnInit {\n    /**\n     * control inputs\n     */\n    @Input()\n    priority?: string = \"P1\";\n\n    @Input()\n    otherParty?: string = \"01483000007\";\n\n    @Input()\n    active?: boolean = false;\n\n    @Input()\n    info?: string = \"\";\n\n    @Input()\n    duration?: string = \"00:00:00\";\n\n    @Input()\n    delivered? :boolean = false;\n\n    @Input()\n    status : 'none' | 'dialling' | 'ringing' = 'none';\n\n    @Output()\n    onClick = new EventEmitter<any>();\n\n    statusMsg: string = \"\";\n    selected: boolean = true;\n    channelIcon: string = \"\";\n\n    busy:boolean = true;\n\n    constructor() {\n    }\n\n    ngOnChanges (changes: SimpleChanges) {\n      for (const propName in changes) {\n        switch (propName) {\n          case \"channel\":\n            switch (changes[propName].currentValue) {\n              case \"facebook\":\n                this.channelIcon = \"icon-Facebook\";\n                break;\n              case \"livechat\":\n                this.channelIcon = \"icon-LiveChat\";                \n                break;\n              case \"twitter\":\n                this.channelIcon = \"icon-Twitter\";                \n                break;\n              case \"whatsapp\":\n                this.channelIcon = \"icon-Whatsapp\";                \n                break;\n            }\n            break;\n\n          case \"status\":\n            switch (changes[propName].currentValue) {\n              case \"dialling\":\n                this.statusMsg = \"Dialling...\";\n                  break;\n              case \"ringing\":\n                this.statusMsg = \"Ringing...\";                \n                break;\n              default:\n                this.statusMsg = \"\";\n            }\n            break;\n        }\n      }\n    }\n\n    ngOnInit() {\n\n    }\n\n    //\n    // function   : is string contained in array\n    //\n    // parameters : arr  - arr to search\n    //              item - string item to search for\n    //\n    // returns    : none.\n    //\n    itemInArray(arr, item) {\n      var i;\n      for (i=0; i < arr.length; i++) {\n        if (item===arr[i]) {\n          return (true);\n        }\n      }\n      return (false);\n    }\n}",
+            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';\nimport { ButtonModule } from 'primeng/button/';\nimport { CardModule } from 'primeng/card';\nimport { MenuItem } from 'primeng/api';\n\n@Component({\n    selector: 'app-chat-message',\n    templateUrl: './chat-message-component.html',\n    styleUrls: ['./chat-message-component.scss']\n  })\n\nexport class ChatMessageComponent implements OnInit {\n    /**\n     * control inputs\n     */\n    @Input()\n    priority?: string = \"P1\";\n\n    @Input()\n    messageCount?: string = \"1\";\n\n    @Input()\n    otherParty?: string = \"01483000007\";\n\n    @Input()\n    active?: boolean = false;\n\n    @Input()\n    message?: string = \"\";\n\n    @Input()\n    duration?: string = \"00:00:00\";\n\n    @Input()\n    state : 'offered' | 'accepted' = 'offered';\n\n    @Input()\n    inactivity: boolean = false;\n\n    @Output()\n    onClick = new EventEmitter<any>();\n    onSelect = new EventEmitter<boolean>();\n\n    statusMsg: string = \"\";\n    selected: boolean = false;\n    channelIcon: string = \"\";\n\n    constructor() {\n    }\n\n    //\n    // function   : chat tile selection change\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    selectChange() {\n      this.selected = !this.selected;\n      this.onSelect.emit(this.selected);\n    }\n\n    //\n    // function   : monitor for property changes\n    //\n    // parameters : changes - property change object\n    //\n    // returns    : none.\n    //    \n    ngOnChanges (changes: SimpleChanges) {\n      for (const propName in changes) {\n        switch (propName) {\n          case \"selected\":\n            console.log(\"selected\");\n            break;\n\n          case \"channel\":\n            switch (changes[propName].currentValue) {\n              case \"facebook\":\n                this.channelIcon = \"icon-Facebook\";\n                break;\n              case \"livechat\":\n                this.channelIcon = \"icon-LiveChat\";                \n                break;\n              case \"twitter\":\n                this.channelIcon = \"icon-Twitter\";                \n                break;\n              case \"whatsapp\":\n                this.channelIcon = \"icon-Whatsapp\";                \n                break;\n            }\n            break;\n        }\n      }\n    }\n\n    //\n    // function   : component initialisation event handler\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    ngOnInit() {\n\n    }\n\n    //\n    // function   : is string contained in array\n    //\n    // parameters : arr  - arr to search\n    //              item - string item to search for\n    //\n    // returns    : none.\n    //\n    itemInArray(arr, item) {\n      var i;\n      for (i=0; i < arr.length; i++) {\n        if (item===arr[i]) {\n          return (true);\n        }\n      }\n      return (false);\n    }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".ui-interaction-tile-toolbar {\r\n    padding-left: 40px;\r\n}\r\n\r\n.pi {\r\n    font-size: 1.0em;\r\n}\r\n\r\n.ui-interaction-tile-info {\r\n    margin-top:6px;\r\n    height: 32px;\r\n}\r\n\r\n.ui-interaction-tile-class-name {\r\n    font-size: 12px;\r\n    color: #949CAD;\r\n    line-height: 30px;\r\n}\r\n\r\n.ui-interaction-tile-duration {\r\n    font-size: 12px;\r\n    color:#56627C;\r\n    margin-right:16px;\r\n}\r\n\r\n.ui-interaction-tile-channel-container {\r\n    width: 35px;\r\n}\r\n\r\n.ui-interaction-tile-channel {\r\n    font-size: 20px;\r\n    color: #217EB7;\r\n}\r\n\r\n.ui-interaction-tile-party {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    font-weight: 600;\r\n}\r\n\r\n.ui-button-interaction-tile {\r\n    font-size:0.8em;\r\n    width: 24px !important;\r\n    height: 24px !important;    \r\n}\r\n\r\n.ui-interaction-tile-flag {\r\n    width: 21px;\r\n    height: 17px;\r\n    background: #E02020;\r\n    border-radius: 2px;\r\n    font-size: 10px;\r\n    line-height: 17px; \r\n    color: #FFFFFF;  \r\n    text-align: center;\r\n    float: right;\r\n}\r\n\r\n.ui-interaction-tile-container-flag {\r\n    text-align:right; \r\n    width:33px;\r\n    height: 26px;\r\n    padding-top: 4px;    \r\n}\r\n\r\n.ui-interaction-tile-status {\r\n    font-size: 12px;\r\n    line-height: 16px;\r\n    color: #56627C;\r\n}\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.ui-interaction-tile-button-round {\r\n    cursor:pointer;\r\n    height: 24px;\r\n    width: 24px; \r\n    line-height: 24px; \r\n    border-radius: 12px;\r\n}\r\n\r\n.ui-interaction-tile-button-success {\r\n    background-color: #3EC154; \r\n    color: #ffffff;\r\n}\r\n\r\n.ui-interaction-tile-status-ringing {\r\n    color: #3EC154; \r\n}\r\n\r\n.ui-interaction-tile-onhold {\r\n    background: #E4AD00 !important;\r\n    color: #FFFFFF !important;\r\n}\r\n\r\n.ui-interaction-tile-muted {\r\n    background: #456FAA !important;\r\n    color: #FFFFFF !important;    \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button {\r\n    background: #FFFFFF;\r\n    color: #949CAD;    \r\n    border: 1px solid #DBDBDB;\r\n    border-radius: 2px;\r\n    width:38px; \r\n    height: 26px;\r\n    text-align: center;  \r\n    cursor: pointer;  \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button:hover {\r\n    border-color: #949CAD;\r\n}\r\n\r\n.ui-interaction-tile-toolbar-button>span {\r\n    line-height:24px; \r\n    font-size:12px;\r\n}",
-                    "styleUrl": "./chat-task-component.scss"
+                    "data": ".ui-interaction-tile-chat-inactivity {\r\n    height: 198px;\r\n    width: 500px;\r\n} \r\n\r\n.ui-interaction-tile-toolbar {\r\n    padding-left: 40px;\r\n}\r\n\r\n.pi {\r\n    font-size: 1.0em;\r\n}\r\n\r\n.ui-interaction-tile-inactivity-label {\r\n    height: 36px;\r\n    width: 195px;\r\n    font-size: 14px;\r\n    color: #56627C;\r\n}\r\n\r\n.ui-interaction-tile-duration {\r\n    font-size: 12px;\r\n    color:#56627C;\r\n    margin-right:16px;\r\n}\r\n\r\n.ui-interaction-tile-channel-container {\r\n    width: 35px;\r\n}\r\n\r\n.ui-interaction-tile-channel {\r\n    font-size: 20px;\r\n    color: #217EB7;\r\n}\r\n\r\n.ui-interaction-tile-party {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    font-weight: 600;\r\n    display: block;\r\n    width: 179px;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;      \r\n}\r\n\r\n.ui-button-interaction-tile {\r\n    font-size:0.8em;\r\n    width: 24px !important;\r\n    height: 24px !important;    \r\n}\r\n\r\n.ui-interaction-tile-flag {\r\n    width: 21px;\r\n    height: 17px;\r\n    border-radius: 2px;\r\n    font-size: 10px;\r\n    line-height: 17px; \r\n    color: #FFFFFF;  \r\n    text-align: center;\r\n    float: right;\r\n}\r\n\r\n.ui-interaction-tile-container-flag {\r\n    text-align:right; \r\n    width:33px;\r\n    height: 26px;\r\n    padding-top: 4px;    \r\n}\r\n\r\n.ui-interaction-tile-status {\r\n    font-size: 12px;\r\n    line-height: 16px;\r\n    color: #56627C;\r\n}\r\n\r\n.ui-interaction-tile-button-answer {\r\n    cursor:pointer;\r\n    height: 24px;\r\n    width: 24px; \r\n    line-height: 24px; \r\n    border-radius: 12px;\r\n    background-color: #3EC154; \r\n    color: #ffffff;\r\n}\r\n\r\n.ui-interaction-tile-message-count {\r\n    height: 16px;\r\n    width: 16px; \r\n    line-height: 16px; \r\n    border-radius: 8px;\r\n    background-color: #FA9397; \r\n    color: #ffffff;\r\n    font-size: 10px;\r\n    margin-right:8px;\r\n}\r\n\r\n.ui-interaction-tile-status-ringing {\r\n    color: #3EC154; \r\n}\r\n\r\n.ui-interaction-tile-onhold {\r\n    background: #E4AD00 !important;\r\n    color: #FFFFFF !important;\r\n}\r\n\r\n.ui-interaction-tile-muted {\r\n    background: #456FAA !important;\r\n    color: #FFFFFF !important;    \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button {\r\n    background: #FFFFFF;\r\n    color: #949CAD;    \r\n    border: 1px solid #DBDBDB;\r\n    border-radius: 2px;\r\n    width:38px; \r\n    height: 26px;\r\n    text-align: center;  \r\n    cursor: pointer;  \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button:hover {\r\n    border-color: #949CAD;\r\n}\r\n\r\n.ui-interaction-tile-toolbar-button>span {\r\n    line-height:24px; \r\n    font-size:12px;\r\n}\r\n\r\n.ui-interaction-tile-extend {\r\n    height: 118px;\r\n    margin-top: 6px;\r\n    background-color: #F6F6F6;\r\n    border-top: 1px solid #DBDBDB;\r\n}\r\n\r\n.ui-interaction-tile-extend-text {\r\n    height: 36px;\r\n    width: 195px;\r\n    margin-top: 16px;\r\n    font-family: IBM Plex Sans;\r\n    font-style: normal;\r\n    font-weight: normal;\r\n    font-size: 14px;\r\n    line-height: 18px;\r\n    text-align: center;    \r\n}\r\n\r\n.ui-interaction-tile-extend-button {\r\n    background: #FCFCFC;\r\n    /* Elements/Primary blue */\r\n    border: 1px solid #03A9F4;\r\n    box-sizing: border-box;\r\n    border-radius: 2px;\r\n    width: 76px;\r\n    height: 26px;\r\n    margin-top: 16px;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}\r\n\r\n.ui-interaction-tile-extend-button-text {\r\n    font-family: IBM Plex Sans;\r\n    font-style: normal;\r\n    font-weight: normal;\r\n    font-size: 14px;\r\n    line-height: 24px;\r\n\r\n    color: #03A9F4;    \r\n}\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.ui-interaction-tile-customer-id {\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    background: #949CAD;\r\n    border-radius: 4px;\r\n    font-family: IBM Plex Sans;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    font-size: 24px;\r\n    text-align: center;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.ui-interaction-tile-message-box-text {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    display: -webkit-box;\r\n    -webkit-box-orient: vertical;    \r\n    background-color: #ffffff;\r\n    padding: 5px;\r\n    border-radius: 4px;    \r\n    min-height: 24px;\r\n}\r\n\r\n.ui-interaction-tile-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n}\r\n\r\n.ui-interaction-tile-content {\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n}",
+                    "styleUrl": "./chat-message-component.scss"
                 }
             ],
             "stylesData": "",
@@ -344,17 +358,267 @@
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 44
+                "line": 46
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"ui-interaction-tile\" [ngClass]=\"{ 'ui-interaction-tile-active' : active }\">\n  <div class=\"ui-interaction-tile-content\">\n\n      <div class=\"p-d-flex p-jc-between\">\n          <div class=\"p-d-flex\">\n             <div class=\"p-as-center ui-border ui-interaction-tile-channel-container\">\n                 <!--span class=\"ui-interaction-tile-channel\"><i [ngClass]=\"{ 'icon-Incoming' : direction==='inbound', 'icon-Outgoing' : direction!=='inbound' }\"></i></span-->\n                 <input type=\"checkbox\" [(ngModel)]=\"selected\" >\n             </div>\n\n              <div class=\"p-as-center ui-border ui-interaction-tile-channel-container\">\n                  <span class=\"ui-interaction-tile-channel\"><div [ngClass]=\"channelIcon\"></div></span>\n              </div>\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"ui-interaction-tile-party\">{{otherParty}}</span> \n              </div>\n          </div>\n          <div class=\"p-d-flex\">\n              <div class=\"p-as-center ui-border\" style=\"text-align: right;\">\n                  <span [ngClass]=\"{ 'ui-interaction-tile-status-ringing' : status==='ringing' }\" class=\"ui-interaction-tile-status\"><i [hidden]=\"status!=='ringing'\" class=\"icon-Ringing\"></i> {{statusMsg}}</span>\n              </div>\n\n              <div [hidden]=\"!delivered\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\n                  <div (click)=\"onClick.emit({ 'id': 'toolAnswer'})\" class=\"ui-interaction-tile-button-round ui-interaction-tile-button-success icon-Tick\"></div>                    \n              </div>\n              <div class=\"p-as-center ui-border ui-interaction-tile-container-flag\">\n                  <div [hidden]=\"priority===''\" class=\"ui-interaction-tile-flag\">{{priority}}</div>\n              </div> \n          </div>\n  \n      </div>  \n\n      <div class=\"p-d-flex p-jc-between ui-interaction-tile-info ui-border\">\n          \n          <div class=\"p-d-flex\">\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"ui-interaction-tile-class-name\" [hidden]=\"info===''\">\n                      <span title=\"{{info}}\">{{info}}</span>\n                  </span>\n              </div>\n          </div>\n\n          <div class=\"p-d-flex\">\n              <div class=\"p-as-center ui-border\" style=\"text-align: right;\">\n                  <span class=\"ui-interaction-tile-duration\">{{duration}}</span>\n              </div>\n          </div>\n\n      </div> \n  </div>\n</div>\n"
+            "templateData": "<div class=\"ui-interaction-tile-message\">\n  <div class=\"ui-interaction-tile-content\">\n\n    <div class=\"p-grid\">\n      <div class=\"p-col-fixed ui-border\" style=\"width:55px\">\n          <div class=\"ui-interaction-tile-customer-id\">L</div>\n      </div>\n      <div class=\"p-col ui-border \">\n          <span class=\"ui-border ui-interaction-tile-message-box-text\">\n              <span>{{message}}</span>\n          </span>\n      </div>\n      <!--div class=\"p-col-fixed ui-border\" style=\"width:55px\">\n        <div class=\"ui-interaction-tile-customer-id\">L</div>\n      </div-->      \n    </div>\n\n  </div>\n\n</div>\n"
+        },
+        {
+            "name": "ChatTaskComponent",
+            "id": "component-ChatTaskComponent-805db79555fa0a40857959b59b94d53d",
+            "file": "src/stories/chat-task-component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-chat-task",
+            "styleUrls": [
+                "./chat-task-component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./chat-task-component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "active",
+                    "defaultValue": "false",
+                    "line": 30,
+                    "type": "boolean"
+                },
+                {
+                    "name": "duration",
+                    "defaultValue": "\"00:00:00\"",
+                    "line": 36,
+                    "type": "string"
+                },
+                {
+                    "name": "extend",
+                    "defaultValue": "false",
+                    "line": 42,
+                    "type": "boolean"
+                },
+                {
+                    "name": "extendTimeout",
+                    "defaultValue": "15",
+                    "line": 45,
+                    "type": "number"
+                },
+                {
+                    "name": "message",
+                    "defaultValue": "\"\"",
+                    "line": 33,
+                    "type": "string"
+                },
+                {
+                    "name": "messageCount",
+                    "defaultValue": "\"1\"",
+                    "line": 24,
+                    "type": "string"
+                },
+                {
+                    "name": "otherParty",
+                    "defaultValue": "\"01483000007\"",
+                    "line": 27,
+                    "type": "string"
+                },
+                {
+                    "name": "priority",
+                    "defaultValue": "\"P1\"",
+                    "line": 21,
+                    "type": "string"
+                },
+                {
+                    "name": "priorityColour",
+                    "defaultValue": "\"#E02020\"",
+                    "description": "<p>control inputs</p>\n",
+                    "line": 18,
+                    "type": "string"
+                },
+                {
+                    "name": "state",
+                    "defaultValue": "'offered'",
+                    "line": 39,
+                    "type": "\"offered\" | \"accepted\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 48,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "channelIcon",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 53
+                },
+                {
+                    "name": "extendTimeLeft",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 55
+                },
+                {
+                    "name": "extendTimeoutTimer",
+                    "defaultValue": "null",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 54
+                },
+                {
+                    "name": "onSelect",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 49
+                },
+                {
+                    "name": "selected",
+                    "defaultValue": "false",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 52
+                },
+                {
+                    "name": "statusMsg",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 51
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "itemInArray",
+                    "args": [
+                        {
+                            "name": "arr",
+                            "type": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 147,
+                    "jsdoctags": [
+                        {
+                            "name": "arr",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 135
+                },
+                {
+                    "name": "selectChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges, NgZone } from '@angular/core';\nimport { ButtonModule } from 'primeng/button/';\nimport { CardModule } from 'primeng/card';\nimport { MenuItem } from 'primeng/api';\nimport { interval, timer } from 'rxjs';\n\n@Component({\n    selector: 'app-chat-task',\n    templateUrl: './chat-task-component.html',\n    styleUrls: ['./chat-task-component.scss']\n  })\n\nexport class ChatTaskComponent implements OnInit {\n    /**\n     * control inputs\n     */\n    @Input() \n    priorityColour:string = \"#E02020\";\n\n    @Input()\n    priority?: string = \"P1\";\n\n    @Input()\n    messageCount?: string = \"1\";\n\n    @Input()\n    otherParty?: string = \"01483000007\";\n\n    @Input()\n    active?: boolean = false;\n\n    @Input()\n    message?: string = \"\";\n\n    @Input()\n    duration?: string = \"00:00:00\";\n\n    @Input()\n    state : 'offered' | 'accepted' = 'offered';\n\n    @Input()\n    extend: boolean = false;\n    \n    @Input()\n    extendTimeout: number = 15;\n\n    @Output()\n    onClick = new EventEmitter<any>();\n    onSelect = new EventEmitter<boolean>();\n\n    statusMsg: string = \"\";\n    selected: boolean = false;\n    channelIcon: string = \"\";\n    extendTimeoutTimer: any = null;\n    extendTimeLeft: number;\n\n    constructor(private ngZone: NgZone) {\n    }\n\n    //\n    // function   : chat tile selection change\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    selectChange() {\n      this.selected = !this.selected;\n      this.onSelect.emit(this.selected);\n    }\n\n    //\n    // function   : monitor for property changes\n    //\n    // parameters : changes - property change object\n    //\n    // returns    : none.\n    //    \n    ngOnChanges (changes: SimpleChanges) {\n      for (const propName in changes) {\n        switch (propName) {\n          case \"extendTimeout\":\n            this.extendTimeLeft = changes[propName].currentValue || 15;\n            break;\n\n          case \"extend\":\n            if (changes[propName].currentValue===true) {\n              //make sure time runs inside zone so angular \n              //angular change detection works and the UI is refreshed\n              this.ngZone.run(()=> {\n                this.extendTimeoutTimer = setInterval(() => {   \n                  this.extendTimeLeft = this.extendTimeLeft - 1;\n                  if (this.extendTimeLeft===0) {\n                    clearInterval(this.extendTimeoutTimer);\n                    this.extendTimeoutTimer = null;\n                  } \n                }, 1000);\n              })\n\n            } else {\n              if (this.extendTimeoutTimer) {\n                clearInterval(this.extendTimeoutTimer);\n                this.extendTimeLeft = this.extendTimeout;\n              }\n            }\n            break;\n\n          case \"channel\":\n            switch (changes[propName].currentValue) {\n              case \"facebook\":\n                this.channelIcon = \"icon-Facebook\";\n                break;\n              case \"livechat\":\n                this.channelIcon = \"icon-LiveChat\";                \n                break;\n              case \"twitter\":\n                this.channelIcon = \"icon-Twitter\";                \n                break;\n              case \"whatsapp\":\n                this.channelIcon = \"icon-Whatsapp\";                \n                break;\n            }\n            break;\n        }\n      }\n    }\n\n    //\n    // function   : component initialisation event handler\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    ngOnInit() {\n\n    }\n\n    //\n    // function   : is string contained in array\n    //\n    // parameters : arr  - arr to search\n    //              item - string item to search for\n    //\n    // returns    : none.\n    //\n    itemInArray(arr, item) {\n      var i;\n      for (i=0; i < arr.length; i++) {\n        if (item===arr[i]) {\n          return (true);\n        }\n      }\n      return (false);\n    }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".chat-task-message {\r\n    margin-left: 34px;\r\n    margin-top:6px;\r\n    height: 32px;\r\n\r\n    &-text {\r\n        padding-right: 10px;        \r\n    }\r\n}\r\n\r\n.chat-task-class-name {\r\n    font-size: 12px;\r\n    color: #949CAD;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    display: -webkit-box;\r\n    -webkit-line-clamp: 2; /* number of lines to show */\r\n    -webkit-box-orient: vertical;    \r\n}\r\n\r\n.chat-task-duration {\r\n    font-size: 12px;\r\n    color:#56627C;\r\n    margin-right:16px;\r\n}\r\n\r\n.chat-task-channel {\r\n    width: 35px;\r\n\r\n    &-icon {\r\n        font-size: 24px;\r\n        color: #217EB7;\r\n    }\r\n}\r\n\r\n.chat-task-party {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    font-weight: 600;\r\n    display: block;\r\n    width: 179px;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;      \r\n}\r\n\r\n.chat-task-flag {\r\n    text-align:right; \r\n    width:33px;\r\n    height: 26px;\r\n    padding-top: 4px;  \r\n    \r\n    &-text {\r\n        width: 21px;\r\n        height: 17px;\r\n        border-radius: 2px;\r\n        font-size: 10px;\r\n        line-height: 17px; \r\n        color: #FFFFFF;  \r\n        text-align: center;\r\n        float: right;\r\n    }\r\n}\r\n\r\n.chat-task-status {\r\n    font-size: 12px;\r\n    line-height: 16px;\r\n    color: #56627C;\r\n}\r\n\r\n.chat-task-button-accept {\r\n    cursor:pointer;\r\n    height: 24px;\r\n    width: 24px; \r\n    line-height: 24px; \r\n    border-radius: 12px;\r\n    background-color: #3EC154; \r\n    color: #ffffff;\r\n}\r\n\r\n.chat-task-message-count {\r\n    height: 16px;\r\n    width: 16px; \r\n    line-height: 16px; \r\n    border-radius: 8px;\r\n    background-color: #FA9397; \r\n    color: #ffffff;\r\n    font-size: 10px;\r\n    margin-right:8px;\r\n}\r\n\r\n.chat-task-extend {\r\n    height: 118px;\r\n    margin-top: 6px;\r\n    background-color: #F6F6F6;\r\n    border-top: 1px solid #DBDBDB;\r\n    font-family: IBM Plex Sans;\r\n    font-style: normal;\r\n    font-weight: normal;\r\n\r\n    &-text {\r\n        height: 36px;\r\n        width: 195px;\r\n        margin-top: 16px;\r\n        font-size: 14px;\r\n        line-height: 18px;\r\n        text-align: center;    \r\n        color: #56627C;        \r\n    }\r\n\r\n    &-button {\r\n        background: #FCFCFC;\r\n        border: 1px solid #03A9F4;\r\n        box-sizing: border-box;\r\n        border-radius: 2px;\r\n        width: 76px;\r\n        height: 26px;\r\n        margin-top: 16px;\r\n        text-align: center;\r\n        cursor: pointer;\r\n    }\r\n\r\n    &-button-text {\r\n        font-size: 14px;\r\n        line-height: 24px;\r\n        color: #03A9F4;    \r\n    }\r\n\r\n    &-tile {\r\n        height: 198px;\r\n    }\r\n}\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}",
+                    "styleUrl": "./chat-task-component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "ngZone",
+                        "type": "NgZone"
+                    }
+                ],
+                "line": 55,
+                "jsdoctags": [
+                    {
+                        "name": "ngZone",
+                        "type": "NgZone",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"my-task\" [ngClass]=\"{ 'my-task-active' : active, 'chat-task-extend-tile' : extend }\">\n  <div class=\"chat-task-content my-task-chat\">\n\n      <div class=\"p-d-flex p-jc-between\">\n          <div class=\"p-d-flex\">\n             <div class=\"p-as-center ui-border chat-task-channel\">\n                 <input type=\"checkbox\" (change)=\"selectChange();\" >\n             </div>\n\n              <div class=\"p-as-center ui-border chat-task-channel\">\n                  <span class=\"chat-task-channel-icon\"><div [ngClass]=\"channelIcon\"></div></span>\n              </div>\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"chat-task-party\">{{otherParty}}</span> \n              </div>\n          </div>\n          <div class=\"p-d-flex\">\n\n              <div [hidden]=\"state!=='offered'\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\n                  <div (click)=\"onClick.emit({ 'id': 'toolAnswer'})\" class=\"chat-task-button-accept icon-Tick\"></div>                    \n              </div>\n              <div class=\"p-as-center ui-border chat-task-flag\">\n                  <div [hidden]=\"priority===''\" class=\"chat-task-flag-text\" [ngStyle]=\"{'background-color' : priorityColour }\">{{priority}}</div>\n              </div> \n          </div>\n  \n      </div>  \n\n      <div class=\"p-d-flex p-jc-between chat-task-message ui-border\">\n          \n          <div class=\"p-d-flex chat-task-message-text\">\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"chat-task-class-name\">\n                      <span>{{message}}</span>\n                  </span>\n              </div>\n          </div>\n\n          <div class=\"p-d-flex\">\n              <div [hidden]=\"messageCount===''\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\n                  <div class=\"chat-task-message-count\">{{messageCount}}</div>                    \n              </div>\n\n              <div [hidden]=\"duration===''\" class=\"p-as-center ui-border\" style=\"text-align: right;\">\n                  <span class=\"chat-task-duration\">{{duration}}</span>\n              </div>\n          </div>\n      </div> \n\n  </div>\n\n  <div *ngIf=\"extend\" class=\"chat-task-extend ui-border\">\n    <div class=\"p-d-flex p-jc-center\">\n        <div class=\"ui-border chat-task-extend-text\" >\n            <div style=\"text-align: center;\">This chat will be automatically put on hold in {{extendTimeLeft}} sec</div>\n        </div>\n    </div>\n    <div class=\"p-d-flex p-jc-center\">\n        <div (click)=\"onClick.emit({ 'id': 'toolExtendChat'})\" class=\"ui-border chat-task-extend-button\" >\n            <span class=\"ui-border chat-task-extend-button-text\">Extend</span>\n        </div>      \n    </div> \n  </div>\n\n</div>\n"
         },
         {
             "name": "HeaderComponent",
             "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
-            "file": "src/stories/header.component.ts",
+            "file": "bk/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -416,7 +680,7 @@
         {
             "name": "PageComponent",
             "id": "component-PageComponent-cca1a8911321fa17756ce90c90de65cc",
-            "file": "src/stories/page.component.ts",
+            "file": "bk/page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -477,7 +741,7 @@
         },
         {
             "name": "TelephonyTaskComponent",
-            "id": "component-TelephonyTaskComponent-ddb38b70654e0ae21d0fe52910721b3d",
+            "id": "component-TelephonyTaskComponent-25d30d2853734b472ce76b6e47da5b12",
             "file": "src/stories/telephony-task-component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -497,31 +761,25 @@
                 {
                     "name": "active",
                     "defaultValue": "false",
-                    "line": 23,
-                    "type": "boolean"
-                },
-                {
-                    "name": "delivered",
-                    "defaultValue": "false",
-                    "line": 32,
+                    "line": 26,
                     "type": "boolean"
                 },
                 {
                     "name": "direction",
                     "defaultValue": "'inbound'",
-                    "line": 44,
+                    "line": 43,
                     "type": "\"inbound\" | \"outbound\""
                 },
                 {
                     "name": "duration",
                     "defaultValue": "\"00:00:00\"",
-                    "line": 29,
+                    "line": 32,
                     "type": "string"
                 },
                 {
                     "name": "info",
                     "defaultValue": "\"\"",
-                    "line": 26,
+                    "line": 29,
                     "type": "string"
                 },
                 {
@@ -539,7 +797,7 @@
                 {
                     "name": "otherParty",
                     "defaultValue": "\"01483000007\"",
-                    "line": 20,
+                    "line": 23,
                     "type": "string"
                 },
                 {
@@ -550,17 +808,23 @@
                     "type": "string"
                 },
                 {
-                    "name": "status",
+                    "name": "priorityColour",
+                    "defaultValue": "\"#E02020\"",
+                    "line": 20,
+                    "type": "string"
+                },
+                {
+                    "name": "state",
                     "defaultValue": "'none'",
                     "line": 35,
-                    "type": "\"none\" | \"dialling\" | \"ringing\""
+                    "type": "\"none\" | \"dialling\" | \"ringing\" | \"connected\""
                 }
             ],
             "outputsClass": [
                 {
                     "name": "onClick",
                     "defaultValue": "new EventEmitter<any>()",
-                    "line": 47,
+                    "line": 46,
                     "type": "EventEmitter"
                 }
             ],
@@ -571,7 +835,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 53
                 },
                 {
                     "name": "holdTooltip",
@@ -579,7 +843,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 49
                 },
                 {
                     "name": "items",
@@ -589,12 +853,20 @@
                     "line": 56
                 },
                 {
+                    "name": "menuAutoHideTimer",
+                    "defaultValue": "null",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 54
+                },
+                {
                     "name": "mouseHover",
                     "defaultValue": "false",
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 53
+                    "line": 52
                 },
                 {
                     "name": "muteTooltip",
@@ -602,7 +874,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 48
                 },
                 {
                     "name": "statusMsg",
@@ -610,7 +882,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 50
                 }
             ],
             "methodsClass": [
@@ -629,7 +901,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 159,
+                    "line": 206,
                     "jsdoctags": [
                         {
                             "name": "arr",
@@ -658,7 +930,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 178,
+                    "line": 225,
                     "jsdoctags": [
                         {
                             "name": "event",
@@ -680,7 +952,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 100,
+                    "line": 129,
                     "jsdoctags": [
                         {
                             "name": "changes",
@@ -697,7 +969,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 143
+                    "line": 167
                 },
                 {
                     "name": "showMenu",
@@ -714,7 +986,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 147,
+                    "line": 179,
                     "jsdoctags": [
                         {
                             "name": "menu",
@@ -731,6 +1003,69 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "startDelayClose",
+                    "args": [
+                        {
+                            "name": "menu",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 183,
+                    "jsdoctags": [
+                        {
+                            "name": "menu",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "stopDelayClose",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 190
+                },
+                {
+                    "name": "updateStatus",
+                    "args": [
+                        {
+                            "name": "direction",
+                            "type": ""
+                        },
+                        {
+                            "name": "state",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 100,
+                    "jsdoctags": [
+                        {
+                            "name": "direction",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "state",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "hostBindings": [],
@@ -738,11 +1073,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';\r\nimport { ButtonModule } from 'primeng/button/';\r\nimport { CardModule } from 'primeng/card';\r\nimport { MenuItem } from 'primeng/api';\r\n\r\n@Component({\r\n    selector: 'app-telephony-task',\r\n    templateUrl: './telephony-task-component.html',\r\n    styleUrls: ['./telephony-task-component.scss']\r\n  })\r\n\r\nexport class TelephonyTaskComponent implements OnInit {\r\n    /**\r\n     * control inputs\r\n     */\r\n    @Input()\r\n    priority?: string = \"P1\";\r\n\r\n    @Input()\r\n    otherParty?: string = \"01483000007\";\r\n\r\n    @Input()\r\n    active?: boolean = false;\r\n\r\n    @Input()\r\n    info?: string = \"\";\r\n\r\n    @Input()\r\n    duration?: string = \"00:00:00\";\r\n\r\n    @Input()\r\n    delivered? :boolean = false;\r\n\r\n    @Input()\r\n    status : 'none' | 'dialling' | 'ringing' = 'none';\r\n\r\n    @Input()\r\n    onHold? : boolean = false;\r\n\r\n    @Input()\r\n    muted? : boolean = false;\r\n\r\n    @Input()\r\n    direction: 'inbound' | 'outbound' = 'inbound';\r\n\r\n    @Output()\r\n    onClick = new EventEmitter<any>();\r\n\r\n    muteTooltip: string = \"Mute\";\r\n    holdTooltip: string = \"Hold\";\r\n    statusMsg: string = \"\";\r\n\r\n    mouseHover:boolean = false;\r\n    busy:boolean = true;\r\n\r\n    items: MenuItem[];\r\n\r\n    constructor() {\r\n      //pop-up menu items\r\n      this.items = [\r\n          {\r\n            id: 'toolRequeue', \r\n            label: 'Re-queue', \r\n            icon: 'icon-Requeue', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolConference', \r\n            label: 'Conference', \r\n            icon: 'icon-conference', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolInfo', \r\n            label: 'Call Info', \r\n            icon: 'icon-info', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolDropcall', \r\n            label: 'Hang up', \r\n            icon: 'icon-hangup', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          }, \r\n      ];\r\n    }\r\n\r\n    ngOnChanges (changes: SimpleChanges) {\r\n      for (const propName in changes) {\r\n        switch (propName) {\r\n          case \"status\":\r\n            switch (changes[propName].currentValue) {\r\n              case \"dialling\":\r\n                this.statusMsg = \"Dialling...\";\r\n                  break;\r\n              case \"ringing\":\r\n                this.statusMsg = \"Ringing...\";                \r\n                break;\r\n              default:\r\n                this.statusMsg = \"\";\r\n            }\r\n            break;\r\n\r\n          case \"onHold\":\r\n            this.mouseHover = this.muted || changes[propName].currentValue;  \r\n            //refresh tooltips\r\n            this.holdTooltip = this.onHold ? \"Resume\" : \"Hold\";\r\n            break;\r\n\r\n          case \"muted\":            \r\n            this.mouseHover = this.onHold || changes[propName].currentValue;\r\n            //refresh tooltips\r\n            this.muteTooltip = changes[propName].currentValue ? \"Unmute\" : \"Mute\";\r\n            break;\r\n\r\n          case \"toolbar\":\r\n            for (const itemId in changes[propName].currentValue) {\r\n              for (let index=0; index < this.items.length; index++) {\r\n                if (this.items[index].id===itemId) {\r\n                  this.items[index].disabled = changes[propName].currentValue[itemId].disabled;\r\n                  break;\r\n                }\r\n              }\r\n            }\r\n            break;\r\n\r\n        }\r\n      }\r\n    }\r\n\r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    showMenu(menu, event) {\r\n      menu.show(event);\r\n    }\r\n\r\n    //\r\n    // function   : is string contained in array\r\n    //\r\n    // parameters : arr  - arr to search\r\n    //              item - string item to search for\r\n    //\r\n    // returns    : none.\r\n    //\r\n    itemInArray(arr, item) {\r\n      var i;\r\n      for (i=0; i < arr.length; i++) {\r\n        if (item===arr[i]) {\r\n          return (true);\r\n        }\r\n      }\r\n      return (false);\r\n    }\r\n\r\n    //\r\n    // function   : mouse out event handler. Need to distinquish between\r\n    //              the mouse moving outside the component or hovering over\r\n    //              a child component\r\n    //\r\n    // parameters : event - DOM event\r\n    //\r\n    // returns    : none.\r\n    //\r\n    mouseOut (event) {\r\n      //this is the original element the event handler was assigned to\r\n      var ignore = false, e = event.toElement || event.relatedTarget;\r\n\r\n      //toolbar must remain visible if the call is held\r\n      if (this.onHold || this.muted) {\r\n        return;\r\n      }\r\n\r\n      //have we move to the task-item\r\n      if (e!=null && this.itemInArray(e.classList, \"ui-interaction-tile-content\")) {\r\n        return;\r\n      }\r\n      //traverse up the parents to determine if this is a child of the tile\r\n      //or the tile itself, only interested in tile itself for mouseout event\r\n      while (e!==null && e.parentNode.className && e.parentNode.className.indexOf(\"ui-interaction-tile\")===-1) {\r\n        if (this.itemInArray(e.parentNode.classList, \"ui-interaction-tile-content\")) {\r\n          ignore=true;\r\n          break;\r\n        }\r\n        e= e.parentNode;\r\n      }\r\n      if (!ignore) {\r\n        this.mouseHover=false;      \r\n      }\r\n  }\r\n\r\n}",
+            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';\r\nimport { ButtonModule } from 'primeng/button/';\r\nimport { CardModule } from 'primeng/card';\r\nimport { MenuItem } from 'primeng/api';\r\n\r\n@Component({\r\n    selector: 'app-telephony-task',\r\n    templateUrl: './telephony-task-component.html',\r\n    styleUrls: ['./telephony-task-component.scss']\r\n  })\r\n\r\nexport class TelephonyTaskComponent implements OnInit {\r\n    /**\r\n     * control inputs\r\n     */\r\n    @Input()\r\n    priority?: string = \"P1\";\r\n\r\n    @Input() \r\n    priorityColour:string = \"#E02020\";\r\n\r\n    @Input()\r\n    otherParty?: string = \"01483000007\";\r\n\r\n    @Input()\r\n    active?: boolean = false;\r\n\r\n    @Input()\r\n    info?: string = \"\";\r\n\r\n    @Input()\r\n    duration?: string = \"00:00:00\";\r\n\r\n    @Input()\r\n    state : 'none' | 'dialling' | 'ringing' | 'connected' = 'none';\r\n\r\n    @Input()\r\n    onHold? : boolean = false;\r\n\r\n    @Input()\r\n    muted? : boolean = false;\r\n\r\n    @Input() direction: 'inbound' | 'outbound' = 'inbound';\r\n\r\n    @Output()\r\n    onClick = new EventEmitter<any>();\r\n\r\n    muteTooltip: string = \"Mute\";\r\n    holdTooltip: string = \"Hold\";\r\n    statusMsg: string = \"\";\r\n\r\n    mouseHover:boolean = false;\r\n    busy:boolean = true;\r\n    menuAutoHideTimer:any = null;\r\n\r\n    items: MenuItem[];\r\n\r\n    constructor() {\r\n      //pop-up menu items\r\n      this.items = [\r\n          {\r\n            id: 'toolRequeue', \r\n            label: 'Re-queue', \r\n            icon: 'icon-Requeue', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolConference', \r\n            label: 'Conference', \r\n            icon: 'icon-conference', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolInfo', \r\n            label: 'Call Info', \r\n            icon: 'icon-info', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolDropcall', \r\n            label: 'Hang up', \r\n            icon: 'icon-hangup', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          }, \r\n      ];\r\n    }\r\n\r\n    updateStatus(direction, state) {\r\n      //only applicable for outbound\r\n      switch (direction) {\r\n        case \"inbound\":\r\n          this.statusMsg = \"\";\r\n        break;\r\n\r\n        case \"outbound\":\r\n          switch (state) {\r\n            case \"dialling\":\r\n              this.statusMsg = \"Dialling...\";              \r\n              break;\r\n\r\n            case \"ringing\":\r\n              this.statusMsg = \"Ringing...\";                \r\n              break;\r\n\r\n            case \"connected\":\r\n              this.statusMsg = \"\";\r\n              break;\r\n\r\n            default:\r\n              this.statusMsg = \"\";\r\n              break;\r\n          }          \r\n          break;\r\n      }\r\n    }\r\n\r\n    ngOnChanges (changes: SimpleChanges) {\r\n      for (const propName in changes) {\r\n        switch (propName) {\r\n\r\n          case \"direction\":\r\n            this.updateStatus(changes[propName].currentValue, this.state);\r\n            break;\r\n\r\n          case \"state\":\r\n            this.updateStatus(this.direction, changes[propName].currentValue);\r\n            break;\r\n\r\n          case \"onHold\":\r\n            this.mouseHover = this.muted || changes[propName].currentValue;  \r\n            this.holdTooltip = this.onHold ? \"Resume\" : \"Hold\";\r\n            break;\r\n\r\n          case \"muted\":            \r\n            this.mouseHover = this.onHold || changes[propName].currentValue;\r\n            //refresh tooltips\r\n            this.muteTooltip = changes[propName].currentValue ? \"Unmute\" : \"Mute\";\r\n            break;\r\n\r\n          case \"toolbar\":\r\n            for (const itemId in changes[propName].currentValue) {\r\n              for (let index=0; index < this.items.length; index++) {\r\n                if (this.items[index].id===itemId) {\r\n                  this.items[index].disabled = changes[propName].currentValue[itemId].disabled;\r\n                  break;\r\n                }\r\n              }\r\n            }\r\n            break;\r\n\r\n        }\r\n      }\r\n    }\r\n\r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    //\r\n    // function   : show telephony quick menu\r\n    //\r\n    // parameters : menu  - reference to pop quick menu\r\n    //              event - DOM event\r\n    //\r\n    // returns    : none.\r\n    //\r\n    showMenu(menu, event) {\r\n      menu.show(event);\r\n    }\r\n\r\n    startDelayClose(menu) {\r\n      this.menuAutoHideTimer = setTimeout(()=> {\r\n        menu.hide();  \r\n        this.menuAutoHideTimer = null;\r\n      },100);\r\n    }\r\n  \r\n    stopDelayClose() {\r\n      //stop delay close timer if active\r\n      if (this.menuAutoHideTimer) {\r\n        clearTimeout(this.menuAutoHideTimer);\r\n        this.menuAutoHideTimer = null;      \r\n      }\r\n    }\r\n\r\n    //\r\n    // function   : is string contained in array\r\n    //\r\n    // parameters : arr  - arr to search\r\n    //              item - string item to search for\r\n    //\r\n    // returns    : none.\r\n    //\r\n    itemInArray(arr, item) {\r\n      var i;\r\n      for (i=0; i < arr.length; i++) {\r\n        if (item===arr[i]) {\r\n          return (true);\r\n        }\r\n      }\r\n      return (false);\r\n    }\r\n\r\n    //\r\n    // function   : mouse out event handler. Need to distinquish between\r\n    //              the mouse moving outside the component or hovering over\r\n    //              a child component\r\n    //\r\n    // parameters : event - DOM event\r\n    //\r\n    // returns    : none.\r\n    //\r\n    mouseOut (event) {\r\n      //this is the original element the event handler was assigned to\r\n      var ignore = false, e = event.toElement || event.relatedTarget;\r\n\r\n      //toolbar must remain visible if the call is held\r\n      if (this.onHold || this.muted) {\r\n        return;\r\n      }\r\n\r\n      //have we move to the task-item\r\n      if (e!=null && this.itemInArray(e.classList, \"ui-interaction-tile-content\")) {\r\n        return;\r\n      }\r\n      //traverse up the parents to determine if this is a child of the tile\r\n      //or the tile itself, only interested in tile itself for mouseout event\r\n      while (e!==null && e.parentNode.className && e.parentNode.className.indexOf(\"my-task\")===-1) {\r\n        if (this.itemInArray(e.parentNode.classList, \"ui-interaction-tile-content\")) {\r\n          ignore=true;\r\n          break;\r\n        }\r\n        e= e.parentNode;\r\n      }\r\n      if (!ignore) {\r\n        this.mouseHover=false;      \r\n      }\r\n  }\r\n\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".ui-interaction-tile-toolbar {\r\n    padding-left: 40px;\r\n}\r\n\r\n.pi {\r\n    font-size: 1.0em;\r\n}\r\n\r\n.ui-interaction-tile-info {\r\n    margin-top:6px;\r\n    height: 32px;\r\n}\r\n\r\n.ui-interaction-tile-class-name {\r\n    font-size: 12px;\r\n    color: #949CAD;\r\n    line-height: 30px;\r\n}\r\n\r\n.ui-interaction-tile-duration {\r\n    font-size: 12px;\r\n    color:#56627C;\r\n    margin-right:16px;\r\n}\r\n\r\n.ui-interaction-tile-channel-container {\r\n    width: 42px;\r\n}\r\n\r\n.ui-interaction-tile-channel {\r\n    font-size: 20px;\r\n    color: #217EB7;\r\n}\r\n\r\n.ui-interaction-tile-party {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    font-weight: 600;\r\n}\r\n\r\n.ui-button-interaction-tile {\r\n    font-size:0.8em;\r\n    width: 24px !important;\r\n    height: 24px !important;    \r\n}\r\n\r\n.ui-interaction-tile-flag {\r\n    width: 21px;\r\n    height: 17px;\r\n    background: #E02020;\r\n    border-radius: 2px;\r\n    font-size: 10px;\r\n    line-height: 17px; \r\n    color: #FFFFFF;  \r\n    text-align: center;\r\n    float: right;\r\n}\r\n\r\n.ui-interaction-tile-container-flag {\r\n    text-align:right; \r\n    width:33px;\r\n    height: 26px;\r\n    padding-top: 4px;       \r\n}\r\n\r\n.ui-interaction-tile-status {\r\n    font-size: 12px;\r\n    line-height: 16px;\r\n    color: #56627C;\r\n}\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.ui-interaction-tile-button-round {\r\n    cursor:pointer;\r\n    height: 24px;\r\n    width: 24px; \r\n    line-height: 24px; \r\n    border-radius: 12px;\r\n}\r\n\r\n.ui-interaction-tile-button-success {\r\n    background-color: #3EC154; \r\n    color: #ffffff;\r\n}\r\n\r\n.ui-interaction-tile-status-ringing {\r\n    color: #3EC154; \r\n}\r\n\r\n.ui-interaction-tile-onhold {\r\n    background: #E4AD00 !important;\r\n    color: #FFFFFF !important;\r\n}\r\n\r\n.ui-interaction-tile-muted {\r\n    background: #456FAA !important;\r\n    color: #FFFFFF !important;    \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button {\r\n    background: #FFFFFF;\r\n    color: #949CAD;    \r\n    border: 1px solid #DBDBDB;\r\n    border-radius: 2px;\r\n    width:38px; \r\n    height: 26px;\r\n    text-align: center;  \r\n    cursor: pointer;  \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button:hover {\r\n    border-color: #949CAD;\r\n}\r\n\r\n.ui-interaction-tile-toolbar-button>span {\r\n    line-height:24px; \r\n    font-size:12px;\r\n}",
+                    "data": ".telephony-task-info {\r\n    margin-top:6px;\r\n    height: 32px;\r\n}\r\n\r\n.telephony-task-class-name {\r\n    font-size: 12px;\r\n    color: #949CAD;\r\n    width: 207px;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;    \r\n}\r\n\r\n.telephony-task-duration {\r\n    font-size: 12px;\r\n    color:#56627C;\r\n    margin-right:16px;\r\n}\r\n\r\n.telephony-task-channel {\r\n    width: 42px;\r\n\r\n    &-icon {\r\n        font-size: 24px;\r\n        color: #217EB7;\r\n    }\r\n}\r\n\r\n.telephony-task-party {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    font-weight: 600;\r\n    display: block;\r\n    width: 166px;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;      \r\n}\r\n\r\n.telephony-task-flag {\r\n    text-align:right; \r\n    width:33px;\r\n    height: 26px;\r\n    padding-top: 4px;       \r\n\r\n    &-text {\r\n        width: 21px;\r\n        height: 17px;\r\n        border-radius: 2px;\r\n        font-size: 10px;\r\n        line-height: 17px; \r\n        color: #FFFFFF;  \r\n        text-align: center;\r\n        float: right;\r\n    }\r\n}\r\n\r\n.telephony-task-status {\r\n    font-size: 12px;\r\n    line-height: 16px;\r\n    color: #56627C;\r\n}\r\n\r\n.telephony-task-button-round {\r\n    cursor:pointer;\r\n    height: 24px;\r\n    width: 24px; \r\n    line-height: 24px; \r\n    border-radius: 12px;\r\n}\r\n\r\n.telephony-task-button-success {\r\n    background-color: #3EC154; \r\n    color: #ffffff;\r\n}\r\n\r\n.telephony-task-status-ringing {\r\n    color: #3EC154; \r\n}\r\n\r\n.telephony-task-onhold {\r\n    background: #E4AD00 !important;\r\n    color: #FFFFFF !important;\r\n}\r\n\r\n.telephony-task-muted {\r\n    background: #456FAA !important;\r\n    color: #FFFFFF !important;    \r\n}\r\n\r\n.telephony-task-toolbar {\r\n    padding-left: 40px;\r\n\r\n    &-button {\r\n        background: #FFFFFF;\r\n        color: #949CAD;    \r\n        border: 1px solid #DBDBDB;\r\n        border-radius: 2px;\r\n        width:38px; \r\n        height: 26px;\r\n        text-align: center;  \r\n        cursor: pointer;  \r\n\r\n        &:hover {\r\n            border-color: #949CAD;\r\n        }\r\n\r\n        >span {\r\n            line-height:24px; \r\n            font-size:12px;\r\n        }\r\n    }\r\n}\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n\r\n",
                     "styleUrl": "./telephony-task-component.scss"
                 }
             ],
@@ -756,7 +1091,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"ui-interaction-tile\" [ngClass]=\"{ 'ui-interaction-tile-active' : active }\">\r\n    <div class=\"ui-interaction-tile-content\" (mouseover)=\"mouseHover=busy\" (mouseout)=\"mouseOut($event);\">\r\n\r\n        <div class=\"p-d-flex p-jc-between\">\r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border ui-interaction-tile-channel-container\">\r\n                    <span class=\"ui-interaction-tile-channel\"><div [ngClass]=\"{ 'icon-Incoming' : direction==='inbound', 'icon-Outgoing' : direction!=='inbound' }\"></div></span>\r\n                </div>\r\n                <div class=\"p-as-center ui-border\">\r\n                    <span class=\"ui-interaction-tile-party\">{{otherParty}}</span> \r\n                </div>\r\n            </div>\r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border\" style=\"text-align: right;\">\r\n                    <span [ngClass]=\"{ 'ui-interaction-tile-status-ringing' : status==='ringing' }\" class=\"ui-interaction-tile-status\"><i [hidden]=\"status!=='ringing'\" class=\"icon-Ringing\"></i> {{statusMsg}}</span>\r\n                </div>\r\n\r\n                <div [hidden]=\"!delivered\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\r\n                    <div (click)=\"onClick.emit({ 'id': 'toolAnswer'})\" class=\"ui-interaction-tile-button-round ui-interaction-tile-button-success icon-Tick\"></div>                    \r\n                </div>\r\n                <div class=\"p-as-center ui-border ui-interaction-tile-container-flag\">\r\n                    <div [hidden]=\"priority===''\" class=\"ui-interaction-tile-flag\">{{priority}}</div>\r\n                </div> \r\n            </div>\r\n    \r\n        </div>  \r\n\r\n        <div class=\"p-d-flex p-jc-between ui-interaction-tile-info ui-border\">\r\n            \r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border\">\r\n                    <span [hidden]=\"mouseHover\" class=\"ui-interaction-tile-class-name\" [hidden]=\"info===''\">\r\n                        <span title=\"{{info}}\">{{info}}</span>\r\n                    </span>\r\n                </div>\r\n                <div class=\"p-as-center ui-border\">\r\n                        <div [hidden]=\"!mouseHover\"> \r\n                            <div class=\"ui-interaction-tile-toolbar p-d-flex\">\r\n                                <p-menu (mouseleave)=\"menu.hide($event);\" #menu [popup]=\"true\" [model]=\"items\"></p-menu>\r\n                                \r\n                                <div pTooltip=\"{{muteTooltip}}\" tooltipPosition=\"top\" (click)=\"onClick.emit({ 'id': 'toolMuted'})\" class=\"p-as-center ui-border ui-interaction-tile-toolbar-button\" [ngClass]=\"{'ui-interaction-tile-muted' : muted }\" >\r\n                                    <span class=\"icon-Mute\"></span>\r\n                                </div>\r\n                \r\n                                <div pTooltip=\"{{holdTooltip}}\" tooltipPosition=\"top\" (click)=\"onClick.emit({ 'id': 'toolHold'})\" class=\"p-as-center ui-border ui-interaction-tile-toolbar-button\" [ngClass]=\"{'ui-interaction-tile-onhold' : onHold }\" >\r\n                                    <span class=\"icon-Hold\"></span>\r\n                                </div>\r\n                                <div (mouseenter)=\"showMenu(menu, $event)\" class=\"p-as-center ui-border ui-interaction-tile-toolbar-button\">\r\n                                    <span class=\"icon-More\"></span>\r\n                                </div> \r\n                            </div>\r\n                        </div>  \r\n                </div>     \r\n            </div>\r\n\r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border\" style=\"text-align: right;\">\r\n                    <span class=\"ui-interaction-tile-duration\">{{duration}}</span>\r\n                </div>\r\n            </div>\r\n\r\n        </div> \r\n    </div>\r\n</div>\r\n"
+            "templateData": "<div class=\"my-task my-task-telephony\" [ngClass]=\"{ 'my-task-active' : active }\">\r\n    <div class=\"telephony-task-content\" (mouseover)=\"mouseHover=busy\" (mouseout)=\"mouseOut($event);\">\r\n\r\n        <div class=\"p-d-flex p-jc-between\">\r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border telephony-task-channel\">\r\n                    <span class=\"telephony-task-channel-icon\"><div [ngClass]=\"{ 'icon-Incoming' : direction==='inbound', 'icon-Outgoing' : direction!=='inbound' }\"></div></span>\r\n                </div>\r\n                <div class=\"p-as-center ui-border\">\r\n                    <span class=\"telephony-task-party\">{{otherParty}}</span> \r\n                </div>\r\n            </div>\r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border\" style=\"text-align: right;\">\r\n                    <span [ngClass]=\"{ 'telephony-task-status-ringing' : (state==='ringing' && direction==='outbound') }\" class=\"telephony-task-status\"><i [hidden]=\"!(state==='ringing' && direction==='outbound')\" class=\"icon-Ringing\"></i> {{statusMsg}}</span>\r\n                </div>\r\n\r\n                <div [hidden]=\"!(direction==='inbound' && state==='ringing')\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\r\n                    <div (click)=\"onClick.emit({ 'id': 'toolAnswer'})\" class=\"telephony-task-button-round telephony-task-button-success icon-Tick\"></div>                    \r\n                </div>\r\n                <div class=\"p-as-center ui-border telephony-task-flag\">\r\n                    <div [hidden]=\"priority===''\" class=\"telephony-task-flag-text\" [ngStyle]=\"{'background-color' : priorityColour }\">{{priority}}</div>\r\n                </div> \r\n            </div>\r\n    \r\n        </div>  \r\n\r\n        <div class=\"p-d-flex p-jc-between telephony-task-info ui-border\">\r\n            \r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border\">\r\n                    <span class=\"telephony-task-class-name\" [ngStyle]=\"{'display' : mouseHover ? 'none' : 'block'}\">\r\n                        <span title=\"{{info}}\">{{info}}</span>\r\n                    </span>\r\n                </div>\r\n                <div class=\"p-as-center ui-border\">\r\n                        <div [hidden]=\"!mouseHover\"> \r\n                            <div class=\"telephony-task-toolbar p-d-flex\">\r\n                                <p-menu (mouseleave)=\"menu.hide($event);\" (mouseenter)=\"stopDelayClose();\" #menu [popup]=\"true\" [model]=\"items\"></p-menu>\r\n                                \r\n                                <div pTooltip=\"{{muteTooltip}}\" tooltipPosition=\"top\" (click)=\"onClick.emit({ 'id': 'toolMuted'})\" class=\"p-as-center ui-border telephony-task-toolbar-button\" [ngClass]=\"{'telephony-task-muted' : muted }\" >\r\n                                    <span [ngClass]=\"muted ? 'icon-Social-mentions' : 'icon-Mute'\"></span>\r\n                                </div>\r\n                \r\n                                <div pTooltip=\"{{holdTooltip}}\" tooltipPosition=\"top\" (click)=\"onClick.emit({ 'id': 'toolHold'})\" class=\"p-as-center ui-border telephony-task-toolbar-button\" [ngClass]=\"{'telephony-task-onhold' : onHold }\" >\r\n                                    <span [ngClass]=\"onHold ? 'icon-Play' : 'icon-Hold'\"></span>\r\n                                </div>\r\n                                <div (mouseenter)=\"showMenu(menu, $event)\" (mouseleave)=\"startDelayClose(menu);\" class=\"p-as-center ui-border telephony-task-toolbar-button\">\r\n                                    <span class=\"icon-More\"></span>\r\n                                </div> \r\n                            </div>\r\n                        </div>  \r\n                </div>     \r\n            </div>\r\n\r\n            <div class=\"p-d-flex\">\r\n                <div class=\"p-as-center ui-border\" style=\"text-align: right;\">\r\n                    <span class=\"telephony-task-duration\">{{duration}}</span>\r\n                </div>\r\n            </div>\r\n\r\n        </div> \r\n    </div>\r\n</div>\r\n"
         }
     ],
     "modules": [
@@ -809,6 +1144,14 @@
                 "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatTaskComponent,\n  props: args,\n})"
             },
             {
+                "name": "ChatMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatMessageComponent,\n  props: args,\n})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -820,23 +1163,23 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
-                "type": "object",
-                "defaultValue": "{\n  production: false\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.prod.ts",
                 "type": "object",
                 "defaultValue": "{\n  production: true\n}"
             },
             {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "bk/Button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -844,7 +1187,7 @@
                 "name": "LoggedIn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
+                "file": "bk/Header.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -852,7 +1195,7 @@
                 "name": "LoggedIn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "bk/Page.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -860,7 +1203,7 @@
                 "name": "LoggedOut",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
+                "file": "bk/Header.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -868,7 +1211,7 @@
                 "name": "LoggedOut",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "bk/Page.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -876,7 +1219,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "bk/Button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -891,7 +1234,7 @@
                 "name": "Secondary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "bk/Button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -899,7 +1242,7 @@
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "bk/Button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -915,7 +1258,7 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "bk/Button.stories.ts",
                 "type": "Story<Button>",
                 "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
             },
@@ -923,7 +1266,7 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
+                "file": "bk/Header.stories.ts",
                 "type": "Story<Header>",
                 "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
             },
@@ -931,7 +1274,7 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "bk/Page.stories.ts",
                 "type": "Story<Page>",
                 "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
             }
@@ -948,6 +1291,16 @@
                     "file": "src/stories/chat-task.stories.ts",
                     "type": "",
                     "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatTaskComponent,\n  props: args,\n})"
+                }
+            ],
+            "src/stories/chat-message.stories.ts": [
+                {
+                    "name": "ChatMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatMessageComponent,\n  props: args,\n})"
                 }
             ],
             "src/test.ts": [
@@ -967,16 +1320,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -987,12 +1330,22 @@
                     "defaultValue": "{\n  production: true\n}"
                 }
             ],
-            "src/stories/Button.stories.ts": [
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "bk/Button.stories.ts": [
                 {
                     "name": "Large",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "bk/Button.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1000,7 +1353,7 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "bk/Button.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1008,7 +1361,7 @@
                     "name": "Secondary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "bk/Button.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1016,7 +1369,7 @@
                     "name": "Small",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "bk/Button.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1024,17 +1377,17 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
+                    "file": "bk/Button.stories.ts",
                     "type": "Story<Button>",
                     "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
                 }
             ],
-            "src/stories/Header.stories.ts": [
+            "bk/Header.stories.ts": [
                 {
                     "name": "LoggedIn",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
+                    "file": "bk/Header.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1042,7 +1395,7 @@
                     "name": "LoggedOut",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
+                    "file": "bk/Header.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1050,17 +1403,17 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
+                    "file": "bk/Header.stories.ts",
                     "type": "Story<Header>",
                     "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
                 }
             ],
-            "src/stories/Page.stories.ts": [
+            "bk/Page.stories.ts": [
                 {
                     "name": "LoggedIn",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
+                    "file": "bk/Page.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1068,7 +1421,7 @@
                     "name": "LoggedOut",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
+                    "file": "bk/Page.stories.ts",
                     "type": "",
                     "defaultValue": "Template.bind({})"
                 },
@@ -1076,7 +1429,7 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
+                    "file": "bk/Page.stories.ts",
                     "type": "Story<Page>",
                     "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
                 }
@@ -1101,6 +1454,143 @@
         "count": 3,
         "status": "low",
         "files": [
+            {
+                "filePath": "bk/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "bk/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "bk/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
             {
                 "filePath": "e2e/src/app.po.ts",
                 "type": "class",
@@ -1140,131 +1630,31 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Large",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Secondary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Small",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/button.component.ts",
+                "filePath": "src/stories/chat-message-component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
+                "name": "ChatMessageComponent",
+                "coveragePercent": 5,
+                "coverageCount": "1/19",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ChatMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "src/stories/chat-task-component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ChatTaskComponent",
-                "coveragePercent": 5,
-                "coverageCount": "1/17",
+                "coveragePercent": 4,
+                "coverageCount": "1/23",
                 "status": "low"
             },
             {
@@ -1278,30 +1668,12 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
                 "filePath": "src/stories/telephony-task-component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "TelephonyTaskComponent",
-                "coveragePercent": 4,
-                "coverageCount": "1/24",
+                "coveragePercent": 3,
+                "coverageCount": "1/28",
                 "status": "low"
             },
             {

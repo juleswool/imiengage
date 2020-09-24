@@ -20,22 +20,29 @@ body {
 		color: #949CAD;
 	}
 
-	.ui-interaction-tile {
+	.my-task-telephony {
+		padding-left: 16px;
+	}
+
+	.my-task-chat {
+		padding-left: 8px;
+	}
+
+	.my-task {
 		width:324px;
 		height:80px;
 		border-radius: 3px;
 		background: $interactionTileBgColor;
 		border:$interactionTileBorder;
-		padding-left: 16px;
 		padding-top: 8px;
 	}
 
-	.ui-interaction-tile-active {	
+	.my-task-active {	
 		background: #E0EDF5;
 		border: 1px solid #DBDBDB;
 	}
 
-	.ui-interaction-tile:hover {
+	.my-task:hover {
 		background: $interactionTileHoverBgColor;
 		border:$interactionTileHoverBorder;
 	}

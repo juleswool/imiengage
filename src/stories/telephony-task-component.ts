@@ -16,6 +16,9 @@ export class TelephonyTaskComponent implements OnInit {
     @Input()
     priority?: string = "P1";
 
+    @Input() 
+    priorityColour:string = "#E02020";
+
     @Input()
     otherParty?: string = "01483000007";
 
@@ -29,10 +32,7 @@ export class TelephonyTaskComponent implements OnInit {
     duration?: string = "00:00:00";
 
     @Input()
-    delivered? :boolean = false;
-
-    @Input()
-    status : 'none' | 'dialling' | 'ringing' = 'none';
+    state : 'none' | 'dialling' | 'ringing' | 'connected' = 'none';
 
     @Input()
     onHold? : boolean = false;
@@ -40,8 +40,7 @@ export class TelephonyTaskComponent implements OnInit {
     @Input()
     muted? : boolean = false;
 
-    @Input()
-    direction: 'inbound' | 'outbound' = 'inbound';
+    @Input() direction: 'inbound' | 'outbound' = 'inbound';
 
     @Output()
     onClick = new EventEmitter<any>();
@@ -52,6 +51,7 @@ export class TelephonyTaskComponent implements OnInit {
 
     mouseHover:boolean = false;
     busy:boolean = true;
+    menuAutoHideTimer:any = null;
 
     items: MenuItem[];
 
@@ -97,25 +97,49 @@ export class TelephonyTaskComponent implements OnInit {
       ];
     }
 
+    updateStatus(direction, state) {
+      //only applicable for outbound
+      switch (direction) {
+        case "inbound":
+          this.statusMsg = "";
+        break;
+
+        case "outbound":
+          switch (state) {
+            case "dialling":
+              this.statusMsg = "Dialling...";              
+              break;
+
+            case "ringing":
+              this.statusMsg = "Ringing...";                
+              break;
+
+            case "connected":
+              this.statusMsg = "";
+              break;
+
+            default:
+              this.statusMsg = "";
+              break;
+          }          
+          break;
+      }
+    }
+
     ngOnChanges (changes: SimpleChanges) {
       for (const propName in changes) {
         switch (propName) {
-          case "status":
-            switch (changes[propName].currentValue) {
-              case "dialling":
-                this.statusMsg = "Dialling...";
-                  break;
-              case "ringing":
-                this.statusMsg = "Ringing...";                
-                break;
-              default:
-                this.statusMsg = "";
-            }
+
+          case "direction":
+            this.updateStatus(changes[propName].currentValue, this.state);
+            break;
+
+          case "state":
+            this.updateStatus(this.direction, changes[propName].currentValue);
             break;
 
           case "onHold":
             this.mouseHover = this.muted || changes[propName].currentValue;  
-            //refresh tooltips
             this.holdTooltip = this.onHold ? "Resume" : "Hold";
             break;
 
@@ -144,8 +168,31 @@ export class TelephonyTaskComponent implements OnInit {
 
     }
 
+    //
+    // function   : show telephony quick menu
+    //
+    // parameters : menu  - reference to pop quick menu
+    //              event - DOM event
+    //
+    // returns    : none.
+    //
     showMenu(menu, event) {
       menu.show(event);
+    }
+
+    startDelayClose(menu) {
+      this.menuAutoHideTimer = setTimeout(()=> {
+        menu.hide();  
+        this.menuAutoHideTimer = null;
+      },100);
+    }
+  
+    stopDelayClose() {
+      //stop delay close timer if active
+      if (this.menuAutoHideTimer) {
+        clearTimeout(this.menuAutoHideTimer);
+        this.menuAutoHideTimer = null;      
+      }
     }
 
     //
@@ -190,7 +237,7 @@ export class TelephonyTaskComponent implements OnInit {
       }
       //traverse up the parents to determine if this is a child of the tile
       //or the tile itself, only interested in tile itself for mouseout event
-      while (e!==null && e.parentNode.className && e.parentNode.className.indexOf("ui-interaction-tile")===-1) {
+      while (e!==null && e.parentNode.className && e.parentNode.className.indexOf("my-task")===-1) {
         if (this.itemInArray(e.parentNode.classList, "ui-interaction-tile-content")) {
           ignore=true;
           break;

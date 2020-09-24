@@ -1,22 +1,18 @@
-import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges, NgZone } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';
 import { ButtonModule } from 'primeng/button/';
 import { CardModule } from 'primeng/card';
 import { MenuItem } from 'primeng/api';
-import { interval, timer } from 'rxjs';
 
 @Component({
-    selector: 'app-chat-task',
-    templateUrl: './chat-task-component.html',
-    styleUrls: ['./chat-task-component.scss']
+    selector: 'app-chat-message',
+    templateUrl: './chat-message-component.html',
+    styleUrls: ['./chat-message-component.scss']
   })
 
-export class ChatTaskComponent implements OnInit {
+export class ChatMessageComponent implements OnInit {
     /**
      * control inputs
      */
-    @Input() 
-    priorityColour:string = "#E02020";
-
     @Input()
     priority?: string = "P1";
 
@@ -39,10 +35,7 @@ export class ChatTaskComponent implements OnInit {
     state : 'offered' | 'accepted' = 'offered';
 
     @Input()
-    extend: boolean = false;
-    
-    @Input()
-    extendTimeout: number = 15;
+    inactivity: boolean = false;
 
     @Output()
     onClick = new EventEmitter<any>();
@@ -51,10 +44,8 @@ export class ChatTaskComponent implements OnInit {
     statusMsg: string = "";
     selected: boolean = false;
     channelIcon: string = "";
-    extendTimeoutTimer: any = null;
-    extendTimeLeft: number;
 
-    constructor(private ngZone: NgZone) {
+    constructor() {
     }
 
     //
@@ -79,30 +70,8 @@ export class ChatTaskComponent implements OnInit {
     ngOnChanges (changes: SimpleChanges) {
       for (const propName in changes) {
         switch (propName) {
-          case "extendTimeout":
-            this.extendTimeLeft = changes[propName].currentValue || 15;
-            break;
-
-          case "extend":
-            if (changes[propName].currentValue===true) {
-              //make sure time runs inside zone so angular 
-              //angular change detection works and the UI is refreshed
-              this.ngZone.run(()=> {
-                this.extendTimeoutTimer = setInterval(() => {   
-                  this.extendTimeLeft = this.extendTimeLeft - 1;
-                  if (this.extendTimeLeft===0) {
-                    clearInterval(this.extendTimeoutTimer);
-                    this.extendTimeoutTimer = null;
-                  } 
-                }, 1000);
-              })
-
-            } else {
-              if (this.extendTimeoutTimer) {
-                clearInterval(this.extendTimeoutTimer);
-                this.extendTimeLeft = this.extendTimeout;
-              }
-            }
+          case "selected":
+            console.log("selected");
             break;
 
           case "channel":

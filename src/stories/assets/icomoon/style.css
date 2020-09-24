@@ -95,7 +95,7 @@
 }
 .icon-Facebook:before {
   content: "\e915";
-  color: #1e1d34;
+  color: #3B5998;
 }
 .icon-Group:before {
   content: "\e916";
@@ -144,7 +144,6 @@
 }
 .icon-Play:before {
   content: "\e923";
-  color: #949cad;
 }
 .icon-Proactive-messaging:before {
   content: "\e924";

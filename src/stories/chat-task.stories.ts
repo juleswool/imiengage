@@ -14,18 +14,26 @@ export default {
   argTypes: {
     onClick: {
       action: 'click' 
-    },/*
-    status: {
+    },
+    onSelect: {
+      action: 'select' 
+    },
+    state: {
       control : {
         type: 'inline-radio',
-        options : ['none', 'dialling', 'ringing']
+        options : ['offered', 'accepted']
       }
-    },*/
+    },
     channel: {
       control : {
         type: 'inline-radio',
         options : ['facebook', 'livechat', 'twitter', 'whatsapp']
       }
+    },
+    priorityColour: {
+      control : {
+        type: 'color'
+      } 
     }    
   }
 };
@@ -47,10 +55,15 @@ export const Chat = (args) => ({
 });
 
 Chat.args = {
-  otherParty: "0148000001",
+  priorityColour: '#E02020',   
+  otherParty: "Peter Carroll",
+  duration: "00:01:33",
   active: false,
-  info: 'Hello there. I am facing some problems',
-  delivered: false,
+  message: 'Hello there. I am facing some problems with my laptop due to this hot weather',
   priority: "P2",
-  channel: 'facebook'
+  channel: 'facebook',
+  state: 'offered',
+  messageCount: "1",
+  extend: false,
+  extendTimeout: 15
 }

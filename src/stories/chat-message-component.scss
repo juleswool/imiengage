@@ -1,0 +1,214 @@
+.ui-interaction-tile-chat-inactivity {
+    height: 198px;
+    width: 500px;
+} 
+
+.ui-interaction-tile-toolbar {
+    padding-left: 40px;
+}
+
+.pi {
+    font-size: 1.0em;
+}
+
+.ui-interaction-tile-inactivity-label {
+    height: 36px;
+    width: 195px;
+    font-size: 14px;
+    color: #56627C;
+}
+
+.ui-interaction-tile-duration {
+    font-size: 12px;
+    color:#56627C;
+    margin-right:16px;
+}
+
+.ui-interaction-tile-channel-container {
+    width: 35px;
+}
+
+.ui-interaction-tile-channel {
+    font-size: 20px;
+    color: #217EB7;
+}
+
+.ui-interaction-tile-party {
+    font-size: 14px;
+    color: #56627C;
+    font-weight: 600;
+    display: block;
+    width: 179px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;      
+}
+
+.ui-button-interaction-tile {
+    font-size:0.8em;
+    width: 24px !important;
+    height: 24px !important;    
+}
+
+.ui-interaction-tile-flag {
+    width: 21px;
+    height: 17px;
+    border-radius: 2px;
+    font-size: 10px;
+    line-height: 17px; 
+    color: #FFFFFF;  
+    text-align: center;
+    float: right;
+}
+
+.ui-interaction-tile-container-flag {
+    text-align:right; 
+    width:33px;
+    height: 26px;
+    padding-top: 4px;    
+}
+
+.ui-interaction-tile-status {
+    font-size: 12px;
+    line-height: 16px;
+    color: #56627C;
+}
+
+.ui-interaction-tile-button-answer {
+    cursor:pointer;
+    height: 24px;
+    width: 24px; 
+    line-height: 24px; 
+    border-radius: 12px;
+    background-color: #3EC154; 
+    color: #ffffff;
+}
+
+.ui-interaction-tile-message-count {
+    height: 16px;
+    width: 16px; 
+    line-height: 16px; 
+    border-radius: 8px;
+    background-color: #FA9397; 
+    color: #ffffff;
+    font-size: 10px;
+    margin-right:8px;
+}
+
+.ui-interaction-tile-status-ringing {
+    color: #3EC154; 
+}
+
+.ui-interaction-tile-onhold {
+    background: #E4AD00 !important;
+    color: #FFFFFF !important;
+}
+
+.ui-interaction-tile-muted {
+    background: #456FAA !important;
+    color: #FFFFFF !important;    
+}
+
+.ui-interaction-tile-toolbar-button {
+    background: #FFFFFF;
+    color: #949CAD;    
+    border: 1px solid #DBDBDB;
+    border-radius: 2px;
+    width:38px; 
+    height: 26px;
+    text-align: center;  
+    cursor: pointer;  
+}
+
+.ui-interaction-tile-toolbar-button:hover {
+    border-color: #949CAD;
+}
+
+.ui-interaction-tile-toolbar-button>span {
+    line-height:24px; 
+    font-size:12px;
+}
+
+.ui-interaction-tile-extend {
+    height: 118px;
+    margin-top: 6px;
+    background-color: #F6F6F6;
+    border-top: 1px solid #DBDBDB;
+}
+
+.ui-interaction-tile-extend-text {
+    height: 36px;
+    width: 195px;
+    margin-top: 16px;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;    
+}
+
+.ui-interaction-tile-extend-button {
+    background: #FCFCFC;
+    /* Elements/Primary blue */
+    border: 1px solid #03A9F4;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 76px;
+    height: 26px;
+    margin-top: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ui-interaction-tile-extend-button-text {
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #03A9F4;    
+}
+
+.ui-border1 {
+    border:1px solid red; 
+}
+
+.ui-interaction-tile-customer-id {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #949CAD;
+    border-radius: 4px;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.ui-interaction-tile-message-box-text {
+    font-size: 14px;
+    color: #56627C;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;    
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 4px;    
+    min-height: 24px;
+}
+
+.ui-interaction-tile-message {
+    margin-top:6px;    
+    width: 400px;
+    padding-top: 8px;
+}
+
+.ui-interaction-tile-content {
+    padding-left: 8px;
+    padding-right: 8px;
+}

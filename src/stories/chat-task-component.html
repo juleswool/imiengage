@@ -1,51 +1,65 @@
-<div class="ui-interaction-tile" [ngClass]="{ 'ui-interaction-tile-active' : active }">
-  <div class="ui-interaction-tile-content">
+<div class="my-task" [ngClass]="{ 'my-task-active' : active, 'chat-task-extend-tile' : extend }">
+  <div class="chat-task-content my-task-chat">
 
       <div class="p-d-flex p-jc-between">
           <div class="p-d-flex">
-             <div class="p-as-center ui-border ui-interaction-tile-channel-container">
-                 <!--span class="ui-interaction-tile-channel"><i [ngClass]="{ 'icon-Incoming' : direction==='inbound', 'icon-Outgoing' : direction!=='inbound' }"></i></span-->
-                 <input type="checkbox" [(ngModel)]="selected" >
+             <div class="p-as-center ui-border chat-task-channel">
+                 <input type="checkbox" (change)="selectChange();" >
              </div>
 
-              <div class="p-as-center ui-border ui-interaction-tile-channel-container">
-                  <span class="ui-interaction-tile-channel"><div [ngClass]="channelIcon"></div></span>
+              <div class="p-as-center ui-border chat-task-channel">
+                  <span class="chat-task-channel-icon"><div [ngClass]="channelIcon"></div></span>
               </div>
               <div class="p-as-center ui-border">
-                  <span class="ui-interaction-tile-party">{{otherParty}}</span> 
+                  <span class="chat-task-party">{{otherParty}}</span> 
               </div>
           </div>
           <div class="p-d-flex">
-              <div class="p-as-center ui-border" style="text-align: right;">
-                  <span [ngClass]="{ 'ui-interaction-tile-status-ringing' : status==='ringing' }" class="ui-interaction-tile-status"><i [hidden]="status!=='ringing'" class="icon-Ringing"></i> {{statusMsg}}</span>
-              </div>
 
-              <div [hidden]="!delivered" class="p-as-center ui-border" style="text-align: center;" >
-                  <div (click)="onClick.emit({ 'id': 'toolAnswer'})" class="ui-interaction-tile-button-round ui-interaction-tile-button-success icon-Tick"></div>                    
+              <div [hidden]="state!=='offered'" class="p-as-center ui-border" style="text-align: center;" >
+                  <div (click)="onClick.emit({ 'id': 'toolAnswer'})" class="chat-task-button-accept icon-Tick"></div>                    
               </div>
-              <div class="p-as-center ui-border ui-interaction-tile-container-flag">
-                  <div [hidden]="priority===''" class="ui-interaction-tile-flag">{{priority}}</div>
+              <div class="p-as-center ui-border chat-task-flag">
+                  <div [hidden]="priority===''" class="chat-task-flag-text" [ngStyle]="{'background-color' : priorityColour }">{{priority}}</div>
               </div> 
           </div>
   
       </div>  
 
-      <div class="p-d-flex p-jc-between ui-interaction-tile-info ui-border">
+      <div class="p-d-flex p-jc-between chat-task-message ui-border">
           
-          <div class="p-d-flex">
+          <div class="p-d-flex chat-task-message-text">
               <div class="p-as-center ui-border">
-                  <span class="ui-interaction-tile-class-name" [hidden]="info===''">
-                      <span title="{{info}}">{{info}}</span>
+                  <span class="chat-task-class-name">
+                      <span>{{message}}</span>
                   </span>
               </div>
           </div>
 
           <div class="p-d-flex">
-              <div class="p-as-center ui-border" style="text-align: right;">
-                  <span class="ui-interaction-tile-duration">{{duration}}</span>
+              <div [hidden]="messageCount===''" class="p-as-center ui-border" style="text-align: center;" >
+                  <div class="chat-task-message-count">{{messageCount}}</div>                    
+              </div>
+
+              <div [hidden]="duration===''" class="p-as-center ui-border" style="text-align: right;">
+                  <span class="chat-task-duration">{{duration}}</span>
               </div>
           </div>
-
       </div> 
+
   </div>
+
+  <div *ngIf="extend" class="chat-task-extend ui-border">
+    <div class="p-d-flex p-jc-center">
+        <div class="ui-border chat-task-extend-text" >
+            <div style="text-align: center;">This chat will be automatically put on hold in {{extendTimeLeft}} sec</div>
+        </div>
+    </div>
+    <div class="p-d-flex p-jc-center">
+        <div (click)="onClick.emit({ 'id': 'toolExtendChat'})" class="ui-border chat-task-extend-button" >
+            <span class="ui-border chat-task-extend-button-text">Extend</span>
+        </div>      
+    </div> 
+  </div>
+
 </div>

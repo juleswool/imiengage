@@ -26,11 +26,16 @@ export default {
         type : 'object'
       }
     },
-    status: {
+    state: {
       control : {
         type: 'inline-radio',
-        options : ['none', 'dialling', 'ringing']
+        options : ['none', 'dialling', 'ringing', 'connected' ]
       }
+    },
+    priorityColour: {
+      control : {
+        type: 'color'
+      } 
     }
   }
 };
@@ -52,12 +57,12 @@ export const Telephony = (args) => ({
 });
 
 Telephony.args = {
+  priorityColour: '#E02020',  
   otherParty: "0148000001",
   active: false,
   info: 'Sales Enquiry',
   duration: "00:01:33",
-  delivered: false,
-  status: "none",
+  state: "none",
   priority: "P2",
   onHold: false,
   muted: false,
@@ -74,6 +79,6 @@ Telephony.args = {
     },
     'toolDropcall' : { 
       'disabled' : false 
-    },
+    }
   }
 }
