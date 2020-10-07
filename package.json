@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -p 6006 -s ./src/stories/assets",
+    "storybook": "npm run docs:json && start-storybook -p 6006 -s ./src",
     "build-storybook": "npm run docs:json && build-storybook",
     "chromatic": "npx chromatic --project-token ced82ihy4xf"
   },

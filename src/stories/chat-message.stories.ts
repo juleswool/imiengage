@@ -102,7 +102,7 @@ Attachment1Image.args =  {
   name: 'james',
   status: 'sending',
   attachments: [{
-    "url": "/images/img5.png",
+    "url": "/stories/assets/images/img5.png",
     "size": "273.4Kb",
     "mimeType": "image/png"
   }]
@@ -115,17 +115,17 @@ Attachment3Images.args =  {
   status: 'sending',
   attachments: [
     {
-      "url": "/images/img5.png",
+      "url": "/stories/assets/images/img5.png",
       "size": "68KB",
       "mimeType": "image/png"
     },
     {
-      "url": "/images/img6.png",
+      "url": "/stories/assets/images/img6.png",
       "size": "27.7KB",
       "mimeType": "image/png"
     },
     {
-      "url": "/images/this_is_a_really_long_name_that_i_have_used.png",
+      "url": "/stories/assets/images/this_is_a_really_long_name_that_i_have_used.png",
       "size": "87KB",
       "mimeType": "image/png"
     },
@@ -139,27 +139,27 @@ Attachment5Images.args =  {
   status: 'sending',
   attachments: [
     {
-      "url": "/images/this_is_a_really_long_name_that_i_have_used.png",
+      "url": "/stories/assets/images/this_is_a_really_long_name_that_i_have_used.png",
       "size": "87KB",
       "mimeType": "image/png"
     },
     {      
-      "url": "/images/img3.png",
+      "url": "/stories/assets/images/img3.png",
       "size": "87KB",
       "mimeType": "image/png"
     },
     {      
-      "url": "/images/img1.png",
+      "url": "/stories/assets/images/img1.png",
       "size": "87KB",
       "mimeType": "image/png"
     },
     {      
-      "url": "/images/img6.png",
+      "url": "/stories/assets/images/img6.png",
       "size": "87KB",
       "mimeType": "image/png"
     },
     {      
-      "url": "/images/img5.png",
+      "url": "/stories/assets/images/img5.png",
       "size": "87KB",
       "mimeType": "image/png"
     }
@@ -173,7 +173,7 @@ AttachmentPdf.args =  {
   status: 'sending',
   attachments: [
     {
-      "url": "/pdf/test-document.pdf",
+      "url": "/stories/assets/pdf/test-document.pdf",
       "size": "271.3Kb",
       "mimeType": "application/pdf"
     }
@@ -187,7 +187,7 @@ AttachmentPdfLongName.args =  {
   status: 'sending',
   attachments: [
     {
-      "url": "/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
+      "url": "/stories/assets/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
       "size": "271.3Kb",
       "mimeType": "application/pdf"
     }
@@ -201,7 +201,7 @@ AttachmentPdfNoMessage.args =  {
   status: 'sending',
   attachments: [
     {
-      "url": "/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
+      "url": "/stories/assets/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
       "size": "271.3Kb",
       "mimeType": "application/pdf"
     }
@@ -215,12 +215,12 @@ AttachmentImagePdfMessage.args =  {
   status: 'sending',
   attachments: [
     {
-      "url": "/images/img5.png",
+      "url": "/stories/assets/images/img5.png",
       "size": "273.4Kb",
       "mimeType": "image/png"    
     },
     {
-      "url": "/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
+      "url": "/stories/assets/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
       "size": "271.3Kb",
       "mimeType": "application/pdf"
     }
