@@ -59,24 +59,6 @@ export class TelephonyTaskComponent implements OnInit {
       //pop-up menu items
       this.items = [
           {
-            id: 'toolRequeue', 
-            label: 'Re-queue', 
-            icon: 'icon-Requeue', 
-            disabled : true,
-            command: (event) => {
-              this.onClick.emit({ 'id': event.item.id})
-            }
-          },
-          {
-            id: 'toolConference', 
-            label: 'Conference', 
-            icon: 'icon-conference', 
-            disabled : true,
-            command: (event) => {
-              this.onClick.emit({ 'id': event.item.id})
-            }
-          },
-          {
             id: 'toolInfo', 
             label: 'Call Info', 
             icon: 'icon-info', 

@@ -10,7 +10,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { TelephonyTaskComponent } from './telephony-task-component';
 
 export default {
-  title: 'Interaction-Tile-Telephony',
+  title: 'Telephony-Task',
   argTypes: {
     onClick: {
       action: 'click' 
@@ -68,12 +68,6 @@ Telephony.args = {
   muted: false,
   direction: 'inbound',
   toolbar: { 
-    'toolRequeue' : { 
-      'disabled' : false 
-    },
-    'toolConference' : { 
-      'disabled' : false 
-    },
     'toolInfo' : { 
       'disabled' : false
     },

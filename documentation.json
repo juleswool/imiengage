@@ -1,6 +1,40 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "ChatMessageAttachment",
+            "id": "interface-ChatMessageAttachment-c56bed5e3a0ae40746e357e4f83c6f2d",
+            "file": "src/stories/chat-message-attachment.ts",
+            "type": "interface",
+            "sourceCode": "export interface ChatMessageAttachment {\r\n    \"url\": string,\r\n    \"size\": string, \r\n    \"mimeType\": string\r\n}",
+            "properties": [
+                {
+                    "name": "mimeType",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "size",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "url",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
     "injectables": [],
     "classes": [
         {
@@ -35,7 +69,55 @@
             "hostListeners": []
         }
     ],
-    "directives": [],
+    "directives": [
+        {
+            "name": "AttachmentDirective",
+            "id": "directive-AttachmentDirective-3fc48cf178328c3b093b1fa275b4571c",
+            "file": "src/stories/chat-message-attachment-directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import { Directive, ViewContainerRef } from '@angular/core';\r\n\r\n@Directive({\r\n  selector: '[attachmentHost]',\r\n})\r\nexport class AttachmentDirective {\r\n  constructor(public viewContainerRef: ViewContainerRef) { }\r\n}\r\n",
+            "selector": "[attachmentHost]",
+            "providers": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "viewContainerRef",
+                    "type": "ViewContainerRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 8,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef"
+                    }
+                ],
+                "line": 7,
+                "jsdoctags": [
+                    {
+                        "name": "viewContainerRef",
+                        "type": "ViewContainerRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
     "components": [
         {
             "name": "AppComponent",
@@ -76,89 +158,377 @@
             "stylesData": ""
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
-            "file": "bk/button.component.ts",
+            "name": "ChatMessageAttachmentImageComponent",
+            "id": "component-ChatMessageAttachmentImageComponent-ed6c08aad18951599b15bed10b0b5333",
+            "file": "src/stories/chat-message-attachment-image-component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-button",
+            "selector": "app-chat-message-attachment-image",
             "styleUrls": [
-                "./button.css"
+                "./chat-message-attachment-image-component.scss"
             ],
             "styles": [],
-            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
-            "templateUrl": [],
+            "templateUrl": [
+                "./chat-message-attachment-image-component.html"
+            ],
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "backgroundColor",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 26,
-                    "type": "string"
+                    "name": "attachment",
+                    "line": 19,
+                    "type": "ChatMessageAttachment"
                 },
                 {
-                    "name": "label",
-                    "defaultValue": "'Button'",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 40
-                },
-                {
-                    "name": "primary",
+                    "name": "showBorder",
                     "defaultValue": "false",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 20
+                    "line": 22,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "attachmentName",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
                 },
                 {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 32,
-                    "type": "\"small\" | \"medium\" | \"large\""
-                }
-            ],
-            "outputsClass": [
+                    "name": "attachmentType",
+                    "defaultValue": "\"image\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        132
+                    ]
+                },
                 {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 46,
-                    "type": "EventEmitter"
+                    "name": "imageName",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'imageName'"
+                        }
+                    ]
+                },
+                {
+                    "name": "imageNameTooltip",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
                 }
             ],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "getAttachmentName",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 45
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34
+                }
+            ],
             "hostBindings": [],
             "hostListeners": [],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { Input, ViewChild, ElementRef, Component, OnInit, AfterViewInit } from '@angular/core';\r\nimport { ChatMessageAttachment } from './chat-message-attachment';\r\n\r\n@Component({\r\n    selector: 'app-chat-message-attachment-image',\r\n    templateUrl: './chat-message-attachment-image-component.html',\r\n    styleUrls: ['./chat-message-attachment-image-component.scss']\r\n  })\r\n\r\nexport class ChatMessageAttachmentImageComponent implements OnInit, AfterViewInit {\r\n    \r\n    readonly attachmentType:string = \"image\";\r\n\r\n    attachmentName: string = \"\";\r\n    imageNameTooltip:string = \"\";\r\n    @ViewChild('imageName') imageName: ElementRef;\r\n\r\n    @Input()\r\n    attachment: ChatMessageAttachment;\r\n\r\n    @Input() \r\n    showBorder: boolean = false;\r\n\r\n    constructor() {\r\n    }\r\n\r\n    //\r\n    // function   : component initialisation event handler\r\n    //\r\n    // parameters : none.\r\n    //\r\n    // returns    : none.\r\n    //    \r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    ngAfterViewInit() {\r\n      let imageNameElement: HTMLDivElement = this.imageName.nativeElement;\r\n      if (imageNameElement.scrollWidth > imageNameElement.clientWidth) {\r\n        this.imageNameTooltip = this.getAttachmentName();\r\n      }\r\n    }\r\n\r\n    getAttachmentName() {\r\n      if (!this.attachmentName) {\r\n        let parts:string[] = this.attachment.url.split('/');\r\n        this.attachmentName = parts[parts.length-1];\r\n      }\r\n      return (this.attachmentName);\r\n    }\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
-                    "styleUrl": "./button.css"
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-attachment {\r\n        \r\n        &-border {\r\n            padding-top: 8px;\r\n            margin-left: 12px;\r\n            margin-bottom: 8px;                \r\n            border: 1px solid #DBDBDB;\r\n            border-radius: 2px;   \r\n            width: calc(#{$chatMessageAttachmentImageSize} + (2 * #{$margin}) + 2px);\r\n        }        \r\n        \r\n        &-image {\r\n            border-radius: 2px; \r\n            width: $chatMessageAttachmentImageSize; \r\n            height: $chatMessageAttachmentImageSize;         \r\n            margin-left:12px;\r\n            margin-right: 12px;\r\n            background-size: cover; \r\n            background-repeat: no-repeat; \r\n            background-position: 50% 50%;\r\n\r\n            &-link {\r\n                width: calc(#{$chatMessageAttachmentImageSize} + 25px);\r\n                padding-left: 12px;\r\n                padding-top: 8px;\r\n                padding-bottom: 8px;\r\n                padding-right: 12px;\r\n\r\n                &:hover {\r\n                    cursor: pointer;\r\n                }              \r\n\r\n                &:hover &-download {\r\n                    display: block;\r\n                }              \r\n\r\n                &-name {\r\n                    font-family: IBM Plex Sans;\r\n                    font-style: normal;\r\n                    font-weight: normal;\r\n                    font-size: 14px;\r\n                    line-height: 18px;\r\n                    overflow: hidden;\r\n                    white-space: nowrap;\r\n                    text-overflow: ellipsis; \r\n                    \r\n                    width: calc(#{$chatMessageAttachmentImageSize} - 30px);\r\n\r\n                    color: $chatMessageAttachmentLinkTextColor;\r\n\r\n                    &:hover {\r\n                        text-decoration-line: underline;\r\n                    }\r\n                }\r\n        \r\n                &-download {\r\n                    font-size: 1.0em;\r\n                    display: none;\r\n                }            \r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./chat-message-attachment-image-component.scss"
                 }
             ],
             "stylesData": "",
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 48
-                    }
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 22
+            },
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"p-col p-col-nogutter ui-border\" [ngClass]=\"{'chat-message-attachment-border': showBorder}\" >\r\n\r\n    <div class=\"p-grid p-nogutter p-flex-column\">\r\n    \r\n        <div class=\"p-col p-col-nogutter ui-border\">\r\n            <div [ngStyle]=\"{'background-image': 'url(' + attachment.url +')'}\" class=\"chat-message-attachment-image\"></div>\r\n        </div>\r\n\r\n        <div class=\"p-d-flex p-jc-between chat-message-attachment-image-link\">\r\n            <div class=\"p-as-center ui-border\">\r\n                <div #imageName tooltipStyleClass=\"ui-tooltip-flex\" class=\"chat-message-attachment-image-link-name\" pTooltip=\"{{imageNameTooltip}}\" tooltipPosition=\"bottom\">{{getAttachmentName()}}</div>\r\n            </div>\r\n            <div class=\"p-as-center ui-border\">\r\n                <a class=\"chat-message-attachment-image-link-download pi pi-download\" pTooltip=\"Download\" tooltipPosition=\"bottom\" href=\"{{attachment.url}}\" target=\"_blank\" download=\"{{attachment.url}}\"></a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "ChatMessageAttachmentMultiImageComponent",
+            "id": "component-ChatMessageAttachmentMultiImageComponent-dc52887636e38330ee7657ac882ff599",
+            "file": "src/stories/chat-message-attachment-multi-image-component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-chat-message-attachment-multi-image",
+            "styleUrls": [
+                "./chat-message-attachment-multi-image-component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./chat-message-attachment-multi-image-component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "images",
+                    "line": 18,
+                    "type": "ChatMessageAttachment[]"
+                },
+                {
+                    "name": "showBorder",
+                    "defaultValue": "false",
+                    "line": 21,
+                    "type": "boolean"
                 }
-            }
+            ],
+            "outputsClass": [
+                {
+                    "name": "showImageViewer",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 24,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "attachmentType",
+                    "defaultValue": "\"multi-image\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "imageCountTooltip",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "imageName",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'imageName'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { EventEmitter, Input, ViewChild, ElementRef, Component, OnInit, AfterViewInit, Output } from '@angular/core';\r\nimport { ChatMessageAttachment } from './chat-message-attachment';\r\n\r\n@Component({\r\n    selector: 'app-chat-message-attachment-multi-image',\r\n    templateUrl: './chat-message-attachment-multi-image-component.html',\r\n    styleUrls: ['./chat-message-attachment-multi-image-component.scss']\r\n  })\r\n\r\nexport class ChatMessageAttachmentMultiImageComponent implements OnInit, AfterViewInit {\r\n    \r\n  readonly attachmentType:string = \"multi-image\";\r\n\r\n    imageCountTooltip:string = \"\";\r\n    @ViewChild('imageName') imageName: ElementRef;\r\n\r\n    @Input()\r\n    images: ChatMessageAttachment[];\r\n\r\n    @Input() \r\n    showBorder: boolean = false;\r\n\r\n    @Output()\r\n    showImageViewer = new EventEmitter<any>();\r\n\r\n    constructor() {\r\n    }\r\n\r\n    //\r\n    // function   : component initialisation event handler\r\n    //\r\n    // parameters : none.\r\n    //\r\n    // returns    : none.\r\n    //    \r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    ngAfterViewInit() {\r\n      let imageNameElement: HTMLDivElement = this.imageName.nativeElement;\r\n      if (imageNameElement.scrollWidth > imageNameElement.clientWidth) {\r\n        this.imageCountTooltip = this.images.length + \" images\";\r\n      }\r\n    }\r\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-attachment {\r\n    \r\n        &-border {\r\n            padding-top: 8px;\r\n            margin-left: 12px;\r\n            margin-bottom: 8px;                \r\n            border: 1px solid #DBDBDB;\r\n            border-radius: 2px;   \r\n            width: calc(#{$chatMessageAttachmentImageSize} + (2 * #{$margin}) + 2px);\r\n        }  \r\n                \r\n        &-image {\r\n            border-radius: 2px; \r\n            width: $chatMessageAttachmentImageSize;\r\n            height: $chatMessageAttachmentImageSize;        \r\n            margin-left:12px;\r\n            margin-right: 12px;\r\n\r\n            &-sub {\r\n                width: calc(#{$chatMessageAttachmentImageSize} / 2);\r\n                height: calc(#{$chatMessageAttachmentImageSize} / 2);\r\n                background-size: cover; \r\n                background-repeat: no-repeat; \r\n                background-position: 50% 50%;\r\n\r\n                &-text {\r\n                    font-family: IBM Plex Sans;\r\n                    font-style: normal;\r\n                    font-weight: normal;\r\n                    font-size: 14px;\r\n                    line-height: 18px;\r\n                    text-decoration-line: underline;\r\n                    color: #FFFFFF;\r\n                    background: black;\r\n                    width: 100px;\r\n                    height: 100px;\r\n                    opacity: 0.7;\r\n                    text-align: center;\r\n                    line-height: 100px; \r\n                    cursor: pointer;               \r\n                }\r\n            }\r\n\r\n            &-link {\r\n                width: calc(#{$chatMessageAttachmentImageSize} + 25px);\r\n                padding-left: 12px;\r\n                padding-top: 8px;\r\n                padding-bottom: 8px;\r\n                padding-right: 12px;\r\n\r\n                &:hover {\r\n                    cursor: pointer;\r\n                }              \r\n\r\n                &:hover &-download {\r\n                    display: block;\r\n                }              \r\n\r\n                &-name {\r\n                    font-family: IBM Plex Sans;\r\n                    font-style: normal;\r\n                    font-weight: normal;\r\n                    font-size: 14px;\r\n                    line-height: 18px;\r\n                    overflow: hidden;\r\n                    white-space: nowrap;\r\n                    text-overflow: ellipsis; \r\n                    /*padding-left: 8px;*/\r\n                    \r\n                    width: calc(#{$chatMessageAttachmentImageSize} - 30px);\r\n\r\n                    color: $chatMessageAttachmentLinkTextColor;\r\n\r\n                    &:hover {\r\n                        text-decoration-line: underline;\r\n                    }\r\n                }\r\n        \r\n                &-download {\r\n                    display: none;\r\n                }            \r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./chat-message-attachment-multi-image-component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 24
+            },
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"p-col p-col-nogutter ui-border\" [ngClass]=\"{'chat-message-attachment-border': showBorder}\">\r\n\r\n    <div class=\"p-grid p-nogutter p-flex-column\">\r\n    \r\n        <div class=\"p-col p-col-nogutter ui-border\">\r\n            <div class=\"chat-message-attachment-image\">\r\n                <div class=\"p-d-flex\">\r\n                    <div class=\"chat-message-attachment-image-sub\" [ngStyle]=\"{'background-image': 'url(' + images[0].url +')'}\"></div>\r\n                    <div class=\"chat-message-attachment-image-sub\" [ngStyle]=\"{'background-image': 'url(' + images[1].url +')'}\"></div>\r\n                </div>                \r\n                <div class=\"p-d-flex\">                \r\n                    <div class=\"chat-message-attachment-image-sub\" [ngStyle]=\"{'background-image': 'url(' + images[2].url +')'}\"></div>\r\n                    <div class=\"chat-message-attachment-image-sub chat-message-attachment-image-sub\" [ngStyle]=\"{'background-image': 'url(' + images[3].url +')'}\">\r\n                        <div (click)=\"showImageViewer.emit(images)\" class=\"chat-message-attachment-image-sub-text\">+2 more</div>\r\n                    </div>\r\n                </div>                    \r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"p-d-flex p-jc-between chat-message-attachment-image-link\">\r\n            <div class=\"p-as-center ui-border\">\r\n                <div #imageName tooltipStyleClass=\"display:flex\" class=\"chat-message-attachment-image-link-name\" pTooltip=\"{{imageCountTooltip}}\" tooltipPosition=\"bottom\">{{images.length + \" images\"}}</div>\r\n            </div>\r\n            <div class=\"p-as-center ui-border\">\r\n                <a class=\"chat-message-attachment-image-link-download pi pi-download\" pTooltip=\"Download\" tooltipPosition=\"bottom\" href=\"{{images[0].url}}\" target=\"_blank\" download=\"{{images[0].url}}\"></a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "ChatMessageAttachmentPdfComponent",
+            "id": "component-ChatMessageAttachmentPdfComponent-f00aafed9d2e07d2f1da4cb53e4cb7b6",
+            "file": "src/stories/chat-message-attachment-pdf-component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-chat-message-attachment-pdf",
+            "styleUrls": [
+                "./chat-message-attachment-pdf-component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./chat-message-attachment-pdf-component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "attachment",
+                    "line": 20,
+                    "type": "ChatMessageAttachment"
+                },
+                {
+                    "name": "showBorder",
+                    "defaultValue": "false",
+                    "line": 23,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "attachmentName",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "attachmentNameElement",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'attachmentName'"
+                        }
+                    ]
+                },
+                {
+                    "name": "attachmentNameTooltip",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "attachmentType",
+                    "defaultValue": "\"pdf\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getAttachmentName",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 46
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Input, ViewChild, ElementRef, Component, OnInit, AfterViewInit } from '@angular/core';\r\nimport { ChatMessageAttachment } from './chat-message-attachment';\r\nimport { ChatMessageAttachmentImageComponent } from './chat-message-attachment-image-component';\r\n\r\n@Component({\r\n    selector: 'app-chat-message-attachment-pdf',\r\n    templateUrl: './chat-message-attachment-pdf-component.html',\r\n    styleUrls: ['./chat-message-attachment-pdf-component.scss']\r\n  })\r\n\r\nexport class ChatMessageAttachmentPdfComponent implements OnInit, AfterViewInit {\r\n    \r\n    readonly attachmentType:string = \"pdf\";\r\n\r\n    attachmentName: string = \"\";  \r\n    attachmentNameTooltip:string = \"\";\r\n    @ViewChild('attachmentName') attachmentNameElement: ElementRef;\r\n\r\n    @Input()\r\n    attachment: ChatMessageAttachment;\r\n\r\n    @Input() \r\n    showBorder: boolean = false;\r\n\r\n    constructor() {\r\n    }\r\n\r\n    //\r\n    // function   : component initialisation event handler\r\n    //\r\n    // parameters : none.\r\n    //\r\n    // returns    : none.\r\n    //    \r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    ngAfterViewInit() {\r\n      let attachmentNameElement: HTMLDivElement = this.attachmentNameElement.nativeElement;\r\n      if (attachmentNameElement.scrollWidth > attachmentNameElement.clientWidth) {\r\n        this.attachmentNameTooltip = this.getAttachmentName();\r\n      }\r\n    }\r\n\r\n    getAttachmentName() {\r\n      if (!this.attachmentName) {\r\n        let parts:string[] = this.attachment.url.split('/');\r\n        this.attachmentName = parts[parts.length-1];\r\n      }\r\n      return (this.attachmentName);\r\n    }    \r\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-attachment {\r\n\r\n        &-border {\r\n            margin-left: 12px;\r\n            margin-bottom: 8px;                \r\n            border: 1px solid #DBDBDB;\r\n            border-radius: 2px;                \r\n        }\r\n\r\n        &-link {\r\n            width: $chatMessageAttachmentPdfSize;\r\n\r\n            padding-left: 2px;\r\n            padding-right: 12px;\r\n\r\n            &-icon {\r\n                height: 49px;\r\n                width: 50px;\r\n                line-height: 49px;\r\n            }\r\n\r\n            &:hover {\r\n                cursor: pointer;\r\n            }              \r\n\r\n            &:hover &-download {\r\n                display: block;\r\n            }              \r\n\r\n            &-size {\r\n                font-family: IBM Plex Sans;\r\n                font-style: normal;\r\n                font-weight: normal;\r\n                font-size: 12px;\r\n                line-height: 16px;\r\n                color: #959CAD;\r\n            }\r\n\r\n            &-name {\r\n                font-family: IBM Plex Sans;\r\n                font-style: normal;\r\n                font-weight: normal;\r\n                font-size: 14px;\r\n                line-height: 18px;\r\n                overflow: hidden;\r\n                white-space: nowrap;\r\n                text-overflow: ellipsis; \r\n                padding-top: 8px;\r\n\r\n                width: calc(#{$chatMessageAttachmentPdfSize} - 85px);\r\n\r\n                color: $chatMessageAttachmentLinkTextColor;\r\n\r\n                &:hover {\r\n                    text-decoration-line: underline;\r\n                }\r\n            }\r\n    \r\n            &-download {\r\n                font-size: 1.0em;\r\n                padding-top: 8px;\r\n                display: none;\r\n            }            \r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./chat-message-attachment-pdf-component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 23
+            },
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "    <div class=\"p-grid p-nogutter chat-message-attachment-link\" [ngClass]=\"{'chat-message-attachment-border': showBorder}\" >\r\n\r\n        <div class=\"p-col-fixed p-col-nogutter ui-border p-text-center\">\r\n            <div class=\"chat-message-attachment-link-icon pi pi-file-pdf\"></div>\r\n        </div>\r\n        <div class=\"p-col-fixed p-col-nogutter ui-border\">\r\n\r\n            <div class=\"p-d-flex p-flex-column\">\r\n                <div #attachmentName tooltipStyleClass=\"ui-tooltip-flex\" class=\"chat-message-attachment-link-name\" pTooltip=\"{{attachmentNameTooltip}}\" tooltipPosition=\"bottom\">{{getAttachmentName()}}</div>\r\n                <div class=\"chat-message-attachment-link-size\">{{attachment.size}}</div>\r\n            </div>\r\n\r\n        </div>\r\n        <div class=\"p-col p-col-nogutter ui-border p-text-center\">\r\n            <a style=\"float:right\" class=\"chat-message-attachment-link-download pi pi-download\" pTooltip=\"Download\" tooltipPosition=\"bottom\" href=\"{{attachment.url}}\" target=\"_blank\" download=\"{{attachment.url}}\"></a>\r\n        </div>        \r\n\r\n    </div>\r\n"
         },
         {
             "name": "ChatMessageComponent",
-            "id": "component-ChatMessageComponent-661e275e066d61c582efae85a6a820e1",
+            "id": "component-ChatMessageComponent-a783366b68fb93b99f19f8c09a1b577f",
             "file": "src/stories/chat-message-component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -176,130 +546,230 @@
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "active",
-                    "defaultValue": "false",
-                    "line": 26,
-                    "type": "boolean"
-                },
-                {
-                    "name": "duration",
-                    "defaultValue": "\"00:00:00\"",
-                    "line": 32,
-                    "type": "string"
-                },
-                {
-                    "name": "inactivity",
-                    "defaultValue": "false",
-                    "line": 38,
-                    "type": "boolean"
+                    "name": "attachments",
+                    "line": 46,
+                    "type": "ChatMessageAttachment[]"
                 },
                 {
                     "name": "message",
                     "defaultValue": "\"\"",
-                    "line": 29,
+                    "line": 37,
                     "type": "string"
                 },
                 {
-                    "name": "messageCount",
-                    "defaultValue": "\"1\"",
-                    "line": 20,
-                    "type": "string"
-                },
-                {
-                    "name": "otherParty",
-                    "defaultValue": "\"01483000007\"",
-                    "line": 23,
-                    "type": "string"
-                },
-                {
-                    "name": "priority",
-                    "defaultValue": "\"P1\"",
+                    "name": "myobj",
+                    "defaultValue": "{}",
                     "description": "<p>control inputs</p>\n",
-                    "line": 17,
+                    "line": 31,
+                    "type": "object"
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "\"james\"",
+                    "line": 34,
                     "type": "string"
                 },
                 {
-                    "name": "state",
-                    "defaultValue": "'offered'",
-                    "line": 35,
-                    "type": "\"offered\" | \"accepted\""
+                    "name": "status",
+                    "line": 43,
+                    "type": "\"sending\" | \"sent\" | \"delivered\" | \"seen\" | \"failed\""
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'customer'",
+                    "line": 40,
+                    "type": "\"customer\" | \"agent\" | \"auto\""
                 }
             ],
             "outputsClass": [
                 {
-                    "name": "onClick",
+                    "name": "onRetry",
                     "defaultValue": "new EventEmitter<any>()",
-                    "line": 41,
+                    "line": 49,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "showImageViewer",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "line": 52,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [
                 {
-                    "name": "channelIcon",
-                    "defaultValue": "\"\"",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 46
-                },
-                {
-                    "name": "onSelect",
-                    "defaultValue": "new EventEmitter<boolean>()",
+                    "name": "attachmentComponentRefs",
+                    "defaultValue": "<ComponentRef<any>>{}",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 22
                 },
                 {
-                    "name": "selected",
-                    "defaultValue": "false",
-                    "type": "boolean",
+                    "name": "attachmentHost",
+                    "type": "AttachmentDirective",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 19,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "AttachmentDirective, {static: true}"
+                        }
+                    ]
                 },
                 {
-                    "name": "statusMsg",
+                    "name": "chatMessageClass",
+                    "defaultValue": "\"chat-message-default-width\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "chatMessageMsgClass",
                     "defaultValue": "\"\"",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 55
+                },
+                {
+                    "name": "chatMessageMsgTextClass",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "chatMessageNameRightClass",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 56
+                },
+                {
+                    "name": "chatMessageStatusMessageClass",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 58
+                },
+                {
+                    "name": "chatMessageStatusPositionClass",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 57
+                },
+                {
+                    "name": "initial",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 54
+                },
+                {
+                    "name": "injector",
+                    "defaultValue": "null",
+                    "type": "Injector",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "numAttachments",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "stateStartDate",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 60
+                },
+                {
+                    "name": "statusMessage",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 59
+                },
+                {
+                    "name": "timeInStateCount",
+                    "defaultValue": "0",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 62
+                },
+                {
+                    "name": "timeInStateDisplay",
+                    "defaultValue": "\"Now\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 61
+                },
+                {
+                    "name": "timeInStateTimer",
+                    "defaultValue": "null",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 63
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "itemInArray",
+                    "name": "alreadyExist",
                     "args": [
                         {
-                            "name": "arr",
+                            "name": "currentAttachments",
                             "type": ""
                         },
                         {
-                            "name": "item",
+                            "name": "newUrl",
                             "type": ""
                         }
                     ],
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 116,
+                    "line": 203,
                     "jsdoctags": [
                         {
-                            "name": "arr",
+                            "name": "currentAttachments",
                             "type": "",
                             "tagName": {
                                 "text": "param"
                             }
                         },
                         {
-                            "name": "item",
+                            "name": "newUrl",
                             "type": "",
                             "tagName": {
                                 "text": "param"
                             }
                         }
                     ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 363
                 },
                 {
                     "name": "ngOnChanges",
@@ -312,7 +782,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 75,
                     "jsdoctags": [
                         {
                             "name": "changes",
@@ -324,20 +794,156 @@
                     ]
                 },
                 {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 357
+                },
+                {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 104
+                    "line": 342
                 },
                 {
-                    "name": "selectChange",
+                    "name": "refreshChatMessageMsgClass",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": ""
+                        },
+                        {
+                            "name": "status",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 115,
+                    "jsdoctags": [
+                        {
+                            "name": "type",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "status",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "refreshStatusMessage",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": ""
+                        },
+                        {
+                            "name": "status",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 141,
+                    "jsdoctags": [
+                        {
+                            "name": "type",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "status",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "refreshTimeInStateDisplay",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58
+                    "line": 131
+                },
+                {
+                    "name": "removeAllAttachment",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 182
+                },
+                {
+                    "name": "restartTimer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 312
+                },
+                {
+                    "name": "showAttachments",
+                    "args": [
+                        {
+                            "name": "attachments",
+                            "type": "ChatMessageAttachment[]"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 214,
+                    "jsdoctags": [
+                        {
+                            "name": "attachments",
+                            "type": "ChatMessageAttachment[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "startTimer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 317
+                },
+                {
+                    "name": "statusMessageClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 175
+                },
+                {
+                    "name": "stopTimer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 328
                 }
             ],
             "hostBindings": [],
@@ -345,11 +951,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';\nimport { ButtonModule } from 'primeng/button/';\nimport { CardModule } from 'primeng/card';\nimport { MenuItem } from 'primeng/api';\n\n@Component({\n    selector: 'app-chat-message',\n    templateUrl: './chat-message-component.html',\n    styleUrls: ['./chat-message-component.scss']\n  })\n\nexport class ChatMessageComponent implements OnInit {\n    /**\n     * control inputs\n     */\n    @Input()\n    priority?: string = \"P1\";\n\n    @Input()\n    messageCount?: string = \"1\";\n\n    @Input()\n    otherParty?: string = \"01483000007\";\n\n    @Input()\n    active?: boolean = false;\n\n    @Input()\n    message?: string = \"\";\n\n    @Input()\n    duration?: string = \"00:00:00\";\n\n    @Input()\n    state : 'offered' | 'accepted' = 'offered';\n\n    @Input()\n    inactivity: boolean = false;\n\n    @Output()\n    onClick = new EventEmitter<any>();\n    onSelect = new EventEmitter<boolean>();\n\n    statusMsg: string = \"\";\n    selected: boolean = false;\n    channelIcon: string = \"\";\n\n    constructor() {\n    }\n\n    //\n    // function   : chat tile selection change\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    selectChange() {\n      this.selected = !this.selected;\n      this.onSelect.emit(this.selected);\n    }\n\n    //\n    // function   : monitor for property changes\n    //\n    // parameters : changes - property change object\n    //\n    // returns    : none.\n    //    \n    ngOnChanges (changes: SimpleChanges) {\n      for (const propName in changes) {\n        switch (propName) {\n          case \"selected\":\n            console.log(\"selected\");\n            break;\n\n          case \"channel\":\n            switch (changes[propName].currentValue) {\n              case \"facebook\":\n                this.channelIcon = \"icon-Facebook\";\n                break;\n              case \"livechat\":\n                this.channelIcon = \"icon-LiveChat\";                \n                break;\n              case \"twitter\":\n                this.channelIcon = \"icon-Twitter\";                \n                break;\n              case \"whatsapp\":\n                this.channelIcon = \"icon-Whatsapp\";                \n                break;\n            }\n            break;\n        }\n      }\n    }\n\n    //\n    // function   : component initialisation event handler\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    ngOnInit() {\n\n    }\n\n    //\n    // function   : is string contained in array\n    //\n    // parameters : arr  - arr to search\n    //              item - string item to search for\n    //\n    // returns    : none.\n    //\n    itemInArray(arr, item) {\n      var i;\n      for (i=0; i < arr.length; i++) {\n        if (item===arr[i]) {\n          return (true);\n        }\n      }\n      return (false);\n    }\n}",
+            "sourceCode": "import { AfterViewInit, ComponentRef, Component, ViewChild, Injector, ReflectiveInjector, ComponentFactoryResolver, OnInit, OnDestroy, Input, Output, EventEmitter, SimpleChanges, NgZone } from '@angular/core';\nimport { formatDate } from '@angular/common';\n\nimport { AttachmentDirective } from './chat-message-attachment-directive';\nimport { ChatMessageAttachmentImageComponent } from './chat-message-attachment-image-component';\nimport { ChatMessageAttachmentPdfComponent } from './chat-message-attachment-pdf-component';\nimport { ChatMessageAttachmentMultiImageComponent } from './chat-message-attachment-multi-image-component';\nimport { ChatMessageAttachment } from './chat-message-attachment'\n\n@Component({\n    selector: 'app-chat-message',\n    templateUrl: './chat-message-component.html',\n    styleUrls: ['./chat-message-component.scss']\n  })\n\n  export class ChatMessageComponent implements OnInit, AfterViewInit, OnDestroy {\n\n    //reference the underlying attachment component object\n    @ViewChild(AttachmentDirective, {static: true}) attachmentHost: AttachmentDirective;\n\n    //this is our array of attachment components components\n    attachmentComponentRefs = <ComponentRef<any>>{};\n    injector: Injector = null;  \n    numAttachments: number = 0;\n    chatMessageMsgTextClass: string = \"\";\n    chatMessageClass: string = \"chat-message-default-width\";\n    /**\n     * control inputs\n     */\n    @Input()\n    myobj: object = {};\n\n    @Input()\n    name: string = \"james\"; \n\n    @Input()\n    message: string = \"\";\n\n    @Input()\n    type : 'customer' | 'agent' | 'auto' = 'customer';\n\n    @Input()\n    status : 'sending' | 'sent' | 'delivered' | 'seen' | 'failed';\n\n    @Input()\n    attachments: ChatMessageAttachment[];\n\n    @Output()\n    onRetry = new EventEmitter<any>();\n\n    @Output()\n    showImageViewer = new EventEmitter<any>();\n\n    initial: string = \"\";\n    chatMessageMsgClass:string = \"\";\n    chatMessageNameRightClass: string =\"\";\n    chatMessageStatusPositionClass: string = \"\";\n    chatMessageStatusMessageClass: string = \"\";    \n    statusMessage: string = \"\";\n    stateStartDate: string;\n    timeInStateDisplay: string = \"Now\";\n    timeInStateCount: number = 0;\n    timeInStateTimer: any = null;\n\n    constructor(private ngZone: NgZone, private componentFactoryResolver: ComponentFactoryResolver) {\n    }\n\n    //\n    // function   : monitor for property changes\n    //\n    // parameters : changes - property change object\n    //\n    // returns    : none.\n    //    \n    ngOnChanges (changes: SimpleChanges) {\n      for (const propName in changes) {\n        switch (propName) {\n\n          case \"name\":\n            this.initial = changes[propName].currentValue ? changes[propName].currentValue[0].toUpperCase() : \"\";            \n            break;\n\n          case \"status\":\n            //only refresh if not customer message\n            if (this.type!=='customer') {\n              this.restartTimer();\n              this.refreshStatusMessage(this.type, changes[propName].currentValue);\n              this.refreshChatMessageMsgClass(this.type, changes[propName].currentValue);                        \n            }\n            break;\n\n          case \"type\":\n            this.restartTimer();\n            switch(changes[propName].currentValue) {\n              case \"customer\":\n                this.initial = this.name ? this.name[0].toUpperCase() : \"\";\n                this.chatMessageStatusPositionClass  = \"chat-message-status-left\";\n                break;\n              case \"agent\":\n                this.initial = this.name ? this.name[0].toUpperCase() : \"\";\n                this.chatMessageStatusPositionClass = \"chat-message-status-right\";\n                break;\n              case \"auto\":\n                this.initial = \"A\";\n                this.chatMessageStatusPositionClass = \"chat-message-status-right\";\n                break;\n            }\n            this.refreshStatusMessage(changes[propName].currentValue, this.status);\n            this.refreshChatMessageMsgClass(changes[propName].currentValue, this.status);            \n            break;\n        }\n      }\n    }\n\n    refreshChatMessageMsgClass(type, status) {\n      switch (type) {\n        case \"customer\":\n          this.chatMessageMsgClass = \"chat-message-msg-customer\";          \n          break;\n        case \"agent\":\n          this.chatMessageMsgClass = status === \"failed\" ? \"chat-message-msg-agent-failed\" : \"chat-message-msg-agent\";\n          this.chatMessageNameRightClass = status === \"failed\" ? \"chat-message-name-agent-failed\" : \"chat-message-name-agent\";          \n          break;\n        case \"auto\":   \n          this.chatMessageMsgClass = status === \"failed\" ? \"chat-message-msg-auto-failed\" : \"chat-message-msg-auto\";\n          this.chatMessageNameRightClass = status === \"failed\" ? \"chat-message-name-auto-failed\" : \"chat-message-name-auto\";                          \n          break;\n      }\n    }\n\n    refreshTimeInStateDisplay() {\n      if (this.timeInStateCount === 0) {\n        this.timeInStateDisplay = \"Now\";\n      } else if (this.timeInStateCount < 60) {\n        this.timeInStateDisplay = this.timeInStateCount + \"s ago\";\n      } else {\n        this.timeInStateDisplay = Math.floor(this.timeInStateCount/60).toString() + \"m ago\";        \n      }\n    }\n\n    refreshStatusMessage(type, status) {\n      //reset time in state\n      this.stateStartDate = formatDate(new Date(), \"MMM d, y 'at' h:mma\", 'en');\n      this.timeInStateCount = 0;\n      this.refreshTimeInStateDisplay();\n\n      if (type===\"customer\") {\n        this.statusMessage = \"\";\n      } else {\n        switch (status) {\n          case \"sending\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-sending\";\n            this.statusMessage = \"Sending...\";\n            break;\n          case \"sent\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-sent\";            \n            this.statusMessage = \"Sent\";\n            break;\n          case \"delivered\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-delivered\";            \n            this.statusMessage = \"Delivered\";\n            break;\n          case \"seen\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-seen\";            \n            this.statusMessage = \"Seen\";\n            break;\n          case \"failed\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-failed\";            \n            this.statusMessage = \"Failed to send. Click to retry\";                  \n            break;\n        }\n      }    \n    }\n\n    statusMessageClick() {\n      //only valid in failed state\n      if (this.status==='failed') {\n        this.onRetry.emit({});\n      }\n    }\n\n    removeAllAttachment() {\n      let i:number = 0;      \n      //delete current attactments, unsubscribe any event handlers\n      let componentRefCount:number = Object.keys(this.attachmentComponentRefs).length;\n      for (i=0; i < componentRefCount; i++) {\n        switch (this.attachmentComponentRefs[i].instance.attachmentType) {\n          case \"multi-image\":\n            (this.attachmentComponentRefs[i].instance as ChatMessageAttachmentMultiImageComponent).showImageViewer.unsubscribe();\n            break;\n          case \"image\":\n          case \"pdf\":\n            break;\n        }\n      }\n      this.attachmentHost.viewContainerRef.clear();\n      this.attachmentComponentRefs = <ComponentRef<any>>{};\n\n      //reset attachment count\n      this.numAttachments = 0;      \n    }\n\n    alreadyExist(currentAttachments, newUrl) {\n      let exists = false;\n      for (let i=0; i < currentAttachments.length; i++) {\n        if (currentAttachments.url===newUrl) {\n          exists = true;\n          break;\n        }\n      }\n      return (exists);\n    }\n\n    showAttachments(attachments:ChatMessageAttachment[]) {\n      let i:number = 0;\n     \n      //as we are creating the component dynamically we have to \n      //inject the service object each time we create a new task component\n      /*\n      this.injector = ReflectiveInjector.resolveAndCreate(\n        [{\n          provide: 'rostrvmService', \n          useValue: this.rostrvmService\n        }]);      \n      */\n\n      //monitor for changes in task list\n      let componentFactory, imageAttachments:ChatMessageAttachment[] = [];\n   \n      //in the case of images attachment, 3 and less are shown individually, more\n      //than 3 are shown as a group and link to carousel viewer\n      for (i = attachments.length - 1; i >= 0; i--) {\n        let parts = this.attachments[i].url.split('.');\n\n        //user either the mime type or file extension to workout the attchment type\n        switch (this.attachments[i].mimeType || parts[parts.length-1]) { \n          case \"image/png\":\n          case \"png\":\n          case \"image/jpeg\":\n          case \"jpeg\":\n          case \"image/bmp\":\n          case \"bmp\":\n              imageAttachments.push({ \n                \"url\": attachments[i].url,\n                \"size\": attachments[i].size,\n                \"mimeType\": attachments[i].mimeType, \n              })\n              break;\n        }\n      }\n\n      //more than 3 images?\n      if (imageAttachments.length > 3) {\n        //create image group attachment\n        componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentMultiImageComponent);\n        const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n        // add reference for newly created component\n        this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n        //tell the component its attachment\n        componentRef.instance['images'] = imageAttachments;\n        //need to subscribe to show event viewer request\n        (componentRef.instance as ChatMessageAttachmentMultiImageComponent).showImageViewer.subscribe((images) => {\n          this.showImageViewer.emit(images);\n        })\n        //if there is only a single multi-image attachment then size message text width to image width\n        if (attachments.length===imageAttachments.length) {\n          this.chatMessageClass = \"chat-message-image-width\";\n        }\n      } \n      \n      //process other attachments individually, including images if less than 3\n      for (i = 0; i < attachments.length; i++) {\n        let parts = attachments[i].url.split('.');\n        componentFactory = null;\n        \n        switch (parts[parts.length-1]) {\n          case \"png\":\n          case \"jpeg\":\n            //only process if 3 or less images  \n            if (imageAttachments.length <= 3) {\n              componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentImageComponent);\n              const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n              // add reference for newly created component\n              this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n              //tell the component its attachment\n              componentRef.instance['attachment'] = attachments[i];\n              //if there is only a single image attachment, size message text width to image width\n              if (attachments.length===1) {\n                this.chatMessageClass = \"chat-message-image-width\";\n              }\n              //if there is more than one individual attachment then show borders around them\n              componentRef.instance['showBorder'] = \n                (imageAttachments.length===2) || \n                (imageAttachments.length===3) ||\n                attachments.length > imageAttachments.length;\n            }\n            break;\n\n          case \"pdf\":\n            componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentPdfComponent);\n            const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n            // add reference for newly created component\n            this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n            //tell the component its attachment\n            componentRef.instance['attachment'] = this.attachments[i];            \n            componentRef.instance['showBorder'] = this.message!=='';\n            break;\n        }\n      }\n    }\n\n    restartTimer() {\n      this.stopTimer();\n      this.startTimer();\n    }\n\n    startTimer() {\n      //make sure time runs inside zone so angular \n      //angular change detection works and the UI is refreshed\n      this.ngZone.run(()=> {\n        this.timeInStateTimer = setInterval(() => {   \n          this.timeInStateCount++;\n          this.refreshTimeInStateDisplay();\n        }, 1000);\n      }) \n    }\n\n    stopTimer() {\n      if (this.timeInStateTimer) {\n        clearInterval(this.timeInStateTimer);\n        this.timeInStateTimer = null;\n      }\n    }\n\n    //\n    // function   : component initialisation event handler\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    ngOnInit() {\n      //do we have any attachments?\n      if (this.attachments) {\n        this.showAttachments(this.attachments);\n      }      \n    }\n\n    //\n    // function   : called as the component is being destroyed. Clean-up\n    //              any subscription and event handler bindings\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //     \n    ngOnDestroy() {\n      //make sure timer is stopped\n      this.stopTimer();\n      this.removeAllAttachment();\n    }\n\n    ngAfterViewInit() {\n      //determine the attachment padding if no message is present\n      if (this.message==='') {\n        if (this.attachments && (this.attachments[0].url.indexOf(\".pdf\") < 0)) {\n          this.chatMessageMsgTextClass = \"chat-message-msg-no-text\";\n        }\n      } else {\n        this.chatMessageMsgTextClass = \"chat-message-msg-text\";\n      }\n    }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".ui-interaction-tile-chat-inactivity {\r\n    height: 198px;\r\n    width: 500px;\r\n} \r\n\r\n.ui-interaction-tile-toolbar {\r\n    padding-left: 40px;\r\n}\r\n\r\n.pi {\r\n    font-size: 1.0em;\r\n}\r\n\r\n.ui-interaction-tile-inactivity-label {\r\n    height: 36px;\r\n    width: 195px;\r\n    font-size: 14px;\r\n    color: #56627C;\r\n}\r\n\r\n.ui-interaction-tile-duration {\r\n    font-size: 12px;\r\n    color:#56627C;\r\n    margin-right:16px;\r\n}\r\n\r\n.ui-interaction-tile-channel-container {\r\n    width: 35px;\r\n}\r\n\r\n.ui-interaction-tile-channel {\r\n    font-size: 20px;\r\n    color: #217EB7;\r\n}\r\n\r\n.ui-interaction-tile-party {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    font-weight: 600;\r\n    display: block;\r\n    width: 179px;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;      \r\n}\r\n\r\n.ui-button-interaction-tile {\r\n    font-size:0.8em;\r\n    width: 24px !important;\r\n    height: 24px !important;    \r\n}\r\n\r\n.ui-interaction-tile-flag {\r\n    width: 21px;\r\n    height: 17px;\r\n    border-radius: 2px;\r\n    font-size: 10px;\r\n    line-height: 17px; \r\n    color: #FFFFFF;  \r\n    text-align: center;\r\n    float: right;\r\n}\r\n\r\n.ui-interaction-tile-container-flag {\r\n    text-align:right; \r\n    width:33px;\r\n    height: 26px;\r\n    padding-top: 4px;    \r\n}\r\n\r\n.ui-interaction-tile-status {\r\n    font-size: 12px;\r\n    line-height: 16px;\r\n    color: #56627C;\r\n}\r\n\r\n.ui-interaction-tile-button-answer {\r\n    cursor:pointer;\r\n    height: 24px;\r\n    width: 24px; \r\n    line-height: 24px; \r\n    border-radius: 12px;\r\n    background-color: #3EC154; \r\n    color: #ffffff;\r\n}\r\n\r\n.ui-interaction-tile-message-count {\r\n    height: 16px;\r\n    width: 16px; \r\n    line-height: 16px; \r\n    border-radius: 8px;\r\n    background-color: #FA9397; \r\n    color: #ffffff;\r\n    font-size: 10px;\r\n    margin-right:8px;\r\n}\r\n\r\n.ui-interaction-tile-status-ringing {\r\n    color: #3EC154; \r\n}\r\n\r\n.ui-interaction-tile-onhold {\r\n    background: #E4AD00 !important;\r\n    color: #FFFFFF !important;\r\n}\r\n\r\n.ui-interaction-tile-muted {\r\n    background: #456FAA !important;\r\n    color: #FFFFFF !important;    \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button {\r\n    background: #FFFFFF;\r\n    color: #949CAD;    \r\n    border: 1px solid #DBDBDB;\r\n    border-radius: 2px;\r\n    width:38px; \r\n    height: 26px;\r\n    text-align: center;  \r\n    cursor: pointer;  \r\n}\r\n\r\n.ui-interaction-tile-toolbar-button:hover {\r\n    border-color: #949CAD;\r\n}\r\n\r\n.ui-interaction-tile-toolbar-button>span {\r\n    line-height:24px; \r\n    font-size:12px;\r\n}\r\n\r\n.ui-interaction-tile-extend {\r\n    height: 118px;\r\n    margin-top: 6px;\r\n    background-color: #F6F6F6;\r\n    border-top: 1px solid #DBDBDB;\r\n}\r\n\r\n.ui-interaction-tile-extend-text {\r\n    height: 36px;\r\n    width: 195px;\r\n    margin-top: 16px;\r\n    font-family: IBM Plex Sans;\r\n    font-style: normal;\r\n    font-weight: normal;\r\n    font-size: 14px;\r\n    line-height: 18px;\r\n    text-align: center;    \r\n}\r\n\r\n.ui-interaction-tile-extend-button {\r\n    background: #FCFCFC;\r\n    /* Elements/Primary blue */\r\n    border: 1px solid #03A9F4;\r\n    box-sizing: border-box;\r\n    border-radius: 2px;\r\n    width: 76px;\r\n    height: 26px;\r\n    margin-top: 16px;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}\r\n\r\n.ui-interaction-tile-extend-button-text {\r\n    font-family: IBM Plex Sans;\r\n    font-style: normal;\r\n    font-weight: normal;\r\n    font-size: 14px;\r\n    line-height: 24px;\r\n\r\n    color: #03A9F4;    \r\n}\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.ui-interaction-tile-customer-id {\r\n    width: 40px;\r\n    height: 40px;\r\n    line-height: 40px;\r\n    background: #949CAD;\r\n    border-radius: 4px;\r\n    font-family: IBM Plex Sans;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    font-size: 24px;\r\n    text-align: center;\r\n    color: #FFFFFF;\r\n}\r\n\r\n.ui-interaction-tile-message-box-text {\r\n    font-size: 14px;\r\n    color: #56627C;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    display: -webkit-box;\r\n    -webkit-box-orient: vertical;    \r\n    background-color: #ffffff;\r\n    padding: 5px;\r\n    border-radius: 4px;    \r\n    min-height: 24px;\r\n}\r\n\r\n.ui-interaction-tile-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n}\r\n\r\n.ui-interaction-tile-content {\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n}",
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.p-col-fixed {\r\n    padding:0px;\r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-default-width {\r\n        width: $chatMessageComponentDefaultWidth;\r\n    }\r\n\r\n    &-image-width {\r\n        width: $chatMessageComponentImageWidth;\r\n    }\r\n\r\n    &-status {\r\n        margin-top:-13px;\r\n        font-family: IBM Plex Sans;\r\n        font-style: normal;\r\n        font-weight: normal;\r\n        font-size: 12px; \r\n        line-height: 16px;\r\n        height: 16px;\r\n\r\n        &-left {\r\n            float: left;\r\n        }\r\n\r\n        &-right {\r\n            float: right;\r\n        }\r\n\r\n        &-time-in-state {\r\n            color: $chatMessageStatusTimeInStateTextColor;\r\n            cursor: pointer;\r\n        }\r\n\r\n        &-message-sending {\r\n            color: $chatMessageStatusMessageSendingTextColor;\r\n        }\r\n\r\n        &-message-sent {\r\n            color: $chatMessageStatusMessageSentTextColor;\r\n        }\r\n\r\n        &-message-delivered {\r\n            color: $chatMessageStatusMessageDeliveredTextColor;\r\n        }\r\n\r\n        &-message-seen {\r\n            color: $chatMessageStatusMessageSeenTextColor;\r\n        }\r\n\r\n        &-message-failed {\r\n            color: $chatMessageStatusMessageFailedTextColor;\r\n            cursor: pointer;\r\n\r\n\r\n            &:hover {\r\n                text-decoration: underline;\r\n            }\r\n        }\r\n\r\n    }\r\n    &-name {\r\n        width: $chatMessageNamePlateSize;\r\n        height: $chatMessageNamePlateSize;\r\n        line-height: $chatMessageNamePlateSize;\r\n        border-radius: 4px;\r\n        font-family: IBM Plex Sans;\r\n        font-style: normal;\r\n        font-weight: 600;\r\n        font-size: 24px;\r\n        text-align: center;\r\n        padding-top: 8px;\r\n\r\n        &-customer {\r\n            border-radius: 4px;            \r\n            background-color: $chatMessageCustomerNameBgColor;\r\n            border-color: $chatMessageCustomerNameBorderColor;\r\n            color: $chatMessageCustomerNameTextColor;\r\n        }\r\n\r\n        &-agent {\r\n            border-radius: 4px;\r\n            background-color: $chatMessageAgentNameBgColor;\r\n            border-color: $chatMessageAgentNameBorderColor ;            \r\n            color: $chatMessageAgentNameTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAgentNameBgColorFailed;\r\n                border-color: $chatMessageAgentNameBorderColorFailed;\r\n                color: $chatMessageAgentNameTextColorFailed;\r\n            }\r\n        }\r\n\r\n        &-auto {\r\n            border-radius: 4px;            \r\n            background-color: $chatMessageAutoNameBgColor;\r\n            border-color: $chatMessageAutoNameBorderColor;\r\n            color: $chatMessageAutoNameTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAutoNameBgColorFailed;\r\n                border-color: $chatMessageAutoNameBorderColorFailed;\r\n                color: $chatMessageAutoNameTextColorFailed;\r\n            }\r\n        }        \r\n    }\r\n\r\n    &-msg {\r\n        font-size: 14px;\r\n        overflow: hidden;\r\n        text-overflow: ellipsis;\r\n        display: -webkit-box;\r\n        -webkit-box-orient: vertical;    \r\n        border-radius: 4px;    \r\n        min-height: 24px;\r\n        border-width: 1px;\r\n        border-style: solid;\r\n\r\n        &-text {\r\n            padding-left:12px;\r\n            padding-right:12px;\r\n            padding-top:8px;\r\n            padding-bottom:8px;\r\n        }\r\n\r\n        &-no-text {\r\n            padding-top:8px;\r\n        }\r\n\r\n        &-customer {\r\n            background-color: $chatMessageCustomerMsgBgColor;\r\n            border-color: $chatMessageCustomerMsgBorderColor;\r\n            color: $chatMessageCustomerMsgTextColor;\r\n        }\r\n\r\n        &-agent {\r\n            background-color: $chatMessageAgentMsgBgColor;\r\n            border-color: $chatMessageAgentMsgBorderColor;\r\n            color: $chatMessageAgentMsgTextColor;        \r\n            \r\n            &-failed {\r\n                background-color: $chatMessageAgentMsgBgColorFailed;\r\n                border-color: $chatMessageAgentMsgBorderColorFailed;\r\n                color: $chatMessageAgentMsgTextColorFailed;\r\n            }\r\n        }\r\n\r\n        &-auto {\r\n            background-color: $chatMessageAutoMsgBgColor;\r\n            border-color: $chatMessageAutoMsgBorderColor;\r\n            color: $chatMessageAutoMsgTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAutoMsgBgColorFailed;\r\n                border-color: $chatMessageAutoMsgBorderColorFailed;\r\n                color: $chatMessageAutoMsgTextColorFailed;\r\n            }\r\n        }        \r\n    }\r\n}\r\n\r\n",
                     "styleUrl": "./chat-message-component.scss"
                 }
             ],
@@ -357,13 +963,40 @@
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
-                "args": [],
-                "line": 46
+                "args": [
+                    {
+                        "name": "ngZone",
+                        "type": "NgZone"
+                    },
+                    {
+                        "name": "componentFactoryResolver",
+                        "type": "ComponentFactoryResolver"
+                    }
+                ],
+                "line": 63,
+                "jsdoctags": [
+                    {
+                        "name": "ngZone",
+                        "type": "NgZone",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "componentFactoryResolver",
+                        "type": "ComponentFactoryResolver",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             },
             "implements": [
-                "OnInit"
+                "OnInit",
+                "AfterViewInit",
+                "OnDestroy"
             ],
-            "templateData": "<div class=\"ui-interaction-tile-message\">\n  <div class=\"ui-interaction-tile-content\">\n\n    <div class=\"p-grid\">\n      <div class=\"p-col-fixed ui-border\" style=\"width:55px\">\n          <div class=\"ui-interaction-tile-customer-id\">L</div>\n      </div>\n      <div class=\"p-col ui-border \">\n          <span class=\"ui-border ui-interaction-tile-message-box-text\">\n              <span>{{message}}</span>\n          </span>\n      </div>\n      <!--div class=\"p-col-fixed ui-border\" style=\"width:55px\">\n        <div class=\"ui-interaction-tile-customer-id\">L</div>\n      </div-->      \n    </div>\n\n  </div>\n\n</div>\n"
+            "templateData": "<div class=\"chat-message\" [ngClass]=\"chatMessageClass\">\n\n    <div class=\"p-grid\">\n\n      <div *ngIf=\"!(type==='agent' || type==='auto')\" class=\"p-col-fixed ui-border \">\n          <div class=\"chat-message-name\">\n            <div class=\"chat-message-name-customer\">{{initial}}</div>\n          </div>\n      </div>\n\n      <div class=\"p-col ui-border\">\n\n        <div class=\"p-grid p-flex-column\">\n          <div class=\"p-col\">\n            <span class=\"ui-border chat-message-msg\" [ngClass]=\"chatMessageMsgClass\">\n\n              <!--message content, include message and any number of attachment components-->\n              <div class=\"p-grid p-nogutter p-flex-column\">\n\n                <!--content message-->\n                <div class=\"p-col p-col-nogutter ui-border\">\n                    <div [ngClass]=\"chatMessageMsgTextClass\">{{message}}</div>\n                </div>\n\n                <ng-template attachmentHost></ng-template>\n\n              </div>\n\n            </span>\n\n          </div>\n        \n          <div class=\"p-col\">\n            <div class=\"p-d-flex p-flex-column p-flex-md-row chat-message-status\" [ngClass]=\"chatMessageStatusPositionClass\">\n              <div *ngIf=\"!(statusMessage==='')\" class=\"p-mr-2 ui-border\"> \n                <span (click)=\"statusMessageClick();\" [ngClass]=\"chatMessageStatusMessageClass\">{{statusMessage}}</span>\n              </div>\n              <div class=\"ui-border\">\n                <span class=\"chat-message-status-time-in-state\" pTooltip=\"{{stateStartDate}}\" tooltipPosition=\"bottom\">{{timeInStateDisplay}}</span>\n              </div>\n            </div>\n           \n          </div>\n\n        </div>\n\n      </div>\n\n      <div [hidden]=\"type==='customer'\" class=\"p-col-fixed ui-border\">\n        <div class=\"chat-message-name\">\n          <div [ngClass]=\"chatMessageNameRightClass\">{{initial}}</div>\n        </div>\n      </div>\n\n    </div>\n\n</div>\n"
         },
         {
             "name": "ChatTaskComponent",
@@ -616,132 +1249,8 @@
             "templateData": "<div class=\"my-task\" [ngClass]=\"{ 'my-task-active' : active, 'chat-task-extend-tile' : extend }\">\n  <div class=\"chat-task-content my-task-chat\">\n\n      <div class=\"p-d-flex p-jc-between\">\n          <div class=\"p-d-flex\">\n             <div class=\"p-as-center ui-border chat-task-channel\">\n                 <input type=\"checkbox\" (change)=\"selectChange();\" >\n             </div>\n\n              <div class=\"p-as-center ui-border chat-task-channel\">\n                  <span class=\"chat-task-channel-icon\"><div [ngClass]=\"channelIcon\"></div></span>\n              </div>\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"chat-task-party\">{{otherParty}}</span> \n              </div>\n          </div>\n          <div class=\"p-d-flex\">\n\n              <div [hidden]=\"state!=='offered'\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\n                  <div (click)=\"onClick.emit({ 'id': 'toolAnswer'})\" class=\"chat-task-button-accept icon-Tick\"></div>                    \n              </div>\n              <div class=\"p-as-center ui-border chat-task-flag\">\n                  <div [hidden]=\"priority===''\" class=\"chat-task-flag-text\" [ngStyle]=\"{'background-color' : priorityColour }\">{{priority}}</div>\n              </div> \n          </div>\n  \n      </div>  \n\n      <div class=\"p-d-flex p-jc-between chat-task-message ui-border\">\n          \n          <div class=\"p-d-flex chat-task-message-text\">\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"chat-task-class-name\">\n                      <span>{{message}}</span>\n                  </span>\n              </div>\n          </div>\n\n          <div class=\"p-d-flex\">\n              <div [hidden]=\"messageCount===''\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\n                  <div class=\"chat-task-message-count\">{{messageCount}}</div>                    \n              </div>\n\n              <div [hidden]=\"duration===''\" class=\"p-as-center ui-border\" style=\"text-align: right;\">\n                  <span class=\"chat-task-duration\">{{duration}}</span>\n              </div>\n          </div>\n      </div> \n\n  </div>\n\n  <div *ngIf=\"extend\" class=\"chat-task-extend ui-border\">\n    <div class=\"p-d-flex p-jc-center\">\n        <div class=\"ui-border chat-task-extend-text\" >\n            <div style=\"text-align: center;\">This chat will be automatically put on hold in {{extendTimeLeft}} sec</div>\n        </div>\n    </div>\n    <div class=\"p-d-flex p-jc-center\">\n        <div (click)=\"onClick.emit({ 'id': 'toolExtendChat'})\" class=\"ui-border chat-task-extend-button\" >\n            <span class=\"ui-border chat-task-extend-button-text\">Extend</span>\n        </div>      \n    </div> \n  </div>\n\n</div>\n"
         },
         {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
-            "file": "bk/header.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
-            ],
-            "styles": [],
-            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "line": 53,
-                    "type": "unknown"
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "line": 62,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "line": 56,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "line": 59,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
-            "stylesData": ""
-        },
-        {
-            "name": "PageComponent",
-            "id": "component-PageComponent-cca1a8911321fa17756ce90c90de65cc",
-            "file": "bk/page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-page",
-            "styleUrls": [
-                "./page.css"
-            ],
-            "styles": [],
-            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "line": 66,
-                    "type": "unknown"
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "line": 75,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "line": 69,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "line": 72,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
-                    "styleUrl": "./page.css"
-                }
-            ],
-            "stylesData": ""
-        },
-        {
             "name": "TelephonyTaskComponent",
-            "id": "component-TelephonyTaskComponent-25d30d2853734b472ce76b6e47da5b12",
+            "id": "component-TelephonyTaskComponent-77dd26b503de981309260758d19a0ebd",
             "file": "src/stories/telephony-task-component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -901,7 +1410,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 206,
+                    "line": 188,
                     "jsdoctags": [
                         {
                             "name": "arr",
@@ -930,7 +1439,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 225,
+                    "line": 207,
                     "jsdoctags": [
                         {
                             "name": "event",
@@ -952,7 +1461,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 129,
+                    "line": 111,
                     "jsdoctags": [
                         {
                             "name": "changes",
@@ -969,7 +1478,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 167
+                    "line": 149
                 },
                 {
                     "name": "showMenu",
@@ -986,7 +1495,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 179,
+                    "line": 161,
                     "jsdoctags": [
                         {
                             "name": "menu",
@@ -1015,7 +1524,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 183,
+                    "line": 165,
                     "jsdoctags": [
                         {
                             "name": "menu",
@@ -1032,7 +1541,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 190
+                    "line": 172
                 },
                 {
                     "name": "updateStatus",
@@ -1049,7 +1558,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 100,
+                    "line": 82,
                     "jsdoctags": [
                         {
                             "name": "direction",
@@ -1073,7 +1582,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';\r\nimport { ButtonModule } from 'primeng/button/';\r\nimport { CardModule } from 'primeng/card';\r\nimport { MenuItem } from 'primeng/api';\r\n\r\n@Component({\r\n    selector: 'app-telephony-task',\r\n    templateUrl: './telephony-task-component.html',\r\n    styleUrls: ['./telephony-task-component.scss']\r\n  })\r\n\r\nexport class TelephonyTaskComponent implements OnInit {\r\n    /**\r\n     * control inputs\r\n     */\r\n    @Input()\r\n    priority?: string = \"P1\";\r\n\r\n    @Input() \r\n    priorityColour:string = \"#E02020\";\r\n\r\n    @Input()\r\n    otherParty?: string = \"01483000007\";\r\n\r\n    @Input()\r\n    active?: boolean = false;\r\n\r\n    @Input()\r\n    info?: string = \"\";\r\n\r\n    @Input()\r\n    duration?: string = \"00:00:00\";\r\n\r\n    @Input()\r\n    state : 'none' | 'dialling' | 'ringing' | 'connected' = 'none';\r\n\r\n    @Input()\r\n    onHold? : boolean = false;\r\n\r\n    @Input()\r\n    muted? : boolean = false;\r\n\r\n    @Input() direction: 'inbound' | 'outbound' = 'inbound';\r\n\r\n    @Output()\r\n    onClick = new EventEmitter<any>();\r\n\r\n    muteTooltip: string = \"Mute\";\r\n    holdTooltip: string = \"Hold\";\r\n    statusMsg: string = \"\";\r\n\r\n    mouseHover:boolean = false;\r\n    busy:boolean = true;\r\n    menuAutoHideTimer:any = null;\r\n\r\n    items: MenuItem[];\r\n\r\n    constructor() {\r\n      //pop-up menu items\r\n      this.items = [\r\n          {\r\n            id: 'toolRequeue', \r\n            label: 'Re-queue', \r\n            icon: 'icon-Requeue', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolConference', \r\n            label: 'Conference', \r\n            icon: 'icon-conference', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolInfo', \r\n            label: 'Call Info', \r\n            icon: 'icon-info', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolDropcall', \r\n            label: 'Hang up', \r\n            icon: 'icon-hangup', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          }, \r\n      ];\r\n    }\r\n\r\n    updateStatus(direction, state) {\r\n      //only applicable for outbound\r\n      switch (direction) {\r\n        case \"inbound\":\r\n          this.statusMsg = \"\";\r\n        break;\r\n\r\n        case \"outbound\":\r\n          switch (state) {\r\n            case \"dialling\":\r\n              this.statusMsg = \"Dialling...\";              \r\n              break;\r\n\r\n            case \"ringing\":\r\n              this.statusMsg = \"Ringing...\";                \r\n              break;\r\n\r\n            case \"connected\":\r\n              this.statusMsg = \"\";\r\n              break;\r\n\r\n            default:\r\n              this.statusMsg = \"\";\r\n              break;\r\n          }          \r\n          break;\r\n      }\r\n    }\r\n\r\n    ngOnChanges (changes: SimpleChanges) {\r\n      for (const propName in changes) {\r\n        switch (propName) {\r\n\r\n          case \"direction\":\r\n            this.updateStatus(changes[propName].currentValue, this.state);\r\n            break;\r\n\r\n          case \"state\":\r\n            this.updateStatus(this.direction, changes[propName].currentValue);\r\n            break;\r\n\r\n          case \"onHold\":\r\n            this.mouseHover = this.muted || changes[propName].currentValue;  \r\n            this.holdTooltip = this.onHold ? \"Resume\" : \"Hold\";\r\n            break;\r\n\r\n          case \"muted\":            \r\n            this.mouseHover = this.onHold || changes[propName].currentValue;\r\n            //refresh tooltips\r\n            this.muteTooltip = changes[propName].currentValue ? \"Unmute\" : \"Mute\";\r\n            break;\r\n\r\n          case \"toolbar\":\r\n            for (const itemId in changes[propName].currentValue) {\r\n              for (let index=0; index < this.items.length; index++) {\r\n                if (this.items[index].id===itemId) {\r\n                  this.items[index].disabled = changes[propName].currentValue[itemId].disabled;\r\n                  break;\r\n                }\r\n              }\r\n            }\r\n            break;\r\n\r\n        }\r\n      }\r\n    }\r\n\r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    //\r\n    // function   : show telephony quick menu\r\n    //\r\n    // parameters : menu  - reference to pop quick menu\r\n    //              event - DOM event\r\n    //\r\n    // returns    : none.\r\n    //\r\n    showMenu(menu, event) {\r\n      menu.show(event);\r\n    }\r\n\r\n    startDelayClose(menu) {\r\n      this.menuAutoHideTimer = setTimeout(()=> {\r\n        menu.hide();  \r\n        this.menuAutoHideTimer = null;\r\n      },100);\r\n    }\r\n  \r\n    stopDelayClose() {\r\n      //stop delay close timer if active\r\n      if (this.menuAutoHideTimer) {\r\n        clearTimeout(this.menuAutoHideTimer);\r\n        this.menuAutoHideTimer = null;      \r\n      }\r\n    }\r\n\r\n    //\r\n    // function   : is string contained in array\r\n    //\r\n    // parameters : arr  - arr to search\r\n    //              item - string item to search for\r\n    //\r\n    // returns    : none.\r\n    //\r\n    itemInArray(arr, item) {\r\n      var i;\r\n      for (i=0; i < arr.length; i++) {\r\n        if (item===arr[i]) {\r\n          return (true);\r\n        }\r\n      }\r\n      return (false);\r\n    }\r\n\r\n    //\r\n    // function   : mouse out event handler. Need to distinquish between\r\n    //              the mouse moving outside the component or hovering over\r\n    //              a child component\r\n    //\r\n    // parameters : event - DOM event\r\n    //\r\n    // returns    : none.\r\n    //\r\n    mouseOut (event) {\r\n      //this is the original element the event handler was assigned to\r\n      var ignore = false, e = event.toElement || event.relatedTarget;\r\n\r\n      //toolbar must remain visible if the call is held\r\n      if (this.onHold || this.muted) {\r\n        return;\r\n      }\r\n\r\n      //have we move to the task-item\r\n      if (e!=null && this.itemInArray(e.classList, \"ui-interaction-tile-content\")) {\r\n        return;\r\n      }\r\n      //traverse up the parents to determine if this is a child of the tile\r\n      //or the tile itself, only interested in tile itself for mouseout event\r\n      while (e!==null && e.parentNode.className && e.parentNode.className.indexOf(\"my-task\")===-1) {\r\n        if (this.itemInArray(e.parentNode.classList, \"ui-interaction-tile-content\")) {\r\n          ignore=true;\r\n          break;\r\n        }\r\n        e= e.parentNode;\r\n      }\r\n      if (!ignore) {\r\n        this.mouseHover=false;      \r\n      }\r\n  }\r\n\r\n}",
+            "sourceCode": "import { Component, OnInit, Input, Output, OnChanges, EventEmitter, SimpleChanges  } from '@angular/core';\r\nimport { ButtonModule } from 'primeng/button/';\r\nimport { CardModule } from 'primeng/card';\r\nimport { MenuItem } from 'primeng/api';\r\n\r\n@Component({\r\n    selector: 'app-telephony-task',\r\n    templateUrl: './telephony-task-component.html',\r\n    styleUrls: ['./telephony-task-component.scss']\r\n  })\r\n\r\nexport class TelephonyTaskComponent implements OnInit {\r\n    /**\r\n     * control inputs\r\n     */\r\n    @Input()\r\n    priority?: string = \"P1\";\r\n\r\n    @Input() \r\n    priorityColour:string = \"#E02020\";\r\n\r\n    @Input()\r\n    otherParty?: string = \"01483000007\";\r\n\r\n    @Input()\r\n    active?: boolean = false;\r\n\r\n    @Input()\r\n    info?: string = \"\";\r\n\r\n    @Input()\r\n    duration?: string = \"00:00:00\";\r\n\r\n    @Input()\r\n    state : 'none' | 'dialling' | 'ringing' | 'connected' = 'none';\r\n\r\n    @Input()\r\n    onHold? : boolean = false;\r\n\r\n    @Input()\r\n    muted? : boolean = false;\r\n\r\n    @Input() direction: 'inbound' | 'outbound' = 'inbound';\r\n\r\n    @Output()\r\n    onClick = new EventEmitter<any>();\r\n\r\n    muteTooltip: string = \"Mute\";\r\n    holdTooltip: string = \"Hold\";\r\n    statusMsg: string = \"\";\r\n\r\n    mouseHover:boolean = false;\r\n    busy:boolean = true;\r\n    menuAutoHideTimer:any = null;\r\n\r\n    items: MenuItem[];\r\n\r\n    constructor() {\r\n      //pop-up menu items\r\n      this.items = [\r\n          {\r\n            id: 'toolInfo', \r\n            label: 'Call Info', \r\n            icon: 'icon-info', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          },\r\n          {\r\n            id: 'toolDropcall', \r\n            label: 'Hang up', \r\n            icon: 'icon-hangup', \r\n            disabled : true,\r\n            command: (event) => {\r\n              this.onClick.emit({ 'id': event.item.id})\r\n            }\r\n          }, \r\n      ];\r\n    }\r\n\r\n    updateStatus(direction, state) {\r\n      //only applicable for outbound\r\n      switch (direction) {\r\n        case \"inbound\":\r\n          this.statusMsg = \"\";\r\n        break;\r\n\r\n        case \"outbound\":\r\n          switch (state) {\r\n            case \"dialling\":\r\n              this.statusMsg = \"Dialling...\";              \r\n              break;\r\n\r\n            case \"ringing\":\r\n              this.statusMsg = \"Ringing...\";                \r\n              break;\r\n\r\n            case \"connected\":\r\n              this.statusMsg = \"\";\r\n              break;\r\n\r\n            default:\r\n              this.statusMsg = \"\";\r\n              break;\r\n          }          \r\n          break;\r\n      }\r\n    }\r\n\r\n    ngOnChanges (changes: SimpleChanges) {\r\n      for (const propName in changes) {\r\n        switch (propName) {\r\n\r\n          case \"direction\":\r\n            this.updateStatus(changes[propName].currentValue, this.state);\r\n            break;\r\n\r\n          case \"state\":\r\n            this.updateStatus(this.direction, changes[propName].currentValue);\r\n            break;\r\n\r\n          case \"onHold\":\r\n            this.mouseHover = this.muted || changes[propName].currentValue;  \r\n            this.holdTooltip = this.onHold ? \"Resume\" : \"Hold\";\r\n            break;\r\n\r\n          case \"muted\":            \r\n            this.mouseHover = this.onHold || changes[propName].currentValue;\r\n            //refresh tooltips\r\n            this.muteTooltip = changes[propName].currentValue ? \"Unmute\" : \"Mute\";\r\n            break;\r\n\r\n          case \"toolbar\":\r\n            for (const itemId in changes[propName].currentValue) {\r\n              for (let index=0; index < this.items.length; index++) {\r\n                if (this.items[index].id===itemId) {\r\n                  this.items[index].disabled = changes[propName].currentValue[itemId].disabled;\r\n                  break;\r\n                }\r\n              }\r\n            }\r\n            break;\r\n\r\n        }\r\n      }\r\n    }\r\n\r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    //\r\n    // function   : show telephony quick menu\r\n    //\r\n    // parameters : menu  - reference to pop quick menu\r\n    //              event - DOM event\r\n    //\r\n    // returns    : none.\r\n    //\r\n    showMenu(menu, event) {\r\n      menu.show(event);\r\n    }\r\n\r\n    startDelayClose(menu) {\r\n      this.menuAutoHideTimer = setTimeout(()=> {\r\n        menu.hide();  \r\n        this.menuAutoHideTimer = null;\r\n      },100);\r\n    }\r\n  \r\n    stopDelayClose() {\r\n      //stop delay close timer if active\r\n      if (this.menuAutoHideTimer) {\r\n        clearTimeout(this.menuAutoHideTimer);\r\n        this.menuAutoHideTimer = null;      \r\n      }\r\n    }\r\n\r\n    //\r\n    // function   : is string contained in array\r\n    //\r\n    // parameters : arr  - arr to search\r\n    //              item - string item to search for\r\n    //\r\n    // returns    : none.\r\n    //\r\n    itemInArray(arr, item) {\r\n      var i;\r\n      for (i=0; i < arr.length; i++) {\r\n        if (item===arr[i]) {\r\n          return (true);\r\n        }\r\n      }\r\n      return (false);\r\n    }\r\n\r\n    //\r\n    // function   : mouse out event handler. Need to distinquish between\r\n    //              the mouse moving outside the component or hovering over\r\n    //              a child component\r\n    //\r\n    // parameters : event - DOM event\r\n    //\r\n    // returns    : none.\r\n    //\r\n    mouseOut (event) {\r\n      //this is the original element the event handler was assigned to\r\n      var ignore = false, e = event.toElement || event.relatedTarget;\r\n\r\n      //toolbar must remain visible if the call is held\r\n      if (this.onHold || this.muted) {\r\n        return;\r\n      }\r\n\r\n      //have we move to the task-item\r\n      if (e!=null && this.itemInArray(e.classList, \"ui-interaction-tile-content\")) {\r\n        return;\r\n      }\r\n      //traverse up the parents to determine if this is a child of the tile\r\n      //or the tile itself, only interested in tile itself for mouseout event\r\n      while (e!==null && e.parentNode.className && e.parentNode.className.indexOf(\"my-task\")===-1) {\r\n        if (this.itemInArray(e.parentNode.classList, \"ui-interaction-tile-content\")) {\r\n          ignore=true;\r\n          break;\r\n        }\r\n        e= e.parentNode;\r\n      }\r\n      if (!ignore) {\r\n        this.mouseHover=false;      \r\n      }\r\n  }\r\n\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1136,6 +1645,78 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "Agent",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Attachment1Image",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Attachment3Images",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Attachment5Images",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AttachmentImagePdfMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AttachmentPdf",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AttachmentPdfLongName",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AttachmentPdfNoMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Auto",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Chat",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1144,20 +1725,20 @@
                 "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatTaskComponent,\n  props: args,\n})"
             },
             {
-                "name": "ChatMessage",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/chat-message.stories.ts",
-                "type": "",
-                "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatMessageComponent,\n  props: args,\n})"
-            },
-            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/test.ts",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "Customer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "environment",
@@ -1176,75 +1757,11 @@
                 "defaultValue": "{\n  production: false\n}"
             },
             {
-                "name": "Large",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Button.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedIn",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Header.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedIn",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Page.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Header.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Page.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Button.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/test.ts",
                 "type": "literal type"
-            },
-            {
-                "name": "Secondary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Button.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Small",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Button.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "Telephony",
@@ -1258,31 +1775,105 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "bk/Button.stories.ts",
-                "type": "Story<Button>",
-                "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Header.stories.ts",
-                "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "bk/Page.stories.ts",
-                "type": "Story<Page>",
-                "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "Story<ChatMessageComponent>",
+                "defaultValue": "(args: ChatMessageComponent) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule\n    ],\n    declarations: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,    \n      ChatMessageAttachmentPdfComponent,  \n      AttachmentDirective\n    ],\n    entryComponents: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,\n      ChatMessageAttachmentPdfComponent\n    ]\n  },\n  component: ChatMessageComponent, \n  props: args,\n})"
             }
         ],
         "functions": [],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "src/stories/chat-message.stories.ts": [
+                {
+                    "name": "Agent",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Attachment1Image",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Attachment3Images",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Attachment5Images",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AttachmentImagePdfMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AttachmentPdf",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AttachmentPdfLongName",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AttachmentPdfNoMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Auto",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Customer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "Story<ChatMessageComponent>",
+                    "defaultValue": "(args: ChatMessageComponent) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule\n    ],\n    declarations: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,    \n      ChatMessageAttachmentPdfComponent,  \n      AttachmentDirective\n    ],\n    entryComponents: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,\n      ChatMessageAttachmentPdfComponent\n    ]\n  },\n  component: ChatMessageComponent, \n  props: args,\n})"
+                }
+            ],
             "src/stories/chat-task.stories.ts": [
                 {
                     "name": "Chat",
@@ -1291,16 +1882,6 @@
                     "file": "src/stories/chat-task.stories.ts",
                     "type": "",
                     "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatTaskComponent,\n  props: args,\n})"
-                }
-            ],
-            "src/stories/chat-message.stories.ts": [
-                {
-                    "name": "ChatMessage",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/chat-message.stories.ts",
-                    "type": "",
-                    "defaultValue": "(args) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule,\n    ],\n  },\n  component: ChatMessageComponent,\n  props: args,\n})"
                 }
             ],
             "src/test.ts": [
@@ -1340,100 +1921,6 @@
                     "defaultValue": "{\n  production: false\n}"
                 }
             ],
-            "bk/Button.stories.ts": [
-                {
-                    "name": "Large",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Button.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Button.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Secondary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Button.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Small",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Button.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Button.stories.ts",
-                    "type": "Story<Button>",
-                    "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
-                }
-            ],
-            "bk/Header.stories.ts": [
-                {
-                    "name": "LoggedIn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Header.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Header.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Header.stories.ts",
-                    "type": "Story<Header>",
-                    "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
-                }
-            ],
-            "bk/Page.stories.ts": [
-                {
-                    "name": "LoggedIn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Page.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Page.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "bk/Page.stories.ts",
-                    "type": "Story<Page>",
-                    "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
-                }
-            ],
             "src/stories/telephony-task.stories.ts": [
                 {
                     "name": "Telephony",
@@ -1451,146 +1938,9 @@
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 0,
         "status": "low",
         "files": [
-            {
-                "filePath": "bk/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Large",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Secondary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Small",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/button.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
-            },
-            {
-                "filePath": "bk/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "bk/page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
             {
                 "filePath": "e2e/src/app.po.ts",
                 "type": "class",
@@ -1630,12 +1980,57 @@
                 "status": "low"
             },
             {
+                "filePath": "src/stories/chat-message-attachment-directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "AttachmentDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message-attachment-image-component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChatMessageAttachmentImageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message-attachment-multi-image-component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChatMessageAttachmentMultiImageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message-attachment-pdf-component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChatMessageAttachmentPdfComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message-attachment.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ChatMessageAttachment",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "src/stories/chat-message-component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ChatMessageComponent",
-                "coveragePercent": 5,
-                "coverageCount": "1/19",
+                "coveragePercent": 2,
+                "coverageCount": "1/40",
                 "status": "low"
             },
             {
@@ -1643,7 +2038,107 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "ChatMessage",
+                "name": "Agent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Attachment1Image",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Attachment3Images",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Attachment5Images",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AttachmentImagePdfMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AttachmentPdf",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AttachmentPdfLongName",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AttachmentPdfNoMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Auto",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Customer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

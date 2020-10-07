@@ -3,6 +3,14 @@
     
 body {
 
+	.p-grid {
+		flex-wrap: nowrap;		
+	}
+
+	.ui-tooltip-flex {
+		display: flex !important;
+	}
+
 	.ui-widget {
 		font-size: 12px;
 	}
@@ -29,11 +37,11 @@ body {
 	}
 
 	.my-task {
-		width:324px;
-		height:80px;
+		width: $myTaskWidth;
+		height: $myTaskHeight;
 		border-radius: 3px;
-		background: $interactionTileBgColor;
-		border:$interactionTileBorder;
+		background: $myTaskBgColor;
+		border:$myTaskBorder;
 		padding-top: 8px;
 	}
 
@@ -43,9 +51,23 @@ body {
 	}
 
 	.my-task:hover {
-		background: $interactionTileHoverBgColor;
-		border:$interactionTileHoverBorder;
+		background: $myTaskHoverBgColor;
+		border:$myTaskHoverBorder;
 	}
 
+	.p-col:not(.p-col-nogutter) {
+		padding: $columnPadding;
+	}
 
+/*
+	.p-col-no-padding {
+		padding: 0px;
+	}
+
+	.p-grid-no-margin {
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 0px;
+	}	
+*/
 }

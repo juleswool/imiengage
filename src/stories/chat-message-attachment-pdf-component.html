@@ -1,0 +1,18 @@
+    <div class="p-grid p-nogutter chat-message-attachment-link" [ngClass]="{'chat-message-attachment-border': showBorder}" >
+
+        <div class="p-col-fixed p-col-nogutter ui-border p-text-center">
+            <div class="chat-message-attachment-link-icon pi pi-file-pdf"></div>
+        </div>
+        <div class="p-col-fixed p-col-nogutter ui-border">
+
+            <div class="p-d-flex p-flex-column">
+                <div #attachmentName tooltipStyleClass="ui-tooltip-flex" class="chat-message-attachment-link-name" pTooltip="{{attachmentNameTooltip}}" tooltipPosition="bottom">{{getAttachmentName()}}</div>
+                <div class="chat-message-attachment-link-size">{{attachment.size}}</div>
+            </div>
+
+        </div>
+        <div class="p-col p-col-nogutter ui-border p-text-center">
+            <a style="float:right" class="chat-message-attachment-link-download pi pi-download" pTooltip="Download" tooltipPosition="bottom" href="{{attachment.url}}" target="_blank" download="{{attachment.url}}"></a>
+        </div>        
+
+    </div>

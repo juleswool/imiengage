@@ -8,14 +8,43 @@ import { MenubarModule } from 'primeng/menubar';
 import { TooltipModule } from 'primeng/tooltip';
 
 import { ChatMessageComponent } from './chat-message-component';
+import { ChatMessageAttachmentImageComponent } from './chat-message-attachment-image-component';
+import { ChatMessageAttachmentMultiImageComponent } from './chat-message-attachment-multi-image-component';
+import { ChatMessageAttachmentPdfComponent } from './chat-message-attachment-pdf-component';
+
+import { AttachmentDirective } from './chat-message-attachment-directive';
 
 export default {
-  title: 'Interaction-Tile-Chat-Message',
+  title: 'Chat-Message',
   argTypes: { 
+    onRetry: {
+      action: 'retry' 
+    },   
+    showImageViewer: {
+      action: 'showImageViewer'
+    },  
+    type: {
+      control : {
+        type: 'inline-radio',
+        options : ['customer', 'agent', 'auto' ]
+      }
+    },      
+    status: {
+      control : {
+        type: 'inline-radio',
+        options : ['sending', 'sent', 'delivered', 'seen', 'failed' ]
+      }
+    },
+    attachments: {
+      control : {
+        type : 'object',
+        disable: true
+      }
+    }   
   }
-};
+} as Meta; 
 
-export const ChatMessage = (args) => ({
+const Template: Story<ChatMessageComponent> = (args: ChatMessageComponent) => ({
   moduleMetadata: {
     imports: [
       ButtonModule,
@@ -24,13 +53,176 @@ export const ChatMessage = (args) => ({
       ToggleButtonModule,
       MenubarModule,
       TooltipModule,
-      BrowserAnimationsModule,
+      BrowserAnimationsModule
     ],
+    declarations: [
+      ChatMessageAttachmentImageComponent,
+      ChatMessageAttachmentMultiImageComponent,    
+      ChatMessageAttachmentPdfComponent,  
+      AttachmentDirective
+    ],
+    entryComponents: [
+      ChatMessageAttachmentImageComponent,
+      ChatMessageAttachmentMultiImageComponent,
+      ChatMessageAttachmentPdfComponent
+    ]
   },
-  component: ChatMessageComponent,
+  component: ChatMessageComponent, 
   props: args,
 });
 
-ChatMessage.args = {
-  message: 'Hello there. I am facing some problems with my laptop due to this hot weather',
+export const Customer = Template.bind({});
+Customer.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending'
+}
+
+export const Agent = Template.bind({});
+Agent.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'agent',
+  name: 'Nigel',
+  status: 'sending'
+}
+
+export const Auto = Template.bind({});
+Auto.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'auto',
+  name: 'Auto',
+  status: 'sending'
+}
+
+export const Attachment1Image = Template.bind({});
+Attachment1Image.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [{
+    "url": "/images/img5.png",
+    "size": "273.4Kb",
+    "mimeType": "image/png"
+  }]
+}
+export const Attachment3Images = Template.bind({});
+Attachment3Images.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [
+    {
+      "url": "/images/img5.png",
+      "size": "68KB",
+      "mimeType": "image/png"
+    },
+    {
+      "url": "/images/img6.png",
+      "size": "27.7KB",
+      "mimeType": "image/png"
+    },
+    {
+      "url": "/images/this_is_a_really_long_name_that_i_have_used.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+  ]
+}
+export const Attachment5Images = Template.bind({});
+Attachment5Images.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [
+    {
+      "url": "/images/this_is_a_really_long_name_that_i_have_used.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/images/img3.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/images/img1.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/images/img6.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/images/img5.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    }
+  ]      
+}
+export const AttachmentPdf = Template.bind({});
+AttachmentPdf.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [
+    {
+      "url": "/pdf/test-document.pdf",
+      "size": "271.3Kb",
+      "mimeType": "application/pdf"
+    }
+  ]  
+}
+export const AttachmentPdfLongName = Template.bind({});
+AttachmentPdfLongName.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [
+    {
+      "url": "/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
+      "size": "271.3Kb",
+      "mimeType": "application/pdf"
+    }
+  ]  
+}
+export const AttachmentPdfNoMessage = Template.bind({});
+AttachmentPdfNoMessage.args =  {
+  message: '',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [
+    {
+      "url": "/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
+      "size": "271.3Kb",
+      "mimeType": "application/pdf"
+    }
+  ]  
+}
+export const AttachmentImagePdfMessage = Template.bind({});
+AttachmentImagePdfMessage.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [
+    {
+      "url": "/images/img5.png",
+      "size": "273.4Kb",
+      "mimeType": "image/png"    
+    },
+    {
+      "url": "/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
+      "size": "271.3Kb",
+      "mimeType": "application/pdf"
+    }
+  ]  
 }

@@ -1,0 +1,29 @@
+<div class="p-col p-col-nogutter ui-border" [ngClass]="{'chat-message-attachment-border': showBorder}">
+
+    <div class="p-grid p-nogutter p-flex-column">
+    
+        <div class="p-col p-col-nogutter ui-border">
+            <div class="chat-message-attachment-image">
+                <div class="p-d-flex">
+                    <div class="chat-message-attachment-image-sub" [ngStyle]="{'background-image': 'url(' + images[0].url +')'}"></div>
+                    <div class="chat-message-attachment-image-sub" [ngStyle]="{'background-image': 'url(' + images[1].url +')'}"></div>
+                </div>                
+                <div class="p-d-flex">                
+                    <div class="chat-message-attachment-image-sub" [ngStyle]="{'background-image': 'url(' + images[2].url +')'}"></div>
+                    <div class="chat-message-attachment-image-sub chat-message-attachment-image-sub" [ngStyle]="{'background-image': 'url(' + images[3].url +')'}">
+                        <div (click)="showImageViewer.emit(images)" class="chat-message-attachment-image-sub-text">+2 more</div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+
+        <div class="p-d-flex p-jc-between chat-message-attachment-image-link">
+            <div class="p-as-center ui-border">
+                <div #imageName tooltipStyleClass="display:flex" class="chat-message-attachment-image-link-name" pTooltip="{{imageCountTooltip}}" tooltipPosition="bottom">{{images.length + " images"}}</div>
+            </div>
+            <div class="p-as-center ui-border">
+                <a class="chat-message-attachment-image-link-download pi pi-download" pTooltip="Download" tooltipPosition="bottom" href="{{images[0].url}}" target="_blank" download="{{images[0].url}}"></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,20 +1,57 @@
-<div class="ui-interaction-tile-message">
-  <div class="ui-interaction-tile-content">
+<div class="chat-message" [ngClass]="chatMessageClass">
 
     <div class="p-grid">
-      <div class="p-col-fixed ui-border" style="width:55px">
-          <div class="ui-interaction-tile-customer-id">L</div>
-      </div>
-      <div class="p-col ui-border ">
-          <span class="ui-border ui-interaction-tile-message-box-text">
-              <span>{{message}}</span>
-          </span>
-      </div>
-      <!--div class="p-col-fixed ui-border" style="width:55px">
-        <div class="ui-interaction-tile-customer-id">L</div>
-      </div-->      
-    </div>
 
-  </div>
+      <div *ngIf="!(type==='agent' || type==='auto')" class="p-col-fixed ui-border ">
+          <div class="chat-message-name">
+            <div class="chat-message-name-customer">{{initial}}</div>
+          </div>
+      </div>
+
+      <div class="p-col ui-border">
+
+        <div class="p-grid p-flex-column">
+          <div class="p-col">
+            <span class="ui-border chat-message-msg" [ngClass]="chatMessageMsgClass">
+
+              <!--message content, include message and any number of attachment components-->
+              <div class="p-grid p-nogutter p-flex-column">
+
+                <!--content message-->
+                <div class="p-col p-col-nogutter ui-border">
+                    <div [ngClass]="chatMessageMsgTextClass">{{message}}</div>
+                </div>
+
+                <ng-template attachmentHost></ng-template>
+
+              </div>
+
+            </span>
+
+          </div>
+        
+          <div class="p-col">
+            <div class="p-d-flex p-flex-column p-flex-md-row chat-message-status" [ngClass]="chatMessageStatusPositionClass">
+              <div *ngIf="!(statusMessage==='')" class="p-mr-2 ui-border"> 
+                <span (click)="statusMessageClick();" [ngClass]="chatMessageStatusMessageClass">{{statusMessage}}</span>
+              </div>
+              <div class="ui-border">
+                <span class="chat-message-status-time-in-state" pTooltip="{{stateStartDate}}" tooltipPosition="bottom">{{timeInStateDisplay}}</span>
+              </div>
+            </div>
+           
+          </div>
+
+        </div>
+
+      </div>
+
+      <div [hidden]="type==='customer'" class="p-col-fixed ui-border">
+        <div class="chat-message-name">
+          <div [ngClass]="chatMessageNameRightClass">{{initial}}</div>
+        </div>
+      </div>
+
+    </div>
 
 </div>

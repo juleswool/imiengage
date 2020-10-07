@@ -1,0 +1,79 @@
+@import './assets/mytheme/variables';
+
+.ui-border1 {
+    border:1px solid red; 
+}
+
+.chat-message {
+    margin-top:6px;    
+    width: 400px;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    &-attachment {
+
+        &-border {
+            margin-left: 12px;
+            margin-bottom: 8px;                
+            border: 1px solid #DBDBDB;
+            border-radius: 2px;                
+        }
+
+        &-link {
+            width: $chatMessageAttachmentPdfSize;
+
+            padding-left: 2px;
+            padding-right: 12px;
+
+            &-icon {
+                height: 49px;
+                width: 50px;
+                line-height: 49px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }              
+
+            &:hover &-download {
+                display: block;
+            }              
+
+            &-size {
+                font-family: IBM Plex Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 16px;
+                color: #959CAD;
+            }
+
+            &-name {
+                font-family: IBM Plex Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 18px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis; 
+                padding-top: 8px;
+
+                width: calc(#{$chatMessageAttachmentPdfSize} - 85px);
+
+                color: $chatMessageAttachmentLinkTextColor;
+
+                &:hover {
+                    text-decoration-line: underline;
+                }
+            }
+    
+            &-download {
+                font-size: 1.0em;
+                padding-top: 8px;
+                display: none;
+            }            
+        }
+    }
+}

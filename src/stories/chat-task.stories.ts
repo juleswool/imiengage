@@ -10,7 +10,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ChatTaskComponent } from './chat-task-component';
 
 export default {
-  title: 'Interaction-Tile-Chat',
+  title: 'Chat-Task',
   argTypes: {
     onClick: {
       action: 'click' 

@@ -476,30 +476,82 @@ $cardBgColor:#FAFAFA;
 
 
 //**********************************************
-//custom settings
+//
+// imiengage custom settings
+//
+//**********************************************
+
+@function calChatMessageTextWidth2ContainerWidth($width) {
+    @return calc(#{$chatMessageNamePlateSize} + #{$width} + (2 * #{$columnPadding}) );
+}
+
 $fontFamily:"IBM Plex Sans","Helvetica Neue",sans-serif;
 
-//interaction tile default
-$interactionTileBgColor:#E8F1F8;
-$interactionTileBorder:1px solid #DBDBDB;
+$columnPadding: 8px;
+$margin: 12px;
 
-$interactionTileButtonSelectedBgColor:#FFFFFF;
-$interactionTileButtonSelectedBorder:1px solid #DBDBDB;
+$chatMessageNamePlateSize: 40px;
+$chatMessageAttachmentImageSize: 200px;
+$chatMessageMsgTextWidth: 350px;
+$chatMessageAttachmentPdfSize: 226px;
 
-//interaction tile hover
-$interactionTileHoverBgColor:#F0F6FA;
-$interactionTileHoverBorder:1px solid #DBDBDB;
+$chatMessageComponentDefaultWidth: calChatMessageTextWidth2ContainerWidth($chatMessageMsgTextWidth);
+$chatMessageComponentImageWidth: calChatMessageTextWidth2ContainerWidth($chatMessageAttachmentImageSize);
 
-$interactionTileButtonHoverBgColor:#FAFAFA;
-$interactionTileButtonHoverBorder:1px solid #DBDBDB;
+//task tile default
+$myTaskWidth: 324px;
+$myTaskHeight: 80px;
 
-$interactionTileButtonSelectedHoverBgColor:#F6F6F6;
-$interactionTileButtonSelectedHoverBorder:1px solid #DBDBDB;
+$myTaskBgColor:#E8F1F8;
+$myTaskBorder:1px solid #DBDBDB;
 
-//interaction tile active
-$interactionTileActiveBgColor:#E0EDF5;
-$interactionTileActiveBorder:1px solid #DBDBDB;
+//task tile hover
+$myTaskHoverBgColor:#F0F6FA;
+$myTaskHoverBorder:1px solid #DBDBDB;
 
-$interactionTileFontWeight:700;
-$interactionTilePadding:0.571em 1em;
+//chat message customer base colour
+$chatMessageCustomerNameBgColor: #949CAD;
+$chatMessageCustomerNameBorderColor: #949CAD;
+$chatMessageCustomerNameTextColor: #FFFFFF;
+$chatMessageCustomerMsgBgColor: #FFFFFF;
+$chatMessageCustomerMsgBorderColor: #E9E9E9;
+$chatMessageCustomerMsgTextColor: #56627C;;
+
+$chatMessageAgentNameBgColor: #0062F5;
+$chatMessageAgentNameBorderColor: #0062F5;
+$chatMessageAgentNameTextColor: #F6F6F6;
+$chatMessageAgentMsgBgColor: lighten( $chatMessageAgentNameBgColor, 43% );
+$chatMessageAgentMsgBorderColor: $chatMessageAgentMsgBgColor;
+$chatMessageAgentMsgTextColor: #56627C;
+
+$chatMessageAgentNameBgColorFailed: lighten( $chatMessageAgentNameBgColor, 43% );
+$chatMessageAgentNameBorderColorFailed: #E9E9E9;
+$chatMessageAgentNameTextColorFailed: $chatMessageAgentNameBgColor;
+$chatMessageAgentMsgBgColorFailed: #ffffff00;
+$chatMessageAgentMsgBorderColorFailed: #DBDBDB;
+$chatMessageAgentMsgTextColorFailed: #56627C;
+
+$chatMessageAutoNameBgColor: #E9E9E9;
+$chatMessageAutoNameBorderColor: #DBDBDB;
+$chatMessageAutoNameTextColor: #949CAD;
+$chatMessageAutoMsgBgColor: #E9E9E9;
+$chatMessageAutoMsgBorderColor: #E9E9E9;
+$chatMessageAutoMsgTextColor:#56627C;
+
+$chatMessageAutoNameBgColorFailed: #E9E9E9;
+$chatMessageAutoNameBorderColorFailed: #DBDBDB;
+$chatMessageAutoNameTextColorFailed: #949CAD;
+$chatMessageAutoMsgBgColorFailed: #E9E9E9;
+$chatMessageAutoMsgBorderColorFailed: #E9E9E9;
+$chatMessageAutoMsgTextColorFailed:#56627C;
+
+$chatMessageStatusTimeInStateTextColor: #AAAAAA;
+$chatMessageStatusMessageSendingTextColor: #E4AD00;
+$chatMessageStatusMessageSentTextColor: #E4AD00;
+$chatMessageStatusMessageDeliveredTextColor: #3EC154;
+$chatMessageStatusMessageSeenTextColor: #3EC154;
+$chatMessageStatusMessageFailedTextColor: #FF5F66;
+
+$chatMessageAttachmentLinkTextColor: #0066CC;
+
 
