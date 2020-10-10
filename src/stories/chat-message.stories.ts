@@ -11,6 +11,7 @@ import { ChatMessageComponent } from './chat-message-component';
 import { ChatMessageAttachmentImageComponent } from './chat-message-attachment-image-component';
 import { ChatMessageAttachmentMultiImageComponent } from './chat-message-attachment-multi-image-component';
 import { ChatMessageAttachmentPdfComponent } from './chat-message-attachment-pdf-component';
+import { ChatMessageAttachmentVideoComponent } from './chat-message-attachment-video-component';
 
 import { AttachmentDirective } from './chat-message-attachment-directive';
 
@@ -59,12 +60,14 @@ const Template: Story<ChatMessageComponent> = (args: ChatMessageComponent) => ({
       ChatMessageAttachmentImageComponent,
       ChatMessageAttachmentMultiImageComponent,    
       ChatMessageAttachmentPdfComponent,  
+      ChatMessageAttachmentVideoComponent,        
       AttachmentDirective
     ],
     entryComponents: [
       ChatMessageAttachmentImageComponent,
       ChatMessageAttachmentMultiImageComponent,
-      ChatMessageAttachmentPdfComponent
+      ChatMessageAttachmentPdfComponent,
+      ChatMessageAttachmentVideoComponent,        
     ]
   },
   component: ChatMessageComponent, 
@@ -207,8 +210,8 @@ AttachmentPdfNoMessage.args =  {
     }
   ]  
 }
-export const AttachmentImagePdfMessage = Template.bind({});
-AttachmentImagePdfMessage.args =  {
+export const AttachmentPdfImageMessage = Template.bind({});
+AttachmentPdfImageMessage.args =  {
   message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
   type: 'customer',
   name: 'james',
@@ -225,4 +228,55 @@ AttachmentImagePdfMessage.args =  {
       "mimeType": "application/pdf"
     }
   ]  
+}
+export const AttachmentPdf5ImagesMessage = Template.bind({});
+AttachmentPdf5ImagesMessage.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [
+    {
+      "url": "/stories/assets/images/this_is_a_really_long_name_that_i_have_used.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/stories/assets/images/img3.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/stories/assets/images/img1.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/stories/assets/images/img6.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {      
+      "url": "/stories/assets/images/img5.png",
+      "size": "87KB",
+      "mimeType": "image/png"
+    },
+    {
+      "url": "/stories/assets/pdf/test-document-with-a-very-long-name-that-exceeds.pdf",
+      "size": "271.3Kb",
+      "mimeType": "application/pdf"
+    }
+  ] 
+}
+export const AttachmentVideo = Template.bind({});
+AttachmentVideo.args =  {
+  message: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostr.',
+  type: 'customer',
+  name: 'james',
+  status: 'sending',
+  attachments: [{
+    "url": "/stories/assets/video/Big_Buck_Bunny_360_10s_1MB.mp4",
+    "size": "273.4Kb",
+    "mimeType": "video/mp4"
+  }]
 }

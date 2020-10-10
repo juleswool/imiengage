@@ -493,10 +493,12 @@ $margin: 12px;
 $chatMessageNamePlateSize: 40px;
 $chatMessageAttachmentImageSize: 200px;
 $chatMessageMsgTextWidth: 350px;
-$chatMessageAttachmentPdfSize: 226px;
+$chatMessageAttachmentPdfWidth: 226px;
+$chatMessageAttachmentVideoWidth: 312px;
 
 $chatMessageComponentDefaultWidth: calChatMessageTextWidth2ContainerWidth($chatMessageMsgTextWidth);
 $chatMessageComponentImageWidth: calChatMessageTextWidth2ContainerWidth($chatMessageAttachmentImageSize);
+$chatMessageComponentPdfWidth: calChatMessageTextWidth2ContainerWidth(calc(#{$chatMessageAttachmentPdfWidth} + (2 * #{$margin})) );
 
 //task tile default
 $myTaskWidth: 324px;

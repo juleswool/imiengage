@@ -5,6 +5,7 @@ import { AttachmentDirective } from './chat-message-attachment-directive';
 import { ChatMessageAttachmentImageComponent } from './chat-message-attachment-image-component';
 import { ChatMessageAttachmentPdfComponent } from './chat-message-attachment-pdf-component';
 import { ChatMessageAttachmentMultiImageComponent } from './chat-message-attachment-multi-image-component';
+import { ChatMessageAttachmentVideoComponent } from './chat-message-attachment-video-component';
 import { ChatMessageAttachment } from './chat-message-attachment'
 
 @Component({
@@ -225,7 +226,7 @@ import { ChatMessageAttachment } from './chat-message-attachment'
       */
 
       //monitor for changes in task list
-      let componentFactory, imageAttachments:ChatMessageAttachment[] = [];
+      let componentFactory, imageAttachments:ChatMessageAttachment[] = [], componentRef;
    
       //in the case of images attachment, 3 and less are shown individually, more
       //than 3 are shown as a group and link to carousel viewer
@@ -253,7 +254,7 @@ import { ChatMessageAttachment } from './chat-message-attachment'
       if (imageAttachments.length > 3) {
         //create image group attachment
         componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentMultiImageComponent);
-        const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);
+        componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);
         // add reference for newly created component
         this.attachmentComponentRefs[this.numAttachments++] = componentRef;
         //tell the component its attachment
@@ -266,12 +267,14 @@ import { ChatMessageAttachment } from './chat-message-attachment'
         if (attachments.length===imageAttachments.length) {
           this.chatMessageClass = "chat-message-image-width";
         }
+        //if there is more than one individual attachment then show borders around them
+        componentRef.instance['showBorder'] = attachments.length > imageAttachments.length;        
       } 
       
       //process other attachments individually, including images if less than 3
       for (i = 0; i < attachments.length; i++) {
         let parts = attachments[i].url.split('.');
-        componentFactory = null;
+        componentFactory = null, componentRef = null;;
         
         switch (parts[parts.length-1]) {
           case "png":
@@ -279,7 +282,7 @@ import { ChatMessageAttachment } from './chat-message-attachment'
             //only process if 3 or less images  
             if (imageAttachments.length <= 3) {
               componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentImageComponent);
-              const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);
+              componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);
               // add reference for newly created component
               this.attachmentComponentRefs[this.numAttachments++] = componentRef;
               //tell the component its attachment
@@ -298,12 +301,46 @@ import { ChatMessageAttachment } from './chat-message-attachment'
 
           case "pdf":
             componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentPdfComponent);
-            const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);
+            componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);
             // add reference for newly created component
             this.attachmentComponentRefs[this.numAttachments++] = componentRef;
             //tell the component its attachment
             componentRef.instance['attachment'] = this.attachments[i];            
             componentRef.instance['showBorder'] = this.message!=='';
+              //if there is only a single image attachment, size message text width to image width
+              if (attachments.length===1) {
+                this.chatMessageClass = "chat-message-pdf-width";
+              }            
+            break;
+
+          case "flv":
+          case "video/x-flv":
+          case "mp4":
+          case "video/mp4":
+          case "m3u8":
+          case "application/x-mpegURL":
+          case ".ts":
+          case "video/MP2T":
+          case "3gp":
+          case "video/3gpp":
+          case "mov":
+          case "video/quicktime":
+          case "avi":
+          case "video/x-msvideo":
+          case "wmv":
+          case "video/x-ms-wmv":
+            componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentVideoComponent);
+            componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);
+            // add reference for newly created component
+            this.attachmentComponentRefs[this.numAttachments++] = componentRef;
+            //tell the component its attachment
+            componentRef.instance['attachment'] = attachments[i];
+            //if there is only a single image attachment, size message text width to image width
+            if (attachments.length===1) {
+              //this.chatMessageClass = "chat-message-image-width";
+            }
+            //if there is more than one individual attachment then show borders around them
+            componentRef.instance['showBorder'] = attachments.length > 1;            
             break;
         }
       }

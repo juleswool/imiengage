@@ -11,7 +11,7 @@
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006 -s ./src",
     "build-storybook": "npm run docs:json && build-storybook",
-    "chromatic": "npx chromatic --project-token ced82ihy4xf"
+    "chromatic": "npx chromatic --project-token ced82ihy4xf --exit-zero-on-changes"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +24,9 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "iv-viewer": "^2.0.1",
     "ng-bootstrap": "^1.6.3",
+    "ng2-image-viewer": "^3.0.5",
     "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",
     "primeng": "^9.1.3",

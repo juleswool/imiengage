@@ -22,6 +22,10 @@
         width: $chatMessageComponentImageWidth;
     }
 
+    &-pdf-width {
+        width: $chatMessageComponentPdfWidth;
+    }
+
     &-status {
         margin-top:-13px;
         font-family: IBM Plex Sans;

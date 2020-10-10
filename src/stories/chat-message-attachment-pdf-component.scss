@@ -21,7 +21,7 @@
         }
 
         &-link {
-            width: $chatMessageAttachmentPdfSize;
+            width: $chatMessageAttachmentPdfWidth;
 
             padding-left: 2px;
             padding-right: 12px;
@@ -60,7 +60,7 @@
                 text-overflow: ellipsis; 
                 padding-top: 8px;
 
-                width: calc(#{$chatMessageAttachmentPdfSize} - 85px);
+                width: calc(#{$chatMessageAttachmentPdfWidth} - 85px);
 
                 color: $chatMessageAttachmentLinkTextColor;
 

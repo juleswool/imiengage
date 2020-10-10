@@ -509,7 +509,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-attachment {\r\n\r\n        &-border {\r\n            margin-left: 12px;\r\n            margin-bottom: 8px;                \r\n            border: 1px solid #DBDBDB;\r\n            border-radius: 2px;                \r\n        }\r\n\r\n        &-link {\r\n            width: $chatMessageAttachmentPdfSize;\r\n\r\n            padding-left: 2px;\r\n            padding-right: 12px;\r\n\r\n            &-icon {\r\n                height: 49px;\r\n                width: 50px;\r\n                line-height: 49px;\r\n            }\r\n\r\n            &:hover {\r\n                cursor: pointer;\r\n            }              \r\n\r\n            &:hover &-download {\r\n                display: block;\r\n            }              \r\n\r\n            &-size {\r\n                font-family: IBM Plex Sans;\r\n                font-style: normal;\r\n                font-weight: normal;\r\n                font-size: 12px;\r\n                line-height: 16px;\r\n                color: #959CAD;\r\n            }\r\n\r\n            &-name {\r\n                font-family: IBM Plex Sans;\r\n                font-style: normal;\r\n                font-weight: normal;\r\n                font-size: 14px;\r\n                line-height: 18px;\r\n                overflow: hidden;\r\n                white-space: nowrap;\r\n                text-overflow: ellipsis; \r\n                padding-top: 8px;\r\n\r\n                width: calc(#{$chatMessageAttachmentPdfSize} - 85px);\r\n\r\n                color: $chatMessageAttachmentLinkTextColor;\r\n\r\n                &:hover {\r\n                    text-decoration-line: underline;\r\n                }\r\n            }\r\n    \r\n            &-download {\r\n                font-size: 1.0em;\r\n                padding-top: 8px;\r\n                display: none;\r\n            }            \r\n        }\r\n    }\r\n}",
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-attachment {\r\n\r\n        &-border {\r\n            margin-left: 12px;\r\n            margin-bottom: 8px;                \r\n            border: 1px solid #DBDBDB;\r\n            border-radius: 2px;                \r\n        }\r\n\r\n        &-link {\r\n            width: $chatMessageAttachmentPdfWidth;\r\n\r\n            padding-left: 2px;\r\n            padding-right: 12px;\r\n\r\n            &-icon {\r\n                height: 49px;\r\n                width: 50px;\r\n                line-height: 49px;\r\n            }\r\n\r\n            &:hover {\r\n                cursor: pointer;\r\n            }              \r\n\r\n            &:hover &-download {\r\n                display: block;\r\n            }              \r\n\r\n            &-size {\r\n                font-family: IBM Plex Sans;\r\n                font-style: normal;\r\n                font-weight: normal;\r\n                font-size: 12px;\r\n                line-height: 16px;\r\n                color: #959CAD;\r\n            }\r\n\r\n            &-name {\r\n                font-family: IBM Plex Sans;\r\n                font-style: normal;\r\n                font-weight: normal;\r\n                font-size: 14px;\r\n                line-height: 18px;\r\n                overflow: hidden;\r\n                white-space: nowrap;\r\n                text-overflow: ellipsis; \r\n                padding-top: 8px;\r\n\r\n                width: calc(#{$chatMessageAttachmentPdfWidth} - 85px);\r\n\r\n                color: $chatMessageAttachmentLinkTextColor;\r\n\r\n                &:hover {\r\n                    text-decoration-line: underline;\r\n                }\r\n            }\r\n    \r\n            &-download {\r\n                font-size: 1.0em;\r\n                padding-top: 8px;\r\n                display: none;\r\n            }            \r\n        }\r\n    }\r\n}",
                     "styleUrl": "./chat-message-attachment-pdf-component.scss"
                 }
             ],
@@ -527,8 +527,147 @@
             "templateData": "    <div class=\"p-grid p-nogutter chat-message-attachment-link\" [ngClass]=\"{'chat-message-attachment-border': showBorder}\" >\r\n\r\n        <div class=\"p-col-fixed p-col-nogutter ui-border p-text-center\">\r\n            <div class=\"chat-message-attachment-link-icon pi pi-file-pdf\"></div>\r\n        </div>\r\n        <div class=\"p-col-fixed p-col-nogutter ui-border\">\r\n\r\n            <div class=\"p-d-flex p-flex-column\">\r\n                <div #attachmentName tooltipStyleClass=\"ui-tooltip-flex\" class=\"chat-message-attachment-link-name\" pTooltip=\"{{attachmentNameTooltip}}\" tooltipPosition=\"bottom\">{{getAttachmentName()}}</div>\r\n                <div class=\"chat-message-attachment-link-size\">{{attachment.size}}</div>\r\n            </div>\r\n\r\n        </div>\r\n        <div class=\"p-col p-col-nogutter ui-border p-text-center\">\r\n            <a style=\"float:right\" class=\"chat-message-attachment-link-download pi pi-download\" pTooltip=\"Download\" tooltipPosition=\"bottom\" href=\"{{attachment.url}}\" target=\"_blank\" download=\"{{attachment.url}}\"></a>\r\n        </div>        \r\n\r\n    </div>\r\n"
         },
         {
+            "name": "ChatMessageAttachmentVideoComponent",
+            "id": "component-ChatMessageAttachmentVideoComponent-f2beab4db44bdc91ad456d68309485f5",
+            "file": "src/stories/chat-message-attachment-video-component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-chat-message-attachment-video",
+            "styleUrls": [
+                "./chat-message-attachment-video-component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./chat-message-attachment-video-component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "attachment",
+                    "line": 20,
+                    "type": "ChatMessageAttachment"
+                },
+                {
+                    "name": "showBorder",
+                    "defaultValue": "false",
+                    "line": 23,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "attachmentName",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "attachmentType",
+                    "defaultValue": "\"video\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        132
+                    ]
+                },
+                {
+                    "name": "imageName",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'imageName'"
+                        }
+                    ]
+                },
+                {
+                    "name": "imageNameTooltip",
+                    "defaultValue": "\"\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "video",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'video'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getAttachmentName",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 49
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Input, ViewChild, ElementRef, Component, OnInit, AfterViewInit } from '@angular/core';\r\nimport { ChatMessageAttachment } from './chat-message-attachment';\r\n\r\n@Component({\r\n    selector: 'app-chat-message-attachment-video',\r\n    templateUrl: './chat-message-attachment-video-component.html',\r\n    styleUrls: ['./chat-message-attachment-video-component.scss']\r\n  })\r\n\r\nexport class ChatMessageAttachmentVideoComponent implements OnInit, AfterViewInit {\r\n    \r\n    readonly attachmentType:string = \"video\";\r\n\r\n    attachmentName: string = \"\";\r\n    imageNameTooltip:string = \"\";\r\n    @ViewChild('imageName') imageName: ElementRef;\r\n    @ViewChild('video') video: ElementRef;\r\n\r\n    @Input()\r\n    attachment: ChatMessageAttachment;\r\n\r\n    @Input() \r\n    showBorder: boolean = false;\r\n\r\n    constructor() {\r\n    }\r\n\r\n    //\r\n    // function   : component initialisation event handler\r\n    //\r\n    // parameters : none.\r\n    //\r\n    // returns    : none.\r\n    //    \r\n    ngOnInit() {\r\n\r\n    }\r\n\r\n    ngAfterViewInit() {\r\n      let imageNameElement: HTMLDivElement = this.imageName.nativeElement;\r\n      if (imageNameElement.scrollWidth > imageNameElement.clientWidth) {\r\n        this.imageNameTooltip = this.getAttachmentName();\r\n      }\r\n      //enable video controls\r\n      let videoNativeElement:HTMLMediaElement = this.video.nativeElement;\r\n      videoNativeElement.controls = true;\r\n    }\r\n\r\n    getAttachmentName() {\r\n      if (!this.attachmentName) {\r\n        let parts:string[] = this.attachment.url.split('/');\r\n        this.attachmentName = parts[parts.length-1];\r\n      }\r\n      return (this.attachmentName);\r\n    }\r\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    width: 400px;\r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-attachment {\r\n        \r\n        &-border {\r\n            padding-top: 8px;\r\n            margin-left: 12px;\r\n            margin-bottom: 8px;                \r\n            border: 1px solid #DBDBDB;\r\n            border-radius: 2px;   \r\n            width: calc(#{$chatMessageAttachmentVideoWidth} + (2 * #{$margin}) + 2px);\r\n        }        \r\n        \r\n        &-video {\r\n            border-radius: 2px; \r\n            width: $chatMessageAttachmentVideoWidth; \r\n            //object-fit: cover;\r\n            margin-left:12px;\r\n            margin-right: 12px;\r\n            display:block;\r\n\r\n            &-link {\r\n                width: calc(#{$chatMessageAttachmentVideoWidth} + 25px);\r\n                padding-left: 12px;\r\n                padding-top: 8px;\r\n                padding-bottom: 8px;\r\n                padding-right: 12px;\r\n\r\n                &:hover {\r\n                    cursor: pointer;\r\n                }              \r\n\r\n                &:hover &-download {\r\n                    display: block;\r\n                }              \r\n\r\n                &-name {\r\n                    font-family: IBM Plex Sans;\r\n                    font-style: normal;\r\n                    font-weight: normal;\r\n                    font-size: 14px;\r\n                    line-height: 18px;\r\n                    overflow: hidden;\r\n                    white-space: nowrap;\r\n                    text-overflow: ellipsis; \r\n                    \r\n                    width: calc(#{$chatMessageAttachmentVideoWidth} - 30px);\r\n\r\n                    color: $chatMessageAttachmentLinkTextColor;\r\n\r\n                    &:hover {\r\n                        text-decoration-line: underline;\r\n                    }\r\n                }\r\n        \r\n                &-download {\r\n                    font-size: 1.0em;\r\n                    display: none;\r\n                }            \r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./chat-message-attachment-video-component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 23
+            },
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"p-col p-col-nogutter ui-border\" [ngClass]=\"{'chat-message-attachment-border': showBorder}\" >\r\n\r\n    <div class=\"p-grid p-nogutter p-flex-column\">\r\n    \r\n        <div class=\"p-col p-col-nogutter ui-border\">\r\n            <video #video controls controlsList=\"nodownload\" class=\"chat-message-attachment-video\">\r\n                <source src=\"{{attachment.url}}\" type=\"{{attachment.mime}}\">\r\n            </video>\r\n        </div>\r\n\r\n        <div class=\"p-d-flex p-jc-between chat-message-attachment-video-link\">\r\n            \r\n            <div class=\"p-d-flex p-flex-column\">\r\n                <div #imageName tooltipStyleClass=\"ui-tooltip-flex\" class=\"chat-message-attachment-video-link-name\" pTooltip=\"{{imageNameTooltip}}\" tooltipPosition=\"bottom\">{{getAttachmentName()}}</div>\r\n                <div class=\"chat-message-attachment-link-size\">{{attachment.size}}</div>\r\n            </div>\r\n\r\n            <div class=\"p-col p-col-nogutter ui-border p-text-center\">\r\n                <a style=\"float:right\" class=\"chat-message-attachment-video-link-download pi pi-download\" pTooltip=\"Download\" tooltipPosition=\"bottom\" href=\"{{attachment.url}}\" target=\"_blank\" download=\"{{attachment.url}}\"></a>\r\n            </div> \r\n        </div>\r\n    </div>\r\n</div>\r\n"
+        },
+        {
             "name": "ChatMessageComponent",
-            "id": "component-ChatMessageComponent-a783366b68fb93b99f19f8c09a1b577f",
+            "id": "component-ChatMessageComponent-0770e2cfe2d484444f9acf436c54b9d5",
             "file": "src/stories/chat-message-component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -547,37 +686,37 @@
             "inputsClass": [
                 {
                     "name": "attachments",
-                    "line": 46,
+                    "line": 47,
                     "type": "ChatMessageAttachment[]"
                 },
                 {
                     "name": "message",
                     "defaultValue": "\"\"",
-                    "line": 37,
+                    "line": 38,
                     "type": "string"
                 },
                 {
                     "name": "myobj",
                     "defaultValue": "{}",
                     "description": "<p>control inputs</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "object"
                 },
                 {
                     "name": "name",
                     "defaultValue": "\"james\"",
-                    "line": 34,
+                    "line": 35,
                     "type": "string"
                 },
                 {
                     "name": "status",
-                    "line": 43,
+                    "line": 44,
                     "type": "\"sending\" | \"sent\" | \"delivered\" | \"seen\" | \"failed\""
                 },
                 {
                     "name": "type",
                     "defaultValue": "'customer'",
-                    "line": 40,
+                    "line": 41,
                     "type": "\"customer\" | \"agent\" | \"auto\""
                 }
             ],
@@ -585,13 +724,13 @@
                 {
                     "name": "onRetry",
                     "defaultValue": "new EventEmitter<any>()",
-                    "line": 49,
+                    "line": 50,
                     "type": "EventEmitter"
                 },
                 {
                     "name": "showImageViewer",
                     "defaultValue": "new EventEmitter<any>()",
-                    "line": 52,
+                    "line": 53,
                     "type": "EventEmitter"
                 }
             ],
@@ -602,14 +741,14 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 23
                 },
                 {
                     "name": "attachmentHost",
                     "type": "AttachmentDirective",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -623,7 +762,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 27
                 },
                 {
                     "name": "chatMessageMsgClass",
@@ -631,7 +770,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 55
+                    "line": 56
                 },
                 {
                     "name": "chatMessageMsgTextClass",
@@ -639,7 +778,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 26
                 },
                 {
                     "name": "chatMessageNameRightClass",
@@ -647,7 +786,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 56
+                    "line": 57
                 },
                 {
                     "name": "chatMessageStatusMessageClass",
@@ -655,7 +794,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 59
                 },
                 {
                     "name": "chatMessageStatusPositionClass",
@@ -663,7 +802,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 57
+                    "line": 58
                 },
                 {
                     "name": "initial",
@@ -671,7 +810,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 55
                 },
                 {
                     "name": "injector",
@@ -679,7 +818,7 @@
                     "type": "Injector",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 24
                 },
                 {
                     "name": "numAttachments",
@@ -687,14 +826,14 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 25
                 },
                 {
                     "name": "stateStartDate",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 60
+                    "line": 61
                 },
                 {
                     "name": "statusMessage",
@@ -702,7 +841,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 59
+                    "line": 60
                 },
                 {
                     "name": "timeInStateCount",
@@ -710,7 +849,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 62
+                    "line": 63
                 },
                 {
                     "name": "timeInStateDisplay",
@@ -718,7 +857,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 61
+                    "line": 62
                 },
                 {
                     "name": "timeInStateTimer",
@@ -726,7 +865,7 @@
                     "type": "any",
                     "optional": false,
                     "description": "",
-                    "line": 63
+                    "line": 64
                 }
             ],
             "methodsClass": [
@@ -745,7 +884,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 203,
+                    "line": 204,
                     "jsdoctags": [
                         {
                             "name": "currentAttachments",
@@ -769,7 +908,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 363
+                    "line": 400
                 },
                 {
                     "name": "ngOnChanges",
@@ -782,7 +921,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 76,
                     "jsdoctags": [
                         {
                             "name": "changes",
@@ -799,7 +938,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 357
+                    "line": 394
                 },
                 {
                     "name": "ngOnInit",
@@ -807,7 +946,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 342
+                    "line": 379
                 },
                 {
                     "name": "refreshChatMessageMsgClass",
@@ -824,7 +963,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 115,
+                    "line": 116,
                     "jsdoctags": [
                         {
                             "name": "type",
@@ -857,7 +996,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 141,
+                    "line": 142,
                     "jsdoctags": [
                         {
                             "name": "type",
@@ -881,7 +1020,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 131
+                    "line": 132
                 },
                 {
                     "name": "removeAllAttachment",
@@ -889,7 +1028,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 182
+                    "line": 183
                 },
                 {
                     "name": "restartTimer",
@@ -897,7 +1036,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 312
+                    "line": 349
                 },
                 {
                     "name": "showAttachments",
@@ -910,7 +1049,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 214,
+                    "line": 215,
                     "jsdoctags": [
                         {
                             "name": "attachments",
@@ -927,7 +1066,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 317
+                    "line": 354
                 },
                 {
                     "name": "statusMessageClick",
@@ -935,7 +1074,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 175
+                    "line": 176
                 },
                 {
                     "name": "stopTimer",
@@ -943,7 +1082,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 328
+                    "line": 365
                 }
             ],
             "hostBindings": [],
@@ -951,11 +1090,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, ComponentRef, Component, ViewChild, Injector, ReflectiveInjector, ComponentFactoryResolver, OnInit, OnDestroy, Input, Output, EventEmitter, SimpleChanges, NgZone } from '@angular/core';\nimport { formatDate } from '@angular/common';\n\nimport { AttachmentDirective } from './chat-message-attachment-directive';\nimport { ChatMessageAttachmentImageComponent } from './chat-message-attachment-image-component';\nimport { ChatMessageAttachmentPdfComponent } from './chat-message-attachment-pdf-component';\nimport { ChatMessageAttachmentMultiImageComponent } from './chat-message-attachment-multi-image-component';\nimport { ChatMessageAttachment } from './chat-message-attachment'\n\n@Component({\n    selector: 'app-chat-message',\n    templateUrl: './chat-message-component.html',\n    styleUrls: ['./chat-message-component.scss']\n  })\n\n  export class ChatMessageComponent implements OnInit, AfterViewInit, OnDestroy {\n\n    //reference the underlying attachment component object\n    @ViewChild(AttachmentDirective, {static: true}) attachmentHost: AttachmentDirective;\n\n    //this is our array of attachment components components\n    attachmentComponentRefs = <ComponentRef<any>>{};\n    injector: Injector = null;  \n    numAttachments: number = 0;\n    chatMessageMsgTextClass: string = \"\";\n    chatMessageClass: string = \"chat-message-default-width\";\n    /**\n     * control inputs\n     */\n    @Input()\n    myobj: object = {};\n\n    @Input()\n    name: string = \"james\"; \n\n    @Input()\n    message: string = \"\";\n\n    @Input()\n    type : 'customer' | 'agent' | 'auto' = 'customer';\n\n    @Input()\n    status : 'sending' | 'sent' | 'delivered' | 'seen' | 'failed';\n\n    @Input()\n    attachments: ChatMessageAttachment[];\n\n    @Output()\n    onRetry = new EventEmitter<any>();\n\n    @Output()\n    showImageViewer = new EventEmitter<any>();\n\n    initial: string = \"\";\n    chatMessageMsgClass:string = \"\";\n    chatMessageNameRightClass: string =\"\";\n    chatMessageStatusPositionClass: string = \"\";\n    chatMessageStatusMessageClass: string = \"\";    \n    statusMessage: string = \"\";\n    stateStartDate: string;\n    timeInStateDisplay: string = \"Now\";\n    timeInStateCount: number = 0;\n    timeInStateTimer: any = null;\n\n    constructor(private ngZone: NgZone, private componentFactoryResolver: ComponentFactoryResolver) {\n    }\n\n    //\n    // function   : monitor for property changes\n    //\n    // parameters : changes - property change object\n    //\n    // returns    : none.\n    //    \n    ngOnChanges (changes: SimpleChanges) {\n      for (const propName in changes) {\n        switch (propName) {\n\n          case \"name\":\n            this.initial = changes[propName].currentValue ? changes[propName].currentValue[0].toUpperCase() : \"\";            \n            break;\n\n          case \"status\":\n            //only refresh if not customer message\n            if (this.type!=='customer') {\n              this.restartTimer();\n              this.refreshStatusMessage(this.type, changes[propName].currentValue);\n              this.refreshChatMessageMsgClass(this.type, changes[propName].currentValue);                        \n            }\n            break;\n\n          case \"type\":\n            this.restartTimer();\n            switch(changes[propName].currentValue) {\n              case \"customer\":\n                this.initial = this.name ? this.name[0].toUpperCase() : \"\";\n                this.chatMessageStatusPositionClass  = \"chat-message-status-left\";\n                break;\n              case \"agent\":\n                this.initial = this.name ? this.name[0].toUpperCase() : \"\";\n                this.chatMessageStatusPositionClass = \"chat-message-status-right\";\n                break;\n              case \"auto\":\n                this.initial = \"A\";\n                this.chatMessageStatusPositionClass = \"chat-message-status-right\";\n                break;\n            }\n            this.refreshStatusMessage(changes[propName].currentValue, this.status);\n            this.refreshChatMessageMsgClass(changes[propName].currentValue, this.status);            \n            break;\n        }\n      }\n    }\n\n    refreshChatMessageMsgClass(type, status) {\n      switch (type) {\n        case \"customer\":\n          this.chatMessageMsgClass = \"chat-message-msg-customer\";          \n          break;\n        case \"agent\":\n          this.chatMessageMsgClass = status === \"failed\" ? \"chat-message-msg-agent-failed\" : \"chat-message-msg-agent\";\n          this.chatMessageNameRightClass = status === \"failed\" ? \"chat-message-name-agent-failed\" : \"chat-message-name-agent\";          \n          break;\n        case \"auto\":   \n          this.chatMessageMsgClass = status === \"failed\" ? \"chat-message-msg-auto-failed\" : \"chat-message-msg-auto\";\n          this.chatMessageNameRightClass = status === \"failed\" ? \"chat-message-name-auto-failed\" : \"chat-message-name-auto\";                          \n          break;\n      }\n    }\n\n    refreshTimeInStateDisplay() {\n      if (this.timeInStateCount === 0) {\n        this.timeInStateDisplay = \"Now\";\n      } else if (this.timeInStateCount < 60) {\n        this.timeInStateDisplay = this.timeInStateCount + \"s ago\";\n      } else {\n        this.timeInStateDisplay = Math.floor(this.timeInStateCount/60).toString() + \"m ago\";        \n      }\n    }\n\n    refreshStatusMessage(type, status) {\n      //reset time in state\n      this.stateStartDate = formatDate(new Date(), \"MMM d, y 'at' h:mma\", 'en');\n      this.timeInStateCount = 0;\n      this.refreshTimeInStateDisplay();\n\n      if (type===\"customer\") {\n        this.statusMessage = \"\";\n      } else {\n        switch (status) {\n          case \"sending\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-sending\";\n            this.statusMessage = \"Sending...\";\n            break;\n          case \"sent\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-sent\";            \n            this.statusMessage = \"Sent\";\n            break;\n          case \"delivered\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-delivered\";            \n            this.statusMessage = \"Delivered\";\n            break;\n          case \"seen\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-seen\";            \n            this.statusMessage = \"Seen\";\n            break;\n          case \"failed\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-failed\";            \n            this.statusMessage = \"Failed to send. Click to retry\";                  \n            break;\n        }\n      }    \n    }\n\n    statusMessageClick() {\n      //only valid in failed state\n      if (this.status==='failed') {\n        this.onRetry.emit({});\n      }\n    }\n\n    removeAllAttachment() {\n      let i:number = 0;      \n      //delete current attactments, unsubscribe any event handlers\n      let componentRefCount:number = Object.keys(this.attachmentComponentRefs).length;\n      for (i=0; i < componentRefCount; i++) {\n        switch (this.attachmentComponentRefs[i].instance.attachmentType) {\n          case \"multi-image\":\n            (this.attachmentComponentRefs[i].instance as ChatMessageAttachmentMultiImageComponent).showImageViewer.unsubscribe();\n            break;\n          case \"image\":\n          case \"pdf\":\n            break;\n        }\n      }\n      this.attachmentHost.viewContainerRef.clear();\n      this.attachmentComponentRefs = <ComponentRef<any>>{};\n\n      //reset attachment count\n      this.numAttachments = 0;      \n    }\n\n    alreadyExist(currentAttachments, newUrl) {\n      let exists = false;\n      for (let i=0; i < currentAttachments.length; i++) {\n        if (currentAttachments.url===newUrl) {\n          exists = true;\n          break;\n        }\n      }\n      return (exists);\n    }\n\n    showAttachments(attachments:ChatMessageAttachment[]) {\n      let i:number = 0;\n     \n      //as we are creating the component dynamically we have to \n      //inject the service object each time we create a new task component\n      /*\n      this.injector = ReflectiveInjector.resolveAndCreate(\n        [{\n          provide: 'rostrvmService', \n          useValue: this.rostrvmService\n        }]);      \n      */\n\n      //monitor for changes in task list\n      let componentFactory, imageAttachments:ChatMessageAttachment[] = [];\n   \n      //in the case of images attachment, 3 and less are shown individually, more\n      //than 3 are shown as a group and link to carousel viewer\n      for (i = attachments.length - 1; i >= 0; i--) {\n        let parts = this.attachments[i].url.split('.');\n\n        //user either the mime type or file extension to workout the attchment type\n        switch (this.attachments[i].mimeType || parts[parts.length-1]) { \n          case \"image/png\":\n          case \"png\":\n          case \"image/jpeg\":\n          case \"jpeg\":\n          case \"image/bmp\":\n          case \"bmp\":\n              imageAttachments.push({ \n                \"url\": attachments[i].url,\n                \"size\": attachments[i].size,\n                \"mimeType\": attachments[i].mimeType, \n              })\n              break;\n        }\n      }\n\n      //more than 3 images?\n      if (imageAttachments.length > 3) {\n        //create image group attachment\n        componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentMultiImageComponent);\n        const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n        // add reference for newly created component\n        this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n        //tell the component its attachment\n        componentRef.instance['images'] = imageAttachments;\n        //need to subscribe to show event viewer request\n        (componentRef.instance as ChatMessageAttachmentMultiImageComponent).showImageViewer.subscribe((images) => {\n          this.showImageViewer.emit(images);\n        })\n        //if there is only a single multi-image attachment then size message text width to image width\n        if (attachments.length===imageAttachments.length) {\n          this.chatMessageClass = \"chat-message-image-width\";\n        }\n      } \n      \n      //process other attachments individually, including images if less than 3\n      for (i = 0; i < attachments.length; i++) {\n        let parts = attachments[i].url.split('.');\n        componentFactory = null;\n        \n        switch (parts[parts.length-1]) {\n          case \"png\":\n          case \"jpeg\":\n            //only process if 3 or less images  \n            if (imageAttachments.length <= 3) {\n              componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentImageComponent);\n              const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n              // add reference for newly created component\n              this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n              //tell the component its attachment\n              componentRef.instance['attachment'] = attachments[i];\n              //if there is only a single image attachment, size message text width to image width\n              if (attachments.length===1) {\n                this.chatMessageClass = \"chat-message-image-width\";\n              }\n              //if there is more than one individual attachment then show borders around them\n              componentRef.instance['showBorder'] = \n                (imageAttachments.length===2) || \n                (imageAttachments.length===3) ||\n                attachments.length > imageAttachments.length;\n            }\n            break;\n\n          case \"pdf\":\n            componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentPdfComponent);\n            const componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n            // add reference for newly created component\n            this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n            //tell the component its attachment\n            componentRef.instance['attachment'] = this.attachments[i];            \n            componentRef.instance['showBorder'] = this.message!=='';\n            break;\n        }\n      }\n    }\n\n    restartTimer() {\n      this.stopTimer();\n      this.startTimer();\n    }\n\n    startTimer() {\n      //make sure time runs inside zone so angular \n      //angular change detection works and the UI is refreshed\n      this.ngZone.run(()=> {\n        this.timeInStateTimer = setInterval(() => {   \n          this.timeInStateCount++;\n          this.refreshTimeInStateDisplay();\n        }, 1000);\n      }) \n    }\n\n    stopTimer() {\n      if (this.timeInStateTimer) {\n        clearInterval(this.timeInStateTimer);\n        this.timeInStateTimer = null;\n      }\n    }\n\n    //\n    // function   : component initialisation event handler\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    ngOnInit() {\n      //do we have any attachments?\n      if (this.attachments) {\n        this.showAttachments(this.attachments);\n      }      \n    }\n\n    //\n    // function   : called as the component is being destroyed. Clean-up\n    //              any subscription and event handler bindings\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //     \n    ngOnDestroy() {\n      //make sure timer is stopped\n      this.stopTimer();\n      this.removeAllAttachment();\n    }\n\n    ngAfterViewInit() {\n      //determine the attachment padding if no message is present\n      if (this.message==='') {\n        if (this.attachments && (this.attachments[0].url.indexOf(\".pdf\") < 0)) {\n          this.chatMessageMsgTextClass = \"chat-message-msg-no-text\";\n        }\n      } else {\n        this.chatMessageMsgTextClass = \"chat-message-msg-text\";\n      }\n    }\n}",
+            "sourceCode": "import { AfterViewInit, ComponentRef, Component, ViewChild, Injector, ReflectiveInjector, ComponentFactoryResolver, OnInit, OnDestroy, Input, Output, EventEmitter, SimpleChanges, NgZone } from '@angular/core';\nimport { formatDate } from '@angular/common';\n\nimport { AttachmentDirective } from './chat-message-attachment-directive';\nimport { ChatMessageAttachmentImageComponent } from './chat-message-attachment-image-component';\nimport { ChatMessageAttachmentPdfComponent } from './chat-message-attachment-pdf-component';\nimport { ChatMessageAttachmentMultiImageComponent } from './chat-message-attachment-multi-image-component';\nimport { ChatMessageAttachmentVideoComponent } from './chat-message-attachment-video-component';\nimport { ChatMessageAttachment } from './chat-message-attachment'\n\n@Component({\n    selector: 'app-chat-message',\n    templateUrl: './chat-message-component.html',\n    styleUrls: ['./chat-message-component.scss']\n  })\n\n  export class ChatMessageComponent implements OnInit, AfterViewInit, OnDestroy {\n\n    //reference the underlying attachment component object\n    @ViewChild(AttachmentDirective, {static: true}) attachmentHost: AttachmentDirective;\n\n    //this is our array of attachment components components\n    attachmentComponentRefs = <ComponentRef<any>>{};\n    injector: Injector = null;  \n    numAttachments: number = 0;\n    chatMessageMsgTextClass: string = \"\";\n    chatMessageClass: string = \"chat-message-default-width\";\n    /**\n     * control inputs\n     */\n    @Input()\n    myobj: object = {};\n\n    @Input()\n    name: string = \"james\"; \n\n    @Input()\n    message: string = \"\";\n\n    @Input()\n    type : 'customer' | 'agent' | 'auto' = 'customer';\n\n    @Input()\n    status : 'sending' | 'sent' | 'delivered' | 'seen' | 'failed';\n\n    @Input()\n    attachments: ChatMessageAttachment[];\n\n    @Output()\n    onRetry = new EventEmitter<any>();\n\n    @Output()\n    showImageViewer = new EventEmitter<any>();\n\n    initial: string = \"\";\n    chatMessageMsgClass:string = \"\";\n    chatMessageNameRightClass: string =\"\";\n    chatMessageStatusPositionClass: string = \"\";\n    chatMessageStatusMessageClass: string = \"\";    \n    statusMessage: string = \"\";\n    stateStartDate: string;\n    timeInStateDisplay: string = \"Now\";\n    timeInStateCount: number = 0;\n    timeInStateTimer: any = null;\n\n    constructor(private ngZone: NgZone, private componentFactoryResolver: ComponentFactoryResolver) {\n    }\n\n    //\n    // function   : monitor for property changes\n    //\n    // parameters : changes - property change object\n    //\n    // returns    : none.\n    //    \n    ngOnChanges (changes: SimpleChanges) {\n      for (const propName in changes) {\n        switch (propName) {\n\n          case \"name\":\n            this.initial = changes[propName].currentValue ? changes[propName].currentValue[0].toUpperCase() : \"\";            \n            break;\n\n          case \"status\":\n            //only refresh if not customer message\n            if (this.type!=='customer') {\n              this.restartTimer();\n              this.refreshStatusMessage(this.type, changes[propName].currentValue);\n              this.refreshChatMessageMsgClass(this.type, changes[propName].currentValue);                        \n            }\n            break;\n\n          case \"type\":\n            this.restartTimer();\n            switch(changes[propName].currentValue) {\n              case \"customer\":\n                this.initial = this.name ? this.name[0].toUpperCase() : \"\";\n                this.chatMessageStatusPositionClass  = \"chat-message-status-left\";\n                break;\n              case \"agent\":\n                this.initial = this.name ? this.name[0].toUpperCase() : \"\";\n                this.chatMessageStatusPositionClass = \"chat-message-status-right\";\n                break;\n              case \"auto\":\n                this.initial = \"A\";\n                this.chatMessageStatusPositionClass = \"chat-message-status-right\";\n                break;\n            }\n            this.refreshStatusMessage(changes[propName].currentValue, this.status);\n            this.refreshChatMessageMsgClass(changes[propName].currentValue, this.status);            \n            break;\n        }\n      }\n    }\n\n    refreshChatMessageMsgClass(type, status) {\n      switch (type) {\n        case \"customer\":\n          this.chatMessageMsgClass = \"chat-message-msg-customer\";          \n          break;\n        case \"agent\":\n          this.chatMessageMsgClass = status === \"failed\" ? \"chat-message-msg-agent-failed\" : \"chat-message-msg-agent\";\n          this.chatMessageNameRightClass = status === \"failed\" ? \"chat-message-name-agent-failed\" : \"chat-message-name-agent\";          \n          break;\n        case \"auto\":   \n          this.chatMessageMsgClass = status === \"failed\" ? \"chat-message-msg-auto-failed\" : \"chat-message-msg-auto\";\n          this.chatMessageNameRightClass = status === \"failed\" ? \"chat-message-name-auto-failed\" : \"chat-message-name-auto\";                          \n          break;\n      }\n    }\n\n    refreshTimeInStateDisplay() {\n      if (this.timeInStateCount === 0) {\n        this.timeInStateDisplay = \"Now\";\n      } else if (this.timeInStateCount < 60) {\n        this.timeInStateDisplay = this.timeInStateCount + \"s ago\";\n      } else {\n        this.timeInStateDisplay = Math.floor(this.timeInStateCount/60).toString() + \"m ago\";        \n      }\n    }\n\n    refreshStatusMessage(type, status) {\n      //reset time in state\n      this.stateStartDate = formatDate(new Date(), \"MMM d, y 'at' h:mma\", 'en');\n      this.timeInStateCount = 0;\n      this.refreshTimeInStateDisplay();\n\n      if (type===\"customer\") {\n        this.statusMessage = \"\";\n      } else {\n        switch (status) {\n          case \"sending\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-sending\";\n            this.statusMessage = \"Sending...\";\n            break;\n          case \"sent\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-sent\";            \n            this.statusMessage = \"Sent\";\n            break;\n          case \"delivered\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-delivered\";            \n            this.statusMessage = \"Delivered\";\n            break;\n          case \"seen\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-seen\";            \n            this.statusMessage = \"Seen\";\n            break;\n          case \"failed\":\n            this.chatMessageStatusMessageClass = \"chat-message-status-message-failed\";            \n            this.statusMessage = \"Failed to send. Click to retry\";                  \n            break;\n        }\n      }    \n    }\n\n    statusMessageClick() {\n      //only valid in failed state\n      if (this.status==='failed') {\n        this.onRetry.emit({});\n      }\n    }\n\n    removeAllAttachment() {\n      let i:number = 0;      \n      //delete current attactments, unsubscribe any event handlers\n      let componentRefCount:number = Object.keys(this.attachmentComponentRefs).length;\n      for (i=0; i < componentRefCount; i++) {\n        switch (this.attachmentComponentRefs[i].instance.attachmentType) {\n          case \"multi-image\":\n            (this.attachmentComponentRefs[i].instance as ChatMessageAttachmentMultiImageComponent).showImageViewer.unsubscribe();\n            break;\n          case \"image\":\n          case \"pdf\":\n            break;\n        }\n      }\n      this.attachmentHost.viewContainerRef.clear();\n      this.attachmentComponentRefs = <ComponentRef<any>>{};\n\n      //reset attachment count\n      this.numAttachments = 0;      \n    }\n\n    alreadyExist(currentAttachments, newUrl) {\n      let exists = false;\n      for (let i=0; i < currentAttachments.length; i++) {\n        if (currentAttachments.url===newUrl) {\n          exists = true;\n          break;\n        }\n      }\n      return (exists);\n    }\n\n    showAttachments(attachments:ChatMessageAttachment[]) {\n      let i:number = 0;\n     \n      //as we are creating the component dynamically we have to \n      //inject the service object each time we create a new task component\n      /*\n      this.injector = ReflectiveInjector.resolveAndCreate(\n        [{\n          provide: 'rostrvmService', \n          useValue: this.rostrvmService\n        }]);      \n      */\n\n      //monitor for changes in task list\n      let componentFactory, imageAttachments:ChatMessageAttachment[] = [], componentRef;\n   \n      //in the case of images attachment, 3 and less are shown individually, more\n      //than 3 are shown as a group and link to carousel viewer\n      for (i = attachments.length - 1; i >= 0; i--) {\n        let parts = this.attachments[i].url.split('.');\n\n        //user either the mime type or file extension to workout the attchment type\n        switch (this.attachments[i].mimeType || parts[parts.length-1]) { \n          case \"image/png\":\n          case \"png\":\n          case \"image/jpeg\":\n          case \"jpeg\":\n          case \"image/bmp\":\n          case \"bmp\":\n              imageAttachments.push({ \n                \"url\": attachments[i].url,\n                \"size\": attachments[i].size,\n                \"mimeType\": attachments[i].mimeType, \n              })\n              break;\n        }\n      }\n\n      //more than 3 images?\n      if (imageAttachments.length > 3) {\n        //create image group attachment\n        componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentMultiImageComponent);\n        componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n        // add reference for newly created component\n        this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n        //tell the component its attachment\n        componentRef.instance['images'] = imageAttachments;\n        //need to subscribe to show event viewer request\n        (componentRef.instance as ChatMessageAttachmentMultiImageComponent).showImageViewer.subscribe((images) => {\n          this.showImageViewer.emit(images);\n        })\n        //if there is only a single multi-image attachment then size message text width to image width\n        if (attachments.length===imageAttachments.length) {\n          this.chatMessageClass = \"chat-message-image-width\";\n        }\n        //if there is more than one individual attachment then show borders around them\n        componentRef.instance['showBorder'] = attachments.length > imageAttachments.length;        \n      } \n      \n      //process other attachments individually, including images if less than 3\n      for (i = 0; i < attachments.length; i++) {\n        let parts = attachments[i].url.split('.');\n        componentFactory = null, componentRef = null;;\n        \n        switch (parts[parts.length-1]) {\n          case \"png\":\n          case \"jpeg\":\n            //only process if 3 or less images  \n            if (imageAttachments.length <= 3) {\n              componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentImageComponent);\n              componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n              // add reference for newly created component\n              this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n              //tell the component its attachment\n              componentRef.instance['attachment'] = attachments[i];\n              //if there is only a single image attachment, size message text width to image width\n              if (attachments.length===1) {\n                this.chatMessageClass = \"chat-message-image-width\";\n              }\n              //if there is more than one individual attachment then show borders around them\n              componentRef.instance['showBorder'] = \n                (imageAttachments.length===2) || \n                (imageAttachments.length===3) ||\n                attachments.length > imageAttachments.length;\n            }\n            break;\n\n          case \"pdf\":\n            componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentPdfComponent);\n            componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n            // add reference for newly created component\n            this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n            //tell the component its attachment\n            componentRef.instance['attachment'] = this.attachments[i];            \n            componentRef.instance['showBorder'] = this.message!=='';\n              //if there is only a single image attachment, size message text width to image width\n              if (attachments.length===1) {\n                this.chatMessageClass = \"chat-message-pdf-width\";\n              }            \n            break;\n\n          case \"flv\":\n          case \"video/x-flv\":\n          case \"mp4\":\n          case \"video/mp4\":\n          case \"m3u8\":\n          case \"application/x-mpegURL\":\n          case \".ts\":\n          case \"video/MP2T\":\n          case \"3gp\":\n          case \"video/3gpp\":\n          case \"mov\":\n          case \"video/quicktime\":\n          case \"avi\":\n          case \"video/x-msvideo\":\n          case \"wmv\":\n          case \"video/x-ms-wmv\":\n            componentFactory = this.componentFactoryResolver.resolveComponentFactory(ChatMessageAttachmentVideoComponent);\n            componentRef = this.attachmentHost.viewContainerRef.createComponent(componentFactory,0,this.injector);\n            // add reference for newly created component\n            this.attachmentComponentRefs[this.numAttachments++] = componentRef;\n            //tell the component its attachment\n            componentRef.instance['attachment'] = attachments[i];\n            //if there is only a single image attachment, size message text width to image width\n            if (attachments.length===1) {\n              //this.chatMessageClass = \"chat-message-image-width\";\n            }\n            //if there is more than one individual attachment then show borders around them\n            componentRef.instance['showBorder'] = attachments.length > 1;            \n            break;\n        }\n      }\n    }\n\n    restartTimer() {\n      this.stopTimer();\n      this.startTimer();\n    }\n\n    startTimer() {\n      //make sure time runs inside zone so angular \n      //angular change detection works and the UI is refreshed\n      this.ngZone.run(()=> {\n        this.timeInStateTimer = setInterval(() => {   \n          this.timeInStateCount++;\n          this.refreshTimeInStateDisplay();\n        }, 1000);\n      }) \n    }\n\n    stopTimer() {\n      if (this.timeInStateTimer) {\n        clearInterval(this.timeInStateTimer);\n        this.timeInStateTimer = null;\n      }\n    }\n\n    //\n    // function   : component initialisation event handler\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //    \n    ngOnInit() {\n      //do we have any attachments?\n      if (this.attachments) {\n        this.showAttachments(this.attachments);\n      }      \n    }\n\n    //\n    // function   : called as the component is being destroyed. Clean-up\n    //              any subscription and event handler bindings\n    //\n    // parameters : none.\n    //\n    // returns    : none.\n    //     \n    ngOnDestroy() {\n      //make sure timer is stopped\n      this.stopTimer();\n      this.removeAllAttachment();\n    }\n\n    ngAfterViewInit() {\n      //determine the attachment padding if no message is present\n      if (this.message==='') {\n        if (this.attachments && (this.attachments[0].url.indexOf(\".pdf\") < 0)) {\n          this.chatMessageMsgTextClass = \"chat-message-msg-no-text\";\n        }\n      } else {\n        this.chatMessageMsgTextClass = \"chat-message-msg-text\";\n      }\n    }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.p-col-fixed {\r\n    padding:0px;\r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-default-width {\r\n        width: $chatMessageComponentDefaultWidth;\r\n    }\r\n\r\n    &-image-width {\r\n        width: $chatMessageComponentImageWidth;\r\n    }\r\n\r\n    &-status {\r\n        margin-top:-13px;\r\n        font-family: IBM Plex Sans;\r\n        font-style: normal;\r\n        font-weight: normal;\r\n        font-size: 12px; \r\n        line-height: 16px;\r\n        height: 16px;\r\n\r\n        &-left {\r\n            float: left;\r\n        }\r\n\r\n        &-right {\r\n            float: right;\r\n        }\r\n\r\n        &-time-in-state {\r\n            color: $chatMessageStatusTimeInStateTextColor;\r\n            cursor: pointer;\r\n        }\r\n\r\n        &-message-sending {\r\n            color: $chatMessageStatusMessageSendingTextColor;\r\n        }\r\n\r\n        &-message-sent {\r\n            color: $chatMessageStatusMessageSentTextColor;\r\n        }\r\n\r\n        &-message-delivered {\r\n            color: $chatMessageStatusMessageDeliveredTextColor;\r\n        }\r\n\r\n        &-message-seen {\r\n            color: $chatMessageStatusMessageSeenTextColor;\r\n        }\r\n\r\n        &-message-failed {\r\n            color: $chatMessageStatusMessageFailedTextColor;\r\n            cursor: pointer;\r\n\r\n\r\n            &:hover {\r\n                text-decoration: underline;\r\n            }\r\n        }\r\n\r\n    }\r\n    &-name {\r\n        width: $chatMessageNamePlateSize;\r\n        height: $chatMessageNamePlateSize;\r\n        line-height: $chatMessageNamePlateSize;\r\n        border-radius: 4px;\r\n        font-family: IBM Plex Sans;\r\n        font-style: normal;\r\n        font-weight: 600;\r\n        font-size: 24px;\r\n        text-align: center;\r\n        padding-top: 8px;\r\n\r\n        &-customer {\r\n            border-radius: 4px;            \r\n            background-color: $chatMessageCustomerNameBgColor;\r\n            border-color: $chatMessageCustomerNameBorderColor;\r\n            color: $chatMessageCustomerNameTextColor;\r\n        }\r\n\r\n        &-agent {\r\n            border-radius: 4px;\r\n            background-color: $chatMessageAgentNameBgColor;\r\n            border-color: $chatMessageAgentNameBorderColor ;            \r\n            color: $chatMessageAgentNameTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAgentNameBgColorFailed;\r\n                border-color: $chatMessageAgentNameBorderColorFailed;\r\n                color: $chatMessageAgentNameTextColorFailed;\r\n            }\r\n        }\r\n\r\n        &-auto {\r\n            border-radius: 4px;            \r\n            background-color: $chatMessageAutoNameBgColor;\r\n            border-color: $chatMessageAutoNameBorderColor;\r\n            color: $chatMessageAutoNameTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAutoNameBgColorFailed;\r\n                border-color: $chatMessageAutoNameBorderColorFailed;\r\n                color: $chatMessageAutoNameTextColorFailed;\r\n            }\r\n        }        \r\n    }\r\n\r\n    &-msg {\r\n        font-size: 14px;\r\n        overflow: hidden;\r\n        text-overflow: ellipsis;\r\n        display: -webkit-box;\r\n        -webkit-box-orient: vertical;    \r\n        border-radius: 4px;    \r\n        min-height: 24px;\r\n        border-width: 1px;\r\n        border-style: solid;\r\n\r\n        &-text {\r\n            padding-left:12px;\r\n            padding-right:12px;\r\n            padding-top:8px;\r\n            padding-bottom:8px;\r\n        }\r\n\r\n        &-no-text {\r\n            padding-top:8px;\r\n        }\r\n\r\n        &-customer {\r\n            background-color: $chatMessageCustomerMsgBgColor;\r\n            border-color: $chatMessageCustomerMsgBorderColor;\r\n            color: $chatMessageCustomerMsgTextColor;\r\n        }\r\n\r\n        &-agent {\r\n            background-color: $chatMessageAgentMsgBgColor;\r\n            border-color: $chatMessageAgentMsgBorderColor;\r\n            color: $chatMessageAgentMsgTextColor;        \r\n            \r\n            &-failed {\r\n                background-color: $chatMessageAgentMsgBgColorFailed;\r\n                border-color: $chatMessageAgentMsgBorderColorFailed;\r\n                color: $chatMessageAgentMsgTextColorFailed;\r\n            }\r\n        }\r\n\r\n        &-auto {\r\n            background-color: $chatMessageAutoMsgBgColor;\r\n            border-color: $chatMessageAutoMsgBorderColor;\r\n            color: $chatMessageAutoMsgTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAutoMsgBgColorFailed;\r\n                border-color: $chatMessageAutoMsgBorderColorFailed;\r\n                color: $chatMessageAutoMsgTextColorFailed;\r\n            }\r\n        }        \r\n    }\r\n}\r\n\r\n",
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.p-col-fixed {\r\n    padding:0px;\r\n}\r\n\r\n.chat-message {\r\n    margin-top:6px;    \r\n    padding-top: 8px;\r\n    padding-left: 8px;\r\n    padding-right: 8px;\r\n\r\n    &-default-width {\r\n        width: $chatMessageComponentDefaultWidth;\r\n    }\r\n\r\n    &-image-width {\r\n        width: $chatMessageComponentImageWidth;\r\n    }\r\n\r\n    &-pdf-width {\r\n        width: $chatMessageComponentPdfWidth;\r\n    }\r\n\r\n    &-status {\r\n        margin-top:-13px;\r\n        font-family: IBM Plex Sans;\r\n        font-style: normal;\r\n        font-weight: normal;\r\n        font-size: 12px; \r\n        line-height: 16px;\r\n        height: 16px;\r\n\r\n        &-left {\r\n            float: left;\r\n        }\r\n\r\n        &-right {\r\n            float: right;\r\n        }\r\n\r\n        &-time-in-state {\r\n            color: $chatMessageStatusTimeInStateTextColor;\r\n            cursor: pointer;\r\n        }\r\n\r\n        &-message-sending {\r\n            color: $chatMessageStatusMessageSendingTextColor;\r\n        }\r\n\r\n        &-message-sent {\r\n            color: $chatMessageStatusMessageSentTextColor;\r\n        }\r\n\r\n        &-message-delivered {\r\n            color: $chatMessageStatusMessageDeliveredTextColor;\r\n        }\r\n\r\n        &-message-seen {\r\n            color: $chatMessageStatusMessageSeenTextColor;\r\n        }\r\n\r\n        &-message-failed {\r\n            color: $chatMessageStatusMessageFailedTextColor;\r\n            cursor: pointer;\r\n\r\n\r\n            &:hover {\r\n                text-decoration: underline;\r\n            }\r\n        }\r\n\r\n    }\r\n    &-name {\r\n        width: $chatMessageNamePlateSize;\r\n        height: $chatMessageNamePlateSize;\r\n        line-height: $chatMessageNamePlateSize;\r\n        border-radius: 4px;\r\n        font-family: IBM Plex Sans;\r\n        font-style: normal;\r\n        font-weight: 600;\r\n        font-size: 24px;\r\n        text-align: center;\r\n        padding-top: 8px;\r\n\r\n        &-customer {\r\n            border-radius: 4px;            \r\n            background-color: $chatMessageCustomerNameBgColor;\r\n            border-color: $chatMessageCustomerNameBorderColor;\r\n            color: $chatMessageCustomerNameTextColor;\r\n        }\r\n\r\n        &-agent {\r\n            border-radius: 4px;\r\n            background-color: $chatMessageAgentNameBgColor;\r\n            border-color: $chatMessageAgentNameBorderColor ;            \r\n            color: $chatMessageAgentNameTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAgentNameBgColorFailed;\r\n                border-color: $chatMessageAgentNameBorderColorFailed;\r\n                color: $chatMessageAgentNameTextColorFailed;\r\n            }\r\n        }\r\n\r\n        &-auto {\r\n            border-radius: 4px;            \r\n            background-color: $chatMessageAutoNameBgColor;\r\n            border-color: $chatMessageAutoNameBorderColor;\r\n            color: $chatMessageAutoNameTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAutoNameBgColorFailed;\r\n                border-color: $chatMessageAutoNameBorderColorFailed;\r\n                color: $chatMessageAutoNameTextColorFailed;\r\n            }\r\n        }        \r\n    }\r\n\r\n    &-msg {\r\n        font-size: 14px;\r\n        overflow: hidden;\r\n        text-overflow: ellipsis;\r\n        display: -webkit-box;\r\n        -webkit-box-orient: vertical;    \r\n        border-radius: 4px;    \r\n        min-height: 24px;\r\n        border-width: 1px;\r\n        border-style: solid;\r\n\r\n        &-text {\r\n            padding-left:12px;\r\n            padding-right:12px;\r\n            padding-top:8px;\r\n            padding-bottom:8px;\r\n        }\r\n\r\n        &-no-text {\r\n            padding-top:8px;\r\n        }\r\n\r\n        &-customer {\r\n            background-color: $chatMessageCustomerMsgBgColor;\r\n            border-color: $chatMessageCustomerMsgBorderColor;\r\n            color: $chatMessageCustomerMsgTextColor;\r\n        }\r\n\r\n        &-agent {\r\n            background-color: $chatMessageAgentMsgBgColor;\r\n            border-color: $chatMessageAgentMsgBorderColor;\r\n            color: $chatMessageAgentMsgTextColor;        \r\n            \r\n            &-failed {\r\n                background-color: $chatMessageAgentMsgBgColorFailed;\r\n                border-color: $chatMessageAgentMsgBorderColorFailed;\r\n                color: $chatMessageAgentMsgTextColorFailed;\r\n            }\r\n        }\r\n\r\n        &-auto {\r\n            background-color: $chatMessageAutoMsgBgColor;\r\n            border-color: $chatMessageAutoMsgBorderColor;\r\n            color: $chatMessageAutoMsgTextColor;\r\n\r\n            &-failed {\r\n                background-color: $chatMessageAutoMsgBgColorFailed;\r\n                border-color: $chatMessageAutoMsgBorderColorFailed;\r\n                color: $chatMessageAutoMsgTextColorFailed;\r\n            }\r\n        }        \r\n    }\r\n}\r\n\r\n",
                     "styleUrl": "./chat-message-component.scss"
                 }
             ],
@@ -973,7 +1112,7 @@
                         "type": "ComponentFactoryResolver"
                     }
                 ],
-                "line": 63,
+                "line": 64,
                 "jsdoctags": [
                     {
                         "name": "ngZone",
@@ -1247,6 +1386,967 @@
                 "OnInit"
             ],
             "templateData": "<div class=\"my-task\" [ngClass]=\"{ 'my-task-active' : active, 'chat-task-extend-tile' : extend }\">\n  <div class=\"chat-task-content my-task-chat\">\n\n      <div class=\"p-d-flex p-jc-between\">\n          <div class=\"p-d-flex\">\n             <div class=\"p-as-center ui-border chat-task-channel\">\n                 <input type=\"checkbox\" (change)=\"selectChange();\" >\n             </div>\n\n              <div class=\"p-as-center ui-border chat-task-channel\">\n                  <span class=\"chat-task-channel-icon\"><div [ngClass]=\"channelIcon\"></div></span>\n              </div>\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"chat-task-party\">{{otherParty}}</span> \n              </div>\n          </div>\n          <div class=\"p-d-flex\">\n\n              <div [hidden]=\"state!=='offered'\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\n                  <div (click)=\"onClick.emit({ 'id': 'toolAnswer'})\" class=\"chat-task-button-accept icon-Tick\"></div>                    \n              </div>\n              <div class=\"p-as-center ui-border chat-task-flag\">\n                  <div [hidden]=\"priority===''\" class=\"chat-task-flag-text\" [ngStyle]=\"{'background-color' : priorityColour }\">{{priority}}</div>\n              </div> \n          </div>\n  \n      </div>  \n\n      <div class=\"p-d-flex p-jc-between chat-task-message ui-border\">\n          \n          <div class=\"p-d-flex chat-task-message-text\">\n              <div class=\"p-as-center ui-border\">\n                  <span class=\"chat-task-class-name\">\n                      <span>{{message}}</span>\n                  </span>\n              </div>\n          </div>\n\n          <div class=\"p-d-flex\">\n              <div [hidden]=\"messageCount===''\" class=\"p-as-center ui-border\" style=\"text-align: center;\" >\n                  <div class=\"chat-task-message-count\">{{messageCount}}</div>                    \n              </div>\n\n              <div [hidden]=\"duration===''\" class=\"p-as-center ui-border\" style=\"text-align: right;\">\n                  <span class=\"chat-task-duration\">{{duration}}</span>\n              </div>\n          </div>\n      </div> \n\n  </div>\n\n  <div *ngIf=\"extend\" class=\"chat-task-extend ui-border\">\n    <div class=\"p-d-flex p-jc-center\">\n        <div class=\"ui-border chat-task-extend-text\" >\n            <div style=\"text-align: center;\">This chat will be automatically put on hold in {{extendTimeLeft}} sec</div>\n        </div>\n    </div>\n    <div class=\"p-d-flex p-jc-center\">\n        <div (click)=\"onClick.emit({ 'id': 'toolExtendChat'})\" class=\"ui-border chat-task-extend-button\" >\n            <span class=\"ui-border chat-task-extend-button-text\">Extend</span>\n        </div>      \n    </div> \n  </div>\n\n</div>\n"
+        },
+        {
+            "name": "ImageViewerComponent",
+            "id": "component-ImageViewerComponent-e6006081e0017caf05f065beeacce182",
+            "file": "src/stories/image-viewer-component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-image-viewer",
+            "styleUrls": [
+                "./image-viewer-component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./image-viewer-component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "buttonsColor",
+                    "defaultValue": "'white'",
+                    "line": 46
+                },
+                {
+                    "name": "buttonsHover",
+                    "defaultValue": "'#333333'",
+                    "line": 47
+                },
+                {
+                    "name": "defaultDownloadName",
+                    "defaultValue": "'Image'",
+                    "line": 48
+                },
+                {
+                    "name": "download",
+                    "defaultValue": "true",
+                    "line": 36
+                },
+                {
+                    "name": "downloadTooltipLabel",
+                    "defaultValue": "'Download'",
+                    "line": 55
+                },
+                {
+                    "name": "enableTooltip",
+                    "defaultValue": "true",
+                    "line": 58
+                },
+                {
+                    "name": "fullscreen",
+                    "defaultValue": "true",
+                    "line": 37
+                },
+                {
+                    "name": "fullscreenTooltipLabel",
+                    "defaultValue": "'Fullscreen'",
+                    "line": 52
+                },
+                {
+                    "name": "idContainer",
+                    "defaultValue": "\"\"",
+                    "line": 33
+                },
+                {
+                    "name": "images",
+                    "line": 34,
+                    "type": "any[]"
+                },
+                {
+                    "name": "loadOnInit",
+                    "defaultValue": "false",
+                    "line": 39
+                },
+                {
+                    "name": "openInNewTabTooltipLabel",
+                    "defaultValue": "'Open in new tab'",
+                    "line": 57
+                },
+                {
+                    "name": "primaryColor",
+                    "defaultValue": "'#0176bd'",
+                    "line": 45
+                },
+                {
+                    "name": "resetZoom",
+                    "defaultValue": "true",
+                    "line": 38
+                },
+                {
+                    "name": "resetZoomTooltipLabel",
+                    "defaultValue": "'Reset zoom'",
+                    "line": 51
+                },
+                {
+                    "name": "rotate",
+                    "defaultValue": "true",
+                    "line": 35
+                },
+                {
+                    "name": "rotateLeftTooltipLabel",
+                    "defaultValue": "'Rotate left'",
+                    "line": 50
+                },
+                {
+                    "name": "rotateRightTooltipLabel",
+                    "defaultValue": "'Rotate right'",
+                    "line": 49
+                },
+                {
+                    "name": "showOptions",
+                    "defaultValue": "true",
+                    "line": 40
+                },
+                {
+                    "name": "showPDFOnlyLabel",
+                    "defaultValue": "'Show only PDF'",
+                    "line": 56
+                },
+                {
+                    "name": "showPDFOnlyOption",
+                    "defaultValue": "true",
+                    "line": 44
+                },
+                {
+                    "name": "zoomInButton",
+                    "defaultValue": "true",
+                    "line": 41
+                },
+                {
+                    "name": "zoomInTooltipLabel",
+                    "defaultValue": "'Zoom In'",
+                    "line": 53
+                },
+                {
+                    "name": "zoomOutButton",
+                    "defaultValue": "true",
+                    "line": 42
+                },
+                {
+                    "name": "zoomOutTooltipLabel",
+                    "defaultValue": "'Zoom Out'",
+                    "line": 54
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onNext",
+                    "defaultValue": "new EventEmitter()",
+                    "line": 60,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onPrevious",
+                    "defaultValue": "new EventEmitter()",
+                    "line": 61,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "BASE_64_IMAGE",
+                    "defaultValue": "'data:image/png;base64,'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "BASE_64_PNG",
+                    "defaultValue": "`${this.BASE_64_IMAGE} `",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "curSpan",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 65
+                },
+                {
+                    "name": "indexImagemAtual",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 68
+                },
+                {
+                    "name": "isImagemVertical",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 71
+                },
+                {
+                    "name": "ROTACAO_PADRAO_GRAUS",
+                    "defaultValue": "90",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "rotacaoImagemAtual",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 69
+                },
+                {
+                    "name": "showOnlyPDF",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 72
+                },
+                {
+                    "name": "stringDownloadImagem",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 70
+                },
+                {
+                    "name": "totalImagens",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 67
+                },
+                {
+                    "name": "viewer",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 63
+                },
+                {
+                    "name": "viewerFullscreen",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 66
+                },
+                {
+                    "name": "wrapper",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 64
+                },
+                {
+                    "name": "zoomPercent",
+                    "defaultValue": "100",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 74
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "adicionarAnimacao",
+                    "args": [
+                        {
+                            "name": "componente",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 394,
+                    "jsdoctags": [
+                        {
+                            "name": "componente",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "adicionarRotacao",
+                    "args": [
+                        {
+                            "name": "componente",
+                            "type": "string"
+                        },
+                        {
+                            "name": "novaRotacao",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scale",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 390,
+                    "jsdoctags": [
+                        {
+                            "name": "componente",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "novaRotacao",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "scale",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "atualizarCorHoverIn",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 462,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "atualizarCorHoverOut",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 467,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "atualizarRotacao",
+                    "args": [
+                        {
+                            "name": "isAnimacao",
+                            "type": "",
+                            "defaultValue": "true"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 333,
+                    "jsdoctags": [
+                        {
+                            "name": "isAnimacao",
+                            "type": "",
+                            "defaultValue": "true",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "base64ToArrayBuffer",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 435,
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "buttonsColorChange",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 137,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "carregarImagem",
+                    "args": [
+                        {
+                            "name": "novaRotacao",
+                            "type": "string"
+                        },
+                        {
+                            "name": "scale",
+                            "type": "string"
+                        },
+                        {
+                            "name": "isAnimacao",
+                            "type": "",
+                            "defaultValue": "true"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 371,
+                    "jsdoctags": [
+                        {
+                            "name": "novaRotacao",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "scale",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isAnimacao",
+                            "type": "",
+                            "defaultValue": "true",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "carregarViewerPDF",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 208
+                },
+                {
+                    "name": "converterPDFBase64ParaBlob",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 417
+                },
+                {
+                    "name": "defaultDownloadNameChange",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 147,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "esconderBotoesImageViewer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 236
+                },
+                {
+                    "name": "getIdIframe",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 472
+                },
+                {
+                    "name": "getImagemAtual",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 431,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "getScale",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 342
+                },
+                {
+                    "name": "getTamanhoIframe",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ widthIframe: any; heightIframe: any; }",
+                    "typeParameters": [],
+                    "line": 227
+                },
+                {
+                    "name": "imagemAnterior",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 291
+                },
+                {
+                    "name": "imagesChange",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 153,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "inicializarCores",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 94,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "inicializarImageViewer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 167
+                },
+                {
+                    "name": "injetarIframe",
+                    "args": [
+                        {
+                            "name": "widthIframe",
+                            "type": "number"
+                        },
+                        {
+                            "name": "heightIframe",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 214,
+                    "jsdoctags": [
+                        {
+                            "name": "widthIframe",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "heightIframe",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isImagemSobrepondoNaVertical",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 362
+                },
+                {
+                    "name": "isImagensPresentes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 162
+                },
+                {
+                    "name": "isPDF",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 241
+                },
+                {
+                    "name": "isURlImagem",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 245
+                },
+                {
+                    "name": "limparCacheElementos",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 254
+                },
+                {
+                    "name": "mostrarFullscreen",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 398
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 84
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 100,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78
+                },
+                {
+                    "name": "prepararTrocaImagem",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 249
+                },
+                {
+                    "name": "primaryColorChange",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 128,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "proximaImagem",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 277
+                },
+                {
+                    "name": "resetarZoom",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 323
+                },
+                {
+                    "name": "retirarAnimacao",
+                    "args": [
+                        {
+                            "name": "componente",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 386,
+                    "jsdoctags": [
+                        {
+                            "name": "componente",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "rotacionarDireita",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 305
+                },
+                {
+                    "name": "rotacionarEsquerda",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 314
+                },
+                {
+                    "name": "setStyleClass",
+                    "args": [
+                        {
+                            "name": "nomeClasse",
+                            "type": "string"
+                        },
+                        {
+                            "name": "nomeStyle",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cor",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 451,
+                    "jsdoctags": [
+                        {
+                            "name": "nomeClasse",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "nomeStyle",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "cor",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "showImage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 188
+                },
+                {
+                    "name": "showPDFOnly",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 446
+                },
+                {
+                    "name": "zoomIn",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 107
+                },
+                {
+                    "name": "zoomOut",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 112
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  EventEmitter,\n  Input,\n  OnChanges,\n  OnInit,\n  Output,\n  Renderer2,\n  SimpleChanges\n} from '@angular/core';\n\nimport ImageViewer from 'iv-viewer';\nimport {FullScreenViewer} from 'iv-viewer';\n\n/**\n* @author Breno Prata - 22/12/2017\n*/\n@Component({\n\n  selector: 'app-image-viewer',\n\n  templateUrl: './image-viewer-component.html',\n\n  styleUrls: ['./image-viewer-component.scss']\n})\nexport class ImageViewerComponent implements OnChanges, OnInit, AfterViewInit {\n\n  BASE_64_IMAGE = 'data:image/png;base64,';\n  BASE_64_PNG = `${this.BASE_64_IMAGE} `;\n  ROTACAO_PADRAO_GRAUS = 90;\n\n  @Input() idContainer = \"\";\n  @Input() images: any[];\n  @Input() rotate = true;\n  @Input() download = true;\n  @Input() fullscreen = true;\n  @Input() resetZoom = true;\n  @Input() loadOnInit = false;\n  @Input() showOptions = true;\n  @Input() zoomInButton = true;\n  @Input() zoomOutButton = true;\n\n  @Input() showPDFOnlyOption = true;\n  @Input() primaryColor = '#0176bd';\n  @Input() buttonsColor = 'white';\n  @Input() buttonsHover = '#333333';\n  @Input() defaultDownloadName = 'Image';\n  @Input() rotateRightTooltipLabel = 'Rotate right';\n  @Input() rotateLeftTooltipLabel = 'Rotate left';\n  @Input() resetZoomTooltipLabel = 'Reset zoom';\n  @Input() fullscreenTooltipLabel = 'Fullscreen';\n  @Input() zoomInTooltipLabel = 'Zoom In';\n  @Input() zoomOutTooltipLabel = 'Zoom Out';\n  @Input() downloadTooltipLabel = 'Download';\n  @Input() showPDFOnlyLabel = 'Show only PDF';\n  @Input() openInNewTabTooltipLabel = 'Open in new tab';\n  @Input() enableTooltip = true;\n\n  @Output() onNext = new EventEmitter();\n  @Output() onPrevious = new EventEmitter();\n\n  viewer;\n  wrapper;\n  curSpan;\n  viewerFullscreen;\n  totalImagens: number;\n  indexImagemAtual: number;\n  rotacaoImagemAtual: number;\n  stringDownloadImagem: string;\n  isImagemVertical: boolean;\n  showOnlyPDF = false;\n\n  zoomPercent = 100;\n\n  constructor(private renderer: Renderer2) {}\n\n  ngOnInit() {\n      if (this.loadOnInit) {\n          this.isImagensPresentes();\n      }\n  }\n\n  ngAfterViewInit() {\n      this.inicializarCores();\n      if (this.loadOnInit) {\n          this.inicializarImageViewer();\n          setTimeout(() => {\n              this.showImage();\n          }, 1000);\n      }\n  }\n\n  private inicializarCores() {\n      this.setStyleClass('inline-icon', 'background-color', this.primaryColor);\n      this.setStyleClass('footer-info', 'background-color', this.primaryColor);\n      this.setStyleClass('footer-icon', 'color', this.buttonsColor);\n  }\n\n  ngOnChanges(changes: SimpleChanges) {\n      this.imagesChange(changes);\n      this.primaryColorChange(changes);\n      this.buttonsColorChange(changes);\n      this.defaultDownloadNameChange(changes);\n  }\n\n  zoomIn() {\n      this.zoomPercent += 10;\n      this.viewer.zoom(this.zoomPercent);\n  }\n\n  zoomOut() {\n      if (this.zoomPercent === 100) {\n\n          return;\n      }\n\n      this.zoomPercent -= 10;\n\n      if (this.zoomPercent < 0) {\n\n          this.zoomPercent = 0;\n      }\n\n      this.viewer.zoom(this.zoomPercent);\n  }\n\n  primaryColorChange(changes: SimpleChanges) {\n      if (changes['primaryColor'] || changes['showOptions']) {\n          setTimeout(() => {\n              this.setStyleClass('inline-icon', 'background-color', this.primaryColor);\n              this.setStyleClass('footer-info', 'background-color', this.primaryColor);\n          }, 350);\n      }\n  }\n\n  buttonsColorChange(changes: SimpleChanges) {\n      if (changes['buttonsColor'] || changes['rotate'] || changes['download']\n      || changes['fullscreen']) {\n          setTimeout(() => {\n\n              this.setStyleClass('footer-icon', 'color', this.buttonsColor);\n          }, 350);\n      }\n  }\n\n  defaultDownloadNameChange(changes: SimpleChanges) {\n      if (changes['defaultDownloadName']) {\n          this.defaultDownloadName = this.defaultDownloadName;\n      }\n  }\n\n  imagesChange(changes: SimpleChanges) {\n      if (changes['images'] && this.isImagensPresentes()) {\n          this.inicializarImageViewer();\n          setTimeout(() => {\n              this.showImage();\n          }, 1000);\n      }\n  }\n\n  isImagensPresentes() {\n      return this.images\n          && this.images.length > 0;\n  }\n\n  inicializarImageViewer() {\n\n      this.indexImagemAtual = 1;\n      this.rotacaoImagemAtual = 0;\n      this.totalImagens = this.images.length;\n\n      if (this.viewer) {\n\n          this.wrapper.querySelector('.total').innerHTML = this.totalImagens;\n          return;\n      }\n\n      this.wrapper = document.getElementById(`${this.idContainer}`);\n\n      if (this.wrapper) {\n          this.curSpan = this.wrapper.querySelector('#current');\n          this.viewer = new ImageViewer(this.wrapper.querySelector('.image-container'));\n          this.wrapper.querySelector('.total').innerHTML = this.totalImagens;\n      }\n  }\n\n  showImage() {\n      this.prepararTrocaImagem();\n\n      let imgObj = this.BASE_64_PNG;\n      if (this.isPDF()) {\n\n          this.carregarViewerPDF();\n      } else if (this.isURlImagem()) {\n\n          imgObj = this.getImagemAtual();\n          this.stringDownloadImagem = this.getImagemAtual();\n      } else {\n          imgObj = this.BASE_64_PNG + this.getImagemAtual();\n          this.stringDownloadImagem = this.BASE_64_IMAGE + this.getImagemAtual();\n      }\n      this.viewer.load(imgObj, imgObj);\n      this.curSpan.innerHTML = this.indexImagemAtual;\n      this.inicializarCores();\n  }\n\n  carregarViewerPDF() {\n      this.esconderBotoesImageViewer();\n      const {widthIframe, heightIframe} = this.getTamanhoIframe();\n      this.injetarIframe(widthIframe, heightIframe);\n  }\n\n  injetarIframe(widthIframe: number, heightIframe: number) {\n      const ivImageWrap = document.getElementById(this.idContainer).getElementsByClassName('iv-image-wrap').item(0);\n\n      const iframe = document.createElement('iframe');\n\n      iframe.id = this.getIdIframe();\n      iframe.style.width = `${widthIframe}px`;\n      iframe.style.height = `${heightIframe}px`;\n      iframe.src = `${this.converterPDFBase64ParaBlob()}`;\n\n      this.renderer.appendChild(ivImageWrap, iframe);\n  }\n\n  getTamanhoIframe() {\n\n      const container = document.getElementById(this.idContainer);\n\n      const widthIframe = container.offsetWidth;\n      const heightIframe = container.offsetHeight;\n      return {widthIframe, heightIframe};\n  }\n\n  esconderBotoesImageViewer() {\n      this.setStyleClass('iv-loader', 'visibility', 'hidden');\n      this.setStyleClass('options-image-viewer', 'visibility', 'hidden');\n  }\n\n  isPDF() {\n      return this.getImagemAtual().startsWith('JVBE') || this.getImagemAtual().startsWith('0M8R');\n  }\n\n  isURlImagem() {\n      return this.getImagemAtual().match(new RegExp(/^(https|http|www\\.)/g));\n  }\n\n  prepararTrocaImagem() {\n      this.rotacaoImagemAtual = 0;\n      this.limparCacheElementos();\n  }\n\n  limparCacheElementos() {\n\n      const container = document.getElementById(this.idContainer);\n      const iframeElement = document.getElementById(this.getIdIframe());\n      const ivLargeImage = document.getElementById(this.idContainer).getElementsByClassName('iv-large-image').item(0);\n\n      if (iframeElement) {\n\n          this.renderer.removeChild(container, iframeElement);\n\n          if (ivLargeImage) {\n\n              this.renderer.removeChild(container, ivLargeImage);\n          }\n      }\n\n      if (iframeElement) {\n      }\n\n      this.setStyleClass('iv-loader', 'visibility', 'auto');\n      this.setStyleClass('options-image-viewer', 'visibility', 'inherit');\n  }\n\n  proximaImagem() {\n      this.isImagemVertical = false;\n      this.indexImagemAtual++;\n      if (this.indexImagemAtual > this.totalImagens) {\n          this.indexImagemAtual = 1;\n      }\n      this.onNext.emit(this.indexImagemAtual);\n      if (!this.isPDF() && this.showOnlyPDF) {\n          this.proximaImagem();\n          return;\n      }\n      this.showImage();\n  }\n\n  imagemAnterior() {\n      this.isImagemVertical = false;\n      this.indexImagemAtual--;\n      if (this.indexImagemAtual <= 0) {\n          this.indexImagemAtual = this.totalImagens;\n      }\n      this.onPrevious.emit(this.indexImagemAtual);\n      if (!this.isPDF() && this.showOnlyPDF) {\n          this.imagemAnterior();\n          return;\n      }\n      this.showImage();\n  }\n\n  rotacionarDireita() {\n      const timeout = this.resetarZoom();\n      setTimeout(() => {\n          this.rotacaoImagemAtual += this.ROTACAO_PADRAO_GRAUS;\n          this.isImagemVertical = !this.isImagemVertical;\n          this.atualizarRotacao();\n      }, timeout);\n  }\n\n  rotacionarEsquerda() {\n      const timeout = this.resetarZoom();\n      setTimeout(() => {\n          this.rotacaoImagemAtual -= this.ROTACAO_PADRAO_GRAUS;\n          this.isImagemVertical = !this.isImagemVertical;\n          this.atualizarRotacao();\n      }, timeout);\n  }\n\n  resetarZoom(): number {\n      this.zoomPercent = 100;\n      this.viewer.zoom(this.zoomPercent);\n      let timeout = 800;\n      if (this.viewer._state.zoomValue === this.zoomPercent) {\n          timeout = 0;\n      }\n      return timeout;\n  }\n\n  atualizarRotacao(isAnimacao = true) {\n      let scale = '';\n      if (this.isImagemVertical && this.isImagemSobrepondoNaVertical()) {\n          scale = `scale(${this.getScale()})`;\n      }\n      const novaRotacao = `rotate(${this.rotacaoImagemAtual}deg)`;\n      this.carregarImagem(novaRotacao, scale, isAnimacao);\n  }\n\n  getScale() {\n\n      const containerElement = document.getElementById(this.idContainer);\n      const ivLargeImageElement = document.getElementById(this.idContainer).getElementsByClassName('iv-large-image').item(0);\n      const diferencaTamanhoImagem = ivLargeImageElement.clientWidth - containerElement.clientHeight;\n\n      if (diferencaTamanhoImagem >= 250 && diferencaTamanhoImagem < 300) {\n\n          return (ivLargeImageElement.clientWidth - containerElement.clientHeight) / (containerElement.clientHeight) - 0.1;\n      } else if (diferencaTamanhoImagem >= 300 && diferencaTamanhoImagem < 400) {\n\n          return ((ivLargeImageElement.clientWidth - containerElement.clientHeight) / (containerElement.clientHeight)) - 0.15;\n      } else if (diferencaTamanhoImagem >= 400) {\n\n          return ((ivLargeImageElement.clientWidth - containerElement.clientHeight) / (containerElement.clientHeight)) - 0.32;\n      }\n\n      return 0.6;\n  }\n\n  isImagemSobrepondoNaVertical() {\n\n      const margemErro = 5;\n      const containerElement: Element = document.getElementById(this.idContainer);\n      const ivLargeImageElement: Element = document.getElementById(this.idContainer).getElementsByClassName('iv-large-image').item(0);\n\n      return containerElement.clientHeight < ivLargeImageElement.clientWidth + margemErro;\n  }\n\n  carregarImagem(novaRotacao: string, scale: string, isAnimacao = true) {\n      if (isAnimacao) {\n          this.adicionarAnimacao('iv-snap-image');\n          this.adicionarAnimacao('iv-large-image');\n      }\n      this.adicionarRotacao('iv-snap-image', novaRotacao, scale);\n      this.adicionarRotacao('iv-large-image', novaRotacao, scale);\n      setTimeout(() => {\n          if (isAnimacao) {\n              this.retirarAnimacao('iv-snap-image');\n              this.retirarAnimacao('iv-large-image');\n          }\n      }, 501);\n  }\n\n  retirarAnimacao(componente: string) {\n      this.setStyleClass(componente, 'transition', 'auto');\n  }\n\n  adicionarRotacao(componente: string, novaRotacao: string, scale: string) {\n      this.setStyleClass(componente, 'transform', `${novaRotacao} ${scale}`);\n  }\n\n  adicionarAnimacao(componente: string) {\n      this.setStyleClass(componente, 'transition', `0.5s linear`);\n  }\n\n  mostrarFullscreen() {\n      const timeout = this.resetarZoom();\n      setTimeout(() => {\n\n          this.viewerFullscreen = new FullScreenViewer();\n          let imgSrc;\n\n          if (this.isURlImagem()) {\n\n              imgSrc = this.getImagemAtual();\n          } else {\n\n              imgSrc = this.BASE_64_PNG + this.getImagemAtual();\n          }\n          this.viewerFullscreen.show(imgSrc, imgSrc);\n          this.atualizarRotacao(false);\n      }, timeout);\n  }\n\n  converterPDFBase64ParaBlob() {\n\n      const arrBuffer = this.base64ToArrayBuffer(this.getImagemAtual());\n\n      const newBlob = new Blob([arrBuffer], { type: 'application/pdf' });\n\n      if (window.navigator && window.navigator.msSaveOrOpenBlob) {\n          window.navigator.msSaveOrOpenBlob(newBlob);\n          return;\n      }\n\n      return window.URL.createObjectURL(newBlob);\n  }\n\n  private getImagemAtual() {\n      return this.images[this.indexImagemAtual - 1];\n  }\n\n  base64ToArrayBuffer(data) {\n      const binaryString = window.atob(data);\n      const binaryLen = binaryString.length;\n      const bytes = new Uint8Array(binaryLen);\n      for (let i = 0; i < binaryLen; i++) {\n          const ascii = binaryString.charCodeAt(i);\n          bytes[i] = ascii;\n      }\n      return bytes;\n  }\n\n  showPDFOnly() {\n      this.showOnlyPDF = !this.showOnlyPDF;\n      this.proximaImagem();\n  }\n\n  setStyleClass(nomeClasse: string, nomeStyle: string, cor: string) {\n\n      let cont;\n      const listaElementos = document.getElementById(this.idContainer).getElementsByClassName(nomeClasse);\n\n      for (cont = 0; cont < listaElementos.length; cont++) {\n\n          this.renderer.setStyle(listaElementos.item(cont), nomeStyle, cor);\n      }\n  }\n\n  atualizarCorHoverIn(event: MouseEvent) {\n\n      this.renderer.setStyle(event.srcElement, 'color', this.buttonsHover);\n  }\n\n  atualizarCorHoverOut(event: MouseEvent) {\n\n      this.renderer.setStyle(event.srcElement, 'color', this.buttonsColor);\n  }\n\n  getIdIframe() {\n      return this.idContainer + '-iframe'\n  }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import './assets/mytheme/variables';\r\n\r\n.ui-border1 {\r\n    border:1px solid red; \r\n}\r\n\r\n.footer-icon {\r\n    font-size: xx-large;\r\n  }\r\n  \r\n  .image-viewer-tooltip {\r\n    position: relative;\r\n    display: inline-block;\r\n    z-index: 1000;\r\n  }\r\n  \r\n  .image-viewer-tooltip .tooltiptext {\r\n    visibility: hidden;\r\n    width: 120px;\r\n    background-color: #555;\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 6px;\r\n    padding: 5px 0;\r\n    position: absolute;\r\n    z-index: 1;\r\n    bottom: 125%;\r\n    left: 40%;\r\n    margin-left: -60px;\r\n    opacity: 0;\r\n    transition: opacity 0.3s;\r\n  }\r\n  \r\n  .image-viewer-tooltip .tooltiptext::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 50%;\r\n    margin-left: -5px;\r\n    border-width: 5px;\r\n    border-style: solid;\r\n    border-color: #555 transparent transparent transparent;\r\n  }\r\n  \r\n  .image-viewer-tooltip:hover .tooltiptext {\r\n    visibility: visible;\r\n    opacity: 1;\r\n  }",
+                    "styleUrl": "./image-viewer-component.scss"
+                }
+            ],
+            "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 239,
+                    "end": 247,
+                    "flags": 0,
+                    "kind": 288,
+                    "atToken": {
+                        "pos": 239,
+                        "end": 240,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 240,
+                        "end": 246,
+                        "flags": 0,
+                        "escapedText": "author"
+                    },
+                    "comment": "Breno Prata - 22/12/2017"
+                }
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2"
+                    }
+                ],
+                "line": 74,
+                "jsdoctags": [
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnChanges",
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "<div id=\"{{idContainer}}\" class=\"image-gallery-2\">\n  <div class=\"image-container\"></div>\n  <div class=\"inline-icon\">\n      <div>\n          <a class=\"image-viewer-tooltip\" (click)=\"showPDFOnly()\" *ngIf=\"showPDFOnlyOption\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext filterTooltip\">\n                  <span>{{showPDFOnlyLabel}}:</span>\n                  <i class=\"material-icons\">{{showOnlyPDF ? 'check':'close'}}</i>\n              </span>\n              <i class=\"material-icons footer-icon\">picture_as_pdf</i>\n          </a>\n      </div>\n      <div *ngIf=\"showOptions\" class=\"options-image-viewer\">\n          <a class=\"image-viewer-tooltip\" *ngIf=\"zoomInButton\"\n             (click)=\"zoomIn()\" \n             (mouseover)=\"atualizarCorHoverIn($event)\"\n             (mouseout)=\"atualizarCorHoverOut($event)\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext\">{{zoomInTooltipLabel}}</span>\n              <i class=\"material-icons footer-icon\">zoom_in</i>\n          </a>\n          <a class=\"image-viewer-tooltip\"\n             *ngIf=\"zoomOutButton\"\n             (click)=\"zoomOut()\" \n             (mouseover)=\"atualizarCorHoverIn($event)\"\n             (mouseout)=\"atualizarCorHoverOut($event)\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext\">{{zoomOutTooltipLabel}}</span>\n              <i class=\"material-icons footer-icon\">zoom_out</i>\n          </a>\n\n          <a class=\"image-viewer-tooltip\"\n             *ngIf=\"rotate\"\n             (click)=\"rotacionarDireita()\" \n             (mouseover)=\"atualizarCorHoverIn($event)\"\n             (mouseout)=\"atualizarCorHoverOut($event)\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext\">{{rotateRightTooltipLabel}}</span>\n              <i class=\"material-icons footer-icon\">rotate_right</i>\n          </a>\n          <a class=\"image-viewer-tooltip\"\n             *ngIf=\"rotate\"\n             (click)=\"rotacionarEsquerda()\" \n             (mouseover)=\"atualizarCorHoverIn($event)\"\n             (mouseout)=\"atualizarCorHoverOut($event)\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext\">{{rotateLeftTooltipLabel}}</span>\n              <i class=\"material-icons footer-icon\">rotate_left</i>\n          </a>\n          <a class=\"image-viewer-tooltip\"\n             *ngIf=\"resetZoom\"\n             (click)=\"resetarZoom()\" \n             (mouseover)=\"atualizarCorHoverIn($event)\"\n             (mouseout)=\"atualizarCorHoverOut($event)\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext\">{{resetZoomTooltipLabel}}</span>\n              <i class=\"material-icons footer-icon\">fullscreen_exit</i>\n          </a>\n          <a class=\"image-viewer-tooltip\"\n             *ngIf=\"fullscreen\"\n             (click)=\"mostrarFullscreen()\"  \n             (mouseover)=\"atualizarCorHoverIn($event)\"\n             (mouseout)=\"atualizarCorHoverOut($event)\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext\">{{fullscreenTooltipLabel}}</span>\n              <i class=\"material-icons footer-icon\">fullscreen</i>\n          </a>\n          <a class=\"image-viewer-tooltip\" target=\"_blank\" href=\"{{stringDownloadImagem}}\"\n             download=\"{{defaultDownloadName}} {{indexImagemAtual}}.png\"\n             *ngIf=\"download\"\n             (mouseover)=\"atualizarCorHoverIn($event)\"\n             (mouseout)=\"atualizarCorHoverOut($event)\">\n              <span *ngIf=\"enableTooltip\" class=\"tooltiptext\">{{isURlImagem() ? openInNewTabTooltipLabel : downloadTooltipLabel}}</span>\n              <i class=\"material-icons footer-icon\">{{isURlImagem() ? 'open_in_browser' : 'file_download'}}</i>\n          </a>\n      </div>\n  </div>\n  <i class=\"material-icons prev\" (click)=\"imagemAnterior()\">keyboard_arrow_left</i>\n  <i class=\"material-icons next\" (click)=\"proximaImagem()\">keyboard_arrow_right</i>\n  <div class=\"footer-info\">\n      <span id=\"current\"></span>/<span class=\"total\"></span>\n  </div>\n</div>"
         },
         {
             "name": "TelephonyTaskComponent",
@@ -1677,7 +2777,7 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "AttachmentImagePdfMessage",
+                "name": "AttachmentPdf",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/chat-message.stories.ts",
@@ -1685,7 +2785,15 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "AttachmentPdf",
+                "name": "AttachmentPdf5ImagesMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AttachmentPdfImageMessage",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/chat-message.stories.ts",
@@ -1702,6 +2810,14 @@
             },
             {
                 "name": "AttachmentPdfNoMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/chat-message.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "AttachmentVideo",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/chat-message.stories.ts",
@@ -1777,7 +2893,7 @@
                 "subtype": "variable",
                 "file": "src/stories/chat-message.stories.ts",
                 "type": "Story<ChatMessageComponent>",
-                "defaultValue": "(args: ChatMessageComponent) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule\n    ],\n    declarations: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,    \n      ChatMessageAttachmentPdfComponent,  \n      AttachmentDirective\n    ],\n    entryComponents: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,\n      ChatMessageAttachmentPdfComponent\n    ]\n  },\n  component: ChatMessageComponent, \n  props: args,\n})"
+                "defaultValue": "(args: ChatMessageComponent) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule\n    ],\n    declarations: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,    \n      ChatMessageAttachmentPdfComponent,  \n      ChatMessageAttachmentVideoComponent,        \n      AttachmentDirective\n    ],\n    entryComponents: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,\n      ChatMessageAttachmentPdfComponent,\n      ChatMessageAttachmentVideoComponent,        \n    ]\n  },\n  component: ChatMessageComponent, \n  props: args,\n})"
             }
         ],
         "functions": [],
@@ -1818,7 +2934,7 @@
                     "defaultValue": "Template.bind({})"
                 },
                 {
-                    "name": "AttachmentImagePdfMessage",
+                    "name": "AttachmentPdf",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/chat-message.stories.ts",
@@ -1826,7 +2942,15 @@
                     "defaultValue": "Template.bind({})"
                 },
                 {
-                    "name": "AttachmentPdf",
+                    "name": "AttachmentPdf5ImagesMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AttachmentPdfImageMessage",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/chat-message.stories.ts",
@@ -1843,6 +2967,14 @@
                 },
                 {
                     "name": "AttachmentPdfNoMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/chat-message.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "AttachmentVideo",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/chat-message.stories.ts",
@@ -1871,7 +3003,7 @@
                     "subtype": "variable",
                     "file": "src/stories/chat-message.stories.ts",
                     "type": "Story<ChatMessageComponent>",
-                    "defaultValue": "(args: ChatMessageComponent) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule\n    ],\n    declarations: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,    \n      ChatMessageAttachmentPdfComponent,  \n      AttachmentDirective\n    ],\n    entryComponents: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,\n      ChatMessageAttachmentPdfComponent\n    ]\n  },\n  component: ChatMessageComponent, \n  props: args,\n})"
+                    "defaultValue": "(args: ChatMessageComponent) => ({\n  moduleMetadata: {\n    imports: [\n      ButtonModule,\n      CardModule,\n      MenuModule,\n      ToggleButtonModule,\n      MenubarModule,\n      TooltipModule,\n      BrowserAnimationsModule\n    ],\n    declarations: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,    \n      ChatMessageAttachmentPdfComponent,  \n      ChatMessageAttachmentVideoComponent,        \n      AttachmentDirective\n    ],\n    entryComponents: [\n      ChatMessageAttachmentImageComponent,\n      ChatMessageAttachmentMultiImageComponent,\n      ChatMessageAttachmentPdfComponent,\n      ChatMessageAttachmentVideoComponent,        \n    ]\n  },\n  component: ChatMessageComponent, \n  props: args,\n})"
                 }
             ],
             "src/stories/chat-task.stories.ts": [
@@ -2016,6 +3148,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/stories/chat-message-attachment-video-component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChatMessageAttachmentVideoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
                 "filePath": "src/stories/chat-message-attachment.ts",
                 "type": "interface",
                 "linktype": "interface",
@@ -2078,7 +3219,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "AttachmentImagePdfMessage",
+                "name": "AttachmentPdf",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2088,7 +3229,17 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "AttachmentPdf",
+                "name": "AttachmentPdf5ImagesMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AttachmentPdfImageMessage",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2109,6 +3260,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "AttachmentPdfNoMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/chat-message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AttachmentVideo",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2160,6 +3321,15 @@
                 "name": "Chat",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/image-viewer-component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ImageViewerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/85",
                 "status": "low"
             },
             {

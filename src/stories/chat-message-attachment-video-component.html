@@ -1,0 +1,23 @@
+<div class="p-col p-col-nogutter ui-border" [ngClass]="{'chat-message-attachment-border': showBorder}" >
+
+    <div class="p-grid p-nogutter p-flex-column">
+    
+        <div class="p-col p-col-nogutter ui-border">
+            <video #video controls controlsList="nodownload" class="chat-message-attachment-video">
+                <source src="{{attachment.url}}" type="{{attachment.mime}}">
+            </video>
+        </div>
+
+        <div class="p-d-flex p-jc-between chat-message-attachment-video-link">
+            
+            <div class="p-d-flex p-flex-column">
+                <div #imageName tooltipStyleClass="ui-tooltip-flex" class="chat-message-attachment-video-link-name" pTooltip="{{imageNameTooltip}}" tooltipPosition="bottom">{{getAttachmentName()}}</div>
+                <div class="chat-message-attachment-link-size">{{attachment.size}}</div>
+            </div>
+
+            <div class="p-col p-col-nogutter ui-border p-text-center">
+                <a style="float:right" class="chat-message-attachment-video-link-download pi pi-download" pTooltip="Download" tooltipPosition="bottom" href="{{attachment.url}}" target="_blank" download="{{attachment.url}}"></a>
+            </div> 
+        </div>
+    </div>
+</div>
