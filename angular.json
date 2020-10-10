@@ -27,7 +27,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/stories/assets/images",
-              "src/stories/assets/pdf"              
+              "src/stories/assets/pdf",              
+              "src/stories/assets/video"                            
             ],
             "styles": [
               "src/stories/assets/icomoon/style.css",
