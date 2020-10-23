@@ -1,0 +1,152 @@
+@import './assets/mytheme/variables';
+
+.ui-border1 {
+    border:1px solid red; 
+}
+
+.p-tooltip {
+  margin-left: -20px;
+}
+
+.footer-icon {
+  font-size: xx-large;
+}
+
+* {
+  margin: 0px;
+  padding:0px;
+}
+.container { 
+  position:absolute;
+  width: 100%; 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column;
+  background: linear-gradient(360deg, #000000 -6.3%, rgba(0, 0, 0, 0.7) 21.67%, rgba(0, 0, 0, 0.7) 92%);
+} 
+
+.header { 
+  width: 100%;
+  height:48px;
+  background: #272E34;
+  text-align: center;
+  z-index: 101;
+
+  &-text {
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 48px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: 8px;
+  }
+}
+
+.image { 
+  width: 100%;  
+  flex: 1;
+  margin-top: 48px;
+  margin-bottom: 16px;
+
+  &-selection {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    height: 100%; 
+    justify-content: center;
+
+    &-button {
+      z-index: 1001;
+      height: 36px;
+      width: 36px;
+      border-radius: 18px;
+      background-color: #141414;
+      color: #ffffff;
+      line-height: 36px;
+      cursor: pointer;            
+      text-align: center;
+
+      &:hover {
+        background-color: #0062F5;
+      }
+      
+      &>i {
+        font-size: 1.0em;
+      }
+
+      &-prev {
+        margin-left : 104px;
+      }
+
+      &-next {
+        margin-right : 104px;
+      }
+    }
+
+  }
+}
+
+.thumbnail { 
+  width: 100%;  
+  height: 176px;
+}
+
+.options {
+  color: white;
+  line-height: 48px;
+  float: right;
+
+  &-toolbar {
+    z-index: 101;
+
+    &-tool {
+      height: 48px;
+
+      &:last-child {
+        padding-right: 8px;
+        padding-left: 8px;
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-left-color: rgba(170,170,170,0.5);
+      }
+
+      &-button {
+          margin-top: 6px;
+          color: #ffffff;
+          width: 36px;
+          height: 36px;
+          text-align: center;
+          cursor: pointer;
+          line-height: 36px; 
+
+          &>a {
+            font-size: 1.0em;
+            color: #ffffff;
+          }
+
+          &:first-child {
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;            
+          }
+    
+          &:last-child {
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;            
+          }
+
+          &:hover {
+            background: #171B1E;
+          }
+
+          >span {
+              line-height:24px; 
+              font-size:12px;
+          }
+      }
+    }
+
+  }
+}

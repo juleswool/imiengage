@@ -67,7 +67,7 @@ const Template: Story<ChatMessageComponent> = (args: ChatMessageComponent) => ({
       ChatMessageAttachmentImageComponent,
       ChatMessageAttachmentMultiImageComponent,
       ChatMessageAttachmentPdfComponent,
-      ChatMessageAttachmentVideoComponent,        
+      ChatMessageAttachmentVideoComponent
     ]
   },
   component: ChatMessageComponent, 

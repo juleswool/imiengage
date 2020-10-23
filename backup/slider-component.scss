@@ -1,0 +1,31 @@
+.slider-container {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    display: flex;
+    //flex-direction: column;
+    margin-bottom: 16px;
+  }
+  
+  .slides {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    overflow-x: hidden;
+    // This is not supported by all browsers. If you want a different animation, please feel free
+    // to find your own solution.
+    scroll-behavior: smooth;
+  
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+  
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+  }

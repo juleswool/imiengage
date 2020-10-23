@@ -1,0 +1,47 @@
+<div class="container" [ngStyle]="{'display': showViewer ? 'flex' : 'none'}"> 
+
+    <div class="header"> 
+        <span class="header-text">{{images[_activeIndex]}}</span>
+        <span class="options">
+            <div class="options-toolbar p-d-flex">
+                <div class="options-toolbar-tool">
+                    <div pTooltip="Download" tooltipPosition="bottom" class="p-as-center ui-border options-toolbar-tool-button" >
+                        <!--span class="pi pi-download"></span-->
+                        <a class="pi pi-download" href="{{images[_activeIndex]}}" target="_blank" download="{{images[_activeIndex]}}"></a>
+                    </div>
+                </div>
+
+                <p-menu (mouseenter)="stopDelayClose();" (mouseleave)="menu.hide($event);" #menu [popup]="true" [model]="actions"></p-menu>
+
+                <div class="options-toolbar-tool">
+                    <div pTooltip="More&nbsp;actions" tooltipPosition="bottom" (mouseleave)="startDelayClose(menu);" (click)="showMenu(menu, $event)" class="p-as-center ui-border options-toolbar-tool-button">
+                        <span class="pi pi-ellipsis-v"></span>
+                    </div> 
+                </div>
+
+                <div class="options-toolbar-tool">
+                    <div pTooltip="Close" tooltipPosition="bottom" (click)="option('close')" class="p-as-center ui-border options-toolbar-tool-button" >
+                        <span class="pi pi-times"></span>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+
+    <div class="image image-gallery-2" id="{{idContainer}}"> 
+
+        <div class="image-selection">
+            <div class="p-d-flex">
+                <div pTooltip="Previous" tooltipPosition="right" (click)="activeIndex=activeIndex-1" class="image-selection-button image-selection-button-prev"><i class="pi pi-chevron-left"></i></div>
+                <div pTooltip="Next" tooltipPosition="left" (click)="activeIndex=activeIndex+1" class="image-selection-button image-selection-button-next p-ml-auto"><i class="pi pi-chevron-right"></i></div>
+            </div>
+        </div>
+
+        <div class="image-container"></div>        
+    </div> 
+
+    <div class="thumbnail"> 
+        <app-thumbnail (click)="thumbnailAction($event);" [(index)]="activeIndex" [images]="images"></app-thumbnail>
+    </div> 
+
+</div>

@@ -26,7 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "iv-viewer": "^2.0.1",
     "ng-bootstrap": "^1.6.3",
-    "ng2-image-viewer": "^3.0.5",
+    "ng2-pdf-viewer": "^6.3.2",
     "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",
     "primeng": "^9.1.3",

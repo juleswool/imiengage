@@ -1,0 +1,14 @@
+
+<div #mydiv class="header"><div style="line-height: 48px;"></div></div>
+<div id="{{idContainer}}" class="image-gallery-2">
+    <div class="image-container"></div>
+</div>  
+
+
+<app-slider #slider>
+	<div *ngFor="let image of images; let i = index" [attr.data-index]="i" appSliderItem>
+        <div class="thumbnail">
+            <div class="thumbnail-image" [ngStyle]="{'background-image': 'url(' + image.thumbnailImageSrc +')'}">{{slidesIndex}}</div>
+        </div>            
+    </div>
+</app-slider>

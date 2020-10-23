@@ -1,0 +1,35 @@
+<div class="control">
+  <div class="control-toolbar p-d-flex">
+      <div pTooltip="Rotate left" tooltipPosition="top" (click)="click.emit('rotateLeft')" class="p-as-center ui-border control-toolbar-button" [ngClass]="{'telephony-task-muted' : muted }" >
+        <span class="pi pi-directions-alt"></span>
+      </div>
+      <div pTooltip="Zoom out" tooltipPosition="top" (click)="click.emit('zoomOut')" class="p-as-center ui-border control-toolbar-button" [ngClass]="{'telephony-task-muted' : muted }" >
+          <span class="pi pi-search-minus"></span>
+      </div>
+      <div pTooltip="Fit to screen" tooltipPosition="top" (click)="click.emit('fit2Screen')" class="p-as-center ui-border control-toolbar-button" [ngClass]="{'telephony-task-onhold' : onHold }" >
+        <span class="pi pi-table"></span>
+      </div>
+      <div pTooltip="Zoom in" tooltipPosition="top" (click)="click.emit('zoomIn')" class="p-as-center ui-border control-toolbar-button">
+        <span class="pi pi-search-plus"></span>
+      </div> 
+      <div pTooltip="Rotate right" tooltipPosition="top" (click)="click.emit('rotateRight')" class="p-as-center ui-border control-toolbar-button" [ngClass]="{'telephony-task-muted' : muted }" >
+        <span class="pi pi-directions"></span>
+      </div>
+  </div>
+</div>
+
+<div class="slider-container" >
+  <div class="slides" #slides [ngStyle]="{ 'width': sliderWidth }">
+    <div *ngFor="let image of images; let i = index;">
+      <div (click)="select(i);" pTooltip="{{getFilename(image)}}" tooltipPosition="top" class="thumbnail" [ngClass]="{'thumbnail-selected': slidesIndex===i}">
+          <div class="thumbnail-image" [ngStyle]="{'background-image': 'url(' + image +')'}"></div>
+      </div>            
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  

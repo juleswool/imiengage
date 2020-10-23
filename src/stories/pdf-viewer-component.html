@@ -1,0 +1,84 @@
+<div class="container" [ngStyle]="{'display': showViewer ? 'flex' : 'none'}"> 
+
+    <div class="header"> 
+        <span class="header-text">{{pdfSrc}}</span>
+
+        <span class="header-toolbar p-d-flex">
+            <div class="header-toolbar-tool">
+                <div pTooltip="Download" tooltipPosition="bottom" class="p-as-center ui-border header-toolbar-tool-button" >
+                    <a class="pi pi-download" href="{{pdfSrc}}" target="_blank" download="{{pdfSrc}}"></a>
+                </div>
+            </div>
+
+            <p-menu (mouseenter)="stopDelayClose();" (mouseleave)="menu.hide($event);" #menu [popup]="true" [model]="actions"></p-menu>
+
+            <div class="header-toolbar-tool">
+                <div pTooltip="More&nbsp;actions" tooltipPosition="bottom" (mouseleave)="startDelayClose(menu);" (click)="showMenu(menu, $event)" class="p-as-center ui-border header-toolbar-tool-button">
+                    <span class="pi pi-ellipsis-v"></span>
+                </div> 
+            </div>
+
+            <div class="header-toolbar-tool">
+                <div pTooltip="Close" tooltipPosition="bottom" (click)="click('close')" class="p-as-center ui-border header-toolbar-tool-button" >
+                    <span class="pi pi-times"></span>
+                </div>
+            </div>
+        </span>
+
+    </div>
+
+    <div class="pdf"> 
+
+        <div class="pdf-control">
+
+            <div class="pdf-control-toolbar p-d-flex">
+                <div class="p-as-center ui-border pdf-control-toolbar-label">
+                    <span>Page</span>
+                </div>
+                <div pTooltip="Current page" tooltipPosition="top" class="p-as-center ui-border pdf-control-toolbar-label">
+                    <span>{{page}}{{pdf ? " / " + pdf.numPages: ""}}</span>
+                </div>
+            </div>
+
+            <div class="pdf-control-toolbar p-d-flex">
+                <div pTooltip="Rotate left" tooltipPosition="top" (click)="click('rotateLeft')" class="p-as-center ui-border pdf-control-toolbar-button">
+                    <span class="pi pi-directions-alt"></span>
+                </div>
+                <div pTooltip="Zoom out" tooltipPosition="top" (click)="click('zoomOut')" class="p-as-center ui-border pdf-control-toolbar-button">
+                    <span class="pi pi-search-minus"></span>
+                </div>
+                <div pTooltip="Fit to screen" tooltipPosition="top" (click)="click('fit2Screen')" class="p-as-center ui-border pdf-control-toolbar-button">
+                    <span class="pi pi-table"></span>
+                </div>
+                <div pTooltip="Zoom in" tooltipPosition="top" (click)="click('zoomIn')" class="p-as-center ui-border pdf-control-toolbar-button">
+                    <span class="pi pi-search-plus"></span>
+                </div> 
+                <div pTooltip="Rotate right" tooltipPosition="top" (click)="click('rotateRight')" class="p-as-center ui-border pdf-control-toolbar-button">
+                    <span class="pi pi-directions"></span>
+                </div>
+            </div>
+
+        </div>
+                  
+        <pdf-viewer
+            [src]="pdfSrc"
+            (pageChange)="currentPreviewPage($event)"
+            [rotation]="rotation"
+            [original-size]="originalSize"
+            [fit-to-page]="fitToPage"
+            (after-load-complete)="afterLoadComplete($event)"
+            [zoom]="zoom"
+            [show-all]="showAll"
+            [stick-to-page]="stickToPage"
+            [render-text]="renderText"
+            [external-link-target]="'blank'"
+            [autoresize]="autoresize"
+            (error)="onError($event)"
+            (on-progress)="onProgress($event)"
+            (page-rendered)="pageRendered($event)"
+      ></pdf-viewer>
+
+
+    </div> 
+
+</div>

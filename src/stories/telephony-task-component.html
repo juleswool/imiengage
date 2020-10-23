@@ -36,12 +36,12 @@
                 <div class="p-as-center ui-border">
                         <div [hidden]="!mouseHover"> 
                             <div class="telephony-task-toolbar p-d-flex">
-                                <p-menu (mouseleave)="menu.hide($event);" (mouseenter)="stopDelayClose();" #menu [popup]="true" [model]="items"></p-menu>
-                                
                                 <div pTooltip="{{muteTooltip}}" tooltipPosition="top" (click)="onClick.emit({ 'id': 'toolMuted'})" class="p-as-center ui-border telephony-task-toolbar-button" [ngClass]="{'telephony-task-muted' : muted }" >
                                     <span [ngClass]="muted ? 'icon-Social-mentions' : 'icon-Mute'"></span>
                                 </div>
-                
+
+                                <p-menu (mouseleave)="menu.hide($event);" (mouseenter)="stopDelayClose();" #menu [popup]="true" [model]="items"></p-menu>
+
                                 <div pTooltip="{{holdTooltip}}" tooltipPosition="top" (click)="onClick.emit({ 'id': 'toolHold'})" class="p-as-center ui-border telephony-task-toolbar-button" [ngClass]="{'telephony-task-onhold' : onHold }" >
                                     <span [ngClass]="onHold ? 'icon-Play' : 'icon-Hold'"></span>
                                 </div>
